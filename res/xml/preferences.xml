@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+	Copyright (C) 2011  naikon, wexoo
+	android@geekosphere.org
+	
+	This program is free software: you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation, either version 3 of the License, or
+	(at your option) any later version.
+	
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
+	 
+	You should have received a copy of the GNU General Public License
+	along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<PreferenceScreen
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    
+  	<PreferenceCategory
+  		android:title="@string/pc_general">
+  		<ListPreference
+  			android:title="@string/lp_access_mode"
+  			android:key="@string/lp_access_mode_key"
+  			android:entries="@array/lp_access_mode_strings"
+  			android:entryValues="@array/lp_access_modes"
+  			android:defaultValue="online"/>
+  		<!-- <ListPreference
+  			android:title="@string/lp_language"
+  			android:key="@string/lp_language_key"
+  			android:entries="@array/lp_language_strings"
+  			android:entryValues="@array/lp_languages"
+  			android:defaultValue="system"/> -->
+  		<Preference 
+  			android:title="@string/p_export_db_to_sd"
+  			android:key="@string/p_export_db_to_sd_key"/>
+  	</PreferenceCategory>
+</PreferenceScreen>

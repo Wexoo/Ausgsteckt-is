@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+	Copyright (C) 2011  naikon, wexoo
+	android@geekosphere.org
+	
+	This program is free software: you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation, either version 3 of the License, or
+	(at your option) any later version.
+	
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
+	 
+	You should have received a copy of the GNU General Public License
+	along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<LinearLayout 
+	xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/home_root"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" 
+    android:orientation="vertical">
+
+    <LinearLayout style="@style/TitleBar">
+        <ImageView style="@style/TitleBarLogo"
+        	android:layout_width="fill_parent"
+    		android:layout_height="wrap_content"
+    		android:layout_gravity="center"
+            android:contentDescription="@string/description_logo"
+            android:src="@drawable/title_logo" />
+
+		<TextView style="@style/TitleBarText"/>
+	
+        <View style="@style/TitleBarSpring" />
+
+        <ImageView style="@style/TitleBarSeparator" />
+        
+        <ImageView style="@style/TitleBarSeparator" />
+        <ImageButton
+        	style="@style/TitleBarAction"
+            android:contentDescription="@string/description_search"
+            android:src="@drawable/ic_title_search"
+            android:onClick="onQuickSearchClick" />
+    </LinearLayout>
+    
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:padding="6dip" >
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+            <Button 
+            	android:id="@+id/home_btn_today"
+                style="@style/HomeButton"
+                android:onClick="onIconClick"
+                android:text="@string/btn_today"
+                android:drawableTop="@drawable/home_btn_today"/>
+            <Button 
+            	android:id="@+id/home_btn_surronding"
+                style="@style/HomeButton"
+                android:onClick="onIconClick"
+                android:text="@string/btn_surronding"
+                android:drawableTop="@drawable/home_btn_surronding"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+            <Button 
+            	android:id="@+id/home_btn_search"
+                style="@style/HomeButton"
+                android:onClick="onIconClick"
+                android:text="@string/btn_search"
+                android:drawableTop="@drawable/home_btn_search"/>
+            <Button 
+            	android:id="@+id/home_btn_map"
+                style="@style/HomeButton"
+                android:onClick="onIconClick"
+                android:text="@string/btn_map"
+                android:drawableTop="@drawable/home_btn_map"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+            <Button 
+            	android:id="@+id/home_btn_favorite"
+                style="@style/HomeButton"
+                android:onClick="onIconClick"
+                android:text="@string/btn_favorite"
+                android:drawableTop="@drawable/home_btn_favorite"/>
+            <Button 
+            	android:id="@+id/home_btn_info"
+                style="@style/HomeButton"
+                android:onClick="onIconClick"
+                android:text="@string/btn_info"
+                android:drawableTop="@drawable/home_btn_info"/>
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" >
+	        <ProgressBar
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				style="?android:attr/progressBarStyleHorizontal"
+				android:id="@+id/progressbar_horizontal"
+				android:max="100"
+				android:layout_marginBottom="-20dip" 
+				android:visibility="gone" />
+		</LinearLayout>
+    </LinearLayout>
+</LinearLayout>

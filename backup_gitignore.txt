@@ -1,0 +1,8 @@
+/gen
+/bin
+/build.properties
+/release.keystore
+/local.properties
+/assets
+.classpath
+/lint.xml

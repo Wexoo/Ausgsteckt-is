@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+	Copyright (C) 2011  naikon, wexoo
+	android@geekosphere.org
+	
+	This program is free software: you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation, either version 3 of the License, or
+	(at your option) any later version.
+	
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
+	 
+	You should have received a copy of the GNU General Public License
+	along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name">Ausgsteckt is</string>
+    
+    <!-- Titles -->
+    <string name="title_info">Information</string>
+    <string name="title_favorite">Favorites</string>
+    <string name="title_today">Open Today</string>
+    <string name="title_map">Map View</string>
+    <string name="title_surronding">Surroundings</string>
+    <string name="title_search">Search</string>
+    <string name="title_result">Search results</string>
+    <string name="title_preferences">Preferences</string>
+    <string name="title_quick_search">Search</string>
+    
+    <!-- Tabs -->
+	<string name="tab_general">General</string>
+	<string name="tab_search">Search</string>
+	<string name="tab_detail">Details</string>
+	<string name="tab_map">Map</string>
+     
+    <!-- Description -->
+    <string name="description_logo">Ausgsteckt is</string>
+    <string name="description_home">Home</string>
+    <string name="description_search">Search</string>
+    <string name="description_refresh">Refresh</string>
+    <string name="description_map">Map</string>
+
+	<!-- Toasts / Alerts / Error messages -->
+	<string name="toast_unknown_host">Connection error, please check your internet connection.</string>
+	<string name="toast_favorite_added">Favorite added.</string>
+	<string name="toast_favorite_removed">Favorite removed.</string>
+	<string name="toast_migration_started">Data update started…</string>
+	<string name="toast_migration_finished">Data update finished after %1$s minutes!</string>
+	<string name="toast_no_internet_connection">No Internet connection. \nLocal access enabled.</string>
+	<string name="toast_no_data_reveived">No data received. Maybe no connection to server.</string>
+	<string name="toast_offline_not_supported">This feature isn´t available offline, please connect to the internet!</string>
+	<string name="alert_no_local_data">For this feature an internet connection is required. Switch to…</string>
+	<string name="toast_server_problems_update">This feature is currently unavailable due to server problems, we are sorry and working hard on fixing it! Please check back soon.</string>
+	<string name="toast_new_update_declined">Data update declined. Check is deactivated for 24h!</string>
+	
+	<string name="alert_yes">Yes</string>
+	<string name="alert_no">No</string>
+	<string name="alert_neutral">Never</string>
+	<string name="alert_mobile_network_prefs">Network Preferences</string>
+	<string name="alert_wifi_prefs">WiFi Preferences</string>
+	<string name="alert_return">Back</string>
+	<string name="alert_exit">Close app</string>
+	<string name="alert_new_updates_available">New data available!\nHeurige:\n%1$d added\n%2$d updated\nHours:\n%3$d added\n%4$d updated\nWould you like to update?</string>
+	    
+	<!-- ProgressDialog -->
+	<string name="progress_dialog_initial_setup_in_progress">Initial app setup in progress… (only needed at first start)</string>
+	<string name="progress_dialog_check_for_update">Check for new data in progress…</string>
+	<string name="progress_dialog_update_in_progress">Data update in progress…</string>
+	    
+	<!-- TextViews -->
+	<string name="tv_no_data">No places found, please search again.</string>
+	<string name="tv_no_favorites">No favorites defined yet. You can add a Heurigen from the results list.</string>
+	<string name="tv_no_keyword">No Keyword inserted.</string>
+	<string name="tv_no_result">No Result found.</string>
+	<string name="tv_name">Name:</string>
+	<string name="tv_address">Address:</string>
+	<string name="tv_phone">Phone:</string>
+	<string name="tv_website">Website:</string>
+	<string name="tv_mail">Email:</string>
+	<string name="tv_fax">Fax:</string>
+	<string name="tv_description">Description:</string>
+	<string name="tv_opening">Open:</string>
+	<string name="tv_zipcode">Zipcode:</string>
+	<string name="tv_amount">Open today:</string>
+	<string name="tv_district_handle">Choose a district</string>
+	<string name="tv_district">District:</string>
+	<string name="search_keyword_title">Keyword search</string>
+	<string name="search_location_title">Location search</string>
+	
+	<!-- CheckBoxes -->
+	<string name="include_date_to_search">Only show if open on</string>
+	
+	<!-- global strings -->
+	<string name="tv_visit_us"><u>http://ausgstecktis.net</u></string>
+	<string name="tv_mail_us"><u>android@geekosphere.org</u></string>
+	<string name="tv_submit_new_heurigen"><u>http://ausgstecktis.net/submit</u></string>
+		
+	<!-- MenuItems -->
+	<string name="mi_info">Info</string>
+	<string name="mi_preferences">Settings</string>
+	<string name="mi_back">Back</string>
+	<string name="mi_show_details">Show details</string>
+	<string name="mi_show_on_map">Show on map</string>
+	<string name="mi_start_navigation">Start navigation</string>
+	<string name="mi_show_surroundings">Show surroundings</string>
+	<string name="mi_add_to_favorites">Add to favorites</string>
+	<string name="mi_remove_from_favorites">Remove from favorites</string>
+	
+	<!-- Buttons Dashboard-->
+    <string name="btn_today">Open Today</string>
+    <string name="btn_map">Map View</string>
+    <string name="btn_search">Search</string>
+    <string name="btn_favorite">Favorites</string>
+    <string name="btn_info">Info</string> 
+    <string name="btn_surronding">Surrondings</string>
+	
+	<!-- Buttons -->
+	<string name="b_call">Call</string>
+	<string name="b_dial_phone_number">Call</string>
+	<string name="b_visit_website">Visit website</string>
+	<string name="b_send_mail">Send mail</string>
+	<string name="b_switch_to_intents">Switch to <i>intents</i></string>
+	<string name="b_switch_to_search">Switch to <i>search</i></string>
+	<string name="b_search_button">Search</string>
+	<string name="b_choose_date">By Date</string>
+	<string name="b_show_preferences">Preferences</string>
+	
+	<!-- Preferences - Titles -->
+	<string name="pc_general">General</string>
+	<string name="lp_access_mode">Access Mode</string>
+	<string name="lp_language">Language</string>
+	<string name="pc_local_data_storage">Local data storage</string>
+	<string name="lp_storage_mode">Local storage</string>
+	<string name="lp_update_mode">Behavior on new data</string>
+	<string name="p_manual_update">Update now</string>
+	<string name="p_export_db_to_sd">Export SQLite DB to SD Card</string>
+
+	<!-- Preferences - Summaries -->
+	<string name="lp_access_mode_sum">Current mode:</string>
+	<string name="lp_language_sum">Current language:</string>
+	<string name="lp_storage_mode_sum">Current:</string>
+	<string name="lp_update_mode_sum">Current bahavior:</string>
+	<string name="p_manual_update_sum">Last update:</string>	
+	
+	<!-- Preferences - Summaries values -->
+	<string name="p_manual_update_in_progress">Currently running</string>
+
+	<!-- Search -->
+	<string name="search_text_box">Heurigenname, City, etc.</string>
+	<string name="search_date_box">Search by Date</string>
+	<string name="search_all_hint">Name, website, email,…</string>
+	<string name="search_location_hint">City, region, district,…</string>
+    <string name="search_hint">Searched keywords</string>
+    <string name="search_all_heurigen">All Heurigen</string>
+	
+	<!-- Detail -->
+	<string name="detail_navigate"><u>Navigate to</u></string>
+	<string name="detail_opening_time_loading">Loading open times</string>
+	<string name="l_detail">Detailed View</string>
+	<string name="detail_no_calendar">No data available!</string>
+	
+	<!-- GPS Dialog -->
+	<string name="gps_dialog_message">GPS is disabled! Would you like to enable it?</string>
+	<string name="gps_dialog_enable">Enable GPS</string>
+	<string name="gps_dialog_disable">Cancel</string>
+	
+	<!-- Info -->
+	<string name="info_about_us">About Us</string>
+	<string name="info_submit_heurigen">Submit New Heurigen</string>
+	<string name="duration_last_update">Duration of latest update</string>
+	<string name="info_latest_update">Latest update</string>
+	<string name="info_no_database">Never updated</string>
+	<string name="time_entity">Minutes</string>
+	
+	
+	<!-- Global Section-->
+	
+	<!-- Preferences - Keys -->
+	<string name="lp_access_mode_key">access_mode</string>
+	<string name="p_export_db_to_sd_key">export_db_to_sd</string>
+	
+	<!-- Preferences - Keys (not shown in preferences menu) -->
+	<string name="last_database_migration_key">last_database_migration</string>
+	<string name="last_database_update_key">last_database_update</string>
+	<string name="database_migration_duration_key">database_migration_duration</string>
+	<string name="key_district_name_for_map">district_name_for_map</string>
+	<string name="key_district_id_for_map">district_id_for_map</string>
+	<string name="key_last_data_update_reminder">last_data_update_reminder</string>
+	
+	<!-- Intent Extras - Keys -->
+	<string name="update_database_with_online_data_key">update_local_database</string>
+	<string name="close_app_key">close_app_key</string>
+	<string name="description_star">Star</string>
+	
+	<!-- Distance -->
+	<string name="distance_entity">km</string>
+	
+	<!-- System -->
+    <string name="open_helper_classname">net.ausgstecktis.DAL.DBHelper</string>
+    
+    <!-- ACRA -->
+    <string name="crash_toast_text">Sorry I crashed, I\'m rebooting as soon as possible!</string>
+
+</resources>

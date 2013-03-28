@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+	Copyright (C) 2011  naikon, wexoo
+	android@geekosphere.org
+	
+	This program is free software: you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation, either version 3 of the License, or
+	(at your option) any later version.
+	
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
+	 
+	You should have received a copy of the GNU General Public License
+	along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name">Ausgsteckt is</string>
+    
+    <!-- Titles -->
+    <string name="title_info">Information</string>
+    <string name="title_favorite">Favoriten</string>
+    <string name="title_today">Heute offen</string>
+    <string name="title_map">Kartenansicht</string>
+    <string name="title_surronding">Umgebung</string>
+    <string name="title_search">Suche</string>
+    <string name="title_result">Suchergebnisse</string>
+    <string name="title_preferences">Einstellungen</string>
+    <string name="title_quick_search">Suche</string>
+    
+    <!-- Tabs -->
+	<string name="tab_general">Übersicht</string>
+	<string name="tab_search">Suche</string>
+	<string name="tab_detail">Details</string>
+	<string name="tab_map">Karte</string>
+	
+	<!-- Description -->
+    <string name="description_logo">Ausgsteckt is</string>
+    <string name="description_home">Home</string>
+    <string name="description_search">Suche</string>
+    <string name="description_refresh">Aktualisieren</string>
+    <string name="description_map">Karte</string>
+    
+	<!-- Toasts / Alerts / Error messages -->
+	<string name="toast_unknown_host">Verbindungsfehler, bitte Internetverbindung überprüfen.</string>
+	<string name="toast_favorite_added">Als Favorit hinzugefügt.</string>
+	<string name="toast_favorite_removed">Favorit wurde entfernt.</string>
+	<string name="toast_migration_started">Daten-Aktualisierung gestartet…</string>
+	<string name="toast_migration_finished">Daten-Aktualisierung in %1$s Minuten abgeschlossen!</string>
+	<string name="toast_no_internet_connection">Keine Internetverbindung. \nLokaler Zugriff aktiviert.</string>
+	<string name="toast_no_data_reveived">Keine Daten empfangen. Keine Verbindung zu Server.</string>
+	<string name="toast_offline_not_supported">Funktion offline nicht verfügbar, bitte Internetverbindung herstellen!</string>
+	<string name="alert_no_local_data">Für diese Funktion wird eine Internetverbindung benötigt. Gehe zu…</string>
+	<string name="toast_server_problems_update">Diese Funktion ist wegen Server-Problemen vorrübergehend nicht verfügbar, wir arbeiten daran diese zu beseitigen! Bitte etwas später nochmal versuchen.</string>
+	<string name="toast_new_update_declined">Daten-Aktualisierung abgelehnt. Aufforderung für 24h deaktiviert!</string>
+	    
+	<string name="alert_yes">Ja</string>
+	<string name="alert_no">Nein</string>
+	<string name="alert_neutral">Nie</string>
+	<string name="alert_mobile_network_prefs">Netzwerk Einstellungen</string>
+	<string name="alert_wifi_prefs">WLAN Einstellungen</string>
+	<string name="alert_return">Zurück</string>
+	<string name="alert_exit">App schließen</string>
+	<string name="alert_new_updates_available">Neue Daten sind verfügbar!\nHeurige:\n%1$d hinzugefügt\n%2$d aktualisiert\nTermine:\n%3$d hinzugefügt\n%4$d aktualisiert\nNeue Daten herunterladen?</string>
+	    
+	<!-- ProgressDialog -->
+	<string name="progress_dialog_initial_setup_in_progress">Initialisierung der App läuft gerade… (nur beim ersten Start notwendig)</string>
+	<string name="progress_dialog_check_for_update">Überprüfung auf neue Daten läuft gerade…</string>
+	<string name="progress_dialog_update_in_progress">Daten-Aktualisierung läuft gerade…</string>
+	
+	<!-- TextViews -->
+	<string name="tv_no_data">Keine Heurigen gefunden, bitte erneut suchen.</string>
+	<string name="tv_no_favorites">Noch keine Favoriten angelegt. Sie können Heurigen aus der Ergebnisliste hinzufügen.</string>
+	<string name="tv_no_keyword">Kein Suchwort eingegeben.</string>
+	<string name="tv_no_result">Kein Ergebnis gefunden.</string>
+	<string name="tv_name">Name:</string>
+	<string name="tv_address">Adresse:</string>
+	<string name="tv_phone">Telefon:</string>
+	<string name="tv_website">Fax:</string>
+	<string name="tv_mail">Email:</string>
+	<string name="tv_fax">Webseite:</string>
+	<string name="tv_description">Beschreibung:</string>
+	<string name="tv_opening">Offen:</string>
+	<string name="tv_zipcode">Postleitzahl:</string>
+	<string name="tv_amount">Heute offen:</string>
+	<string name="tv_district_handle">Wähle einen Bezirk</string>
+	<string name="tv_district">Bezirk:</string>
+	<string name="search_keyword_title">Stichwortsuche</string>
+	<string name="search_location_title">Gebietsuche</string>
+
+	<!-- CheckBoxes -->
+	<string name="include_date_to_search">Zeige nur wenn offen am</string>
+
+	<!-- MenuItems -->
+	<string name="mi_info">Info</string>
+	<string name="mi_preferences">Einstellungen</string>
+	<string name="mi_back">Zurück</string>
+	<string name="mi_show_details">Details anzeigen</string>
+	<string name="mi_show_on_map">Auf Karte zeigen</string>
+	<string name="mi_start_navigation">Navigation starten</string>
+	<string name="mi_show_surroundings">Umgebung anzeigen</string>
+	<string name="mi_add_to_favorites">Zu Favoriten hinzufügen</string>
+	<string name="mi_remove_from_favorites">Von Favoriten entfernen</string>
+	
+	<!-- Buttons Dashboard-->
+    <string name="btn_today">Heute offen</string>
+    <string name="btn_map">Kartenansicht</string>
+    <string name="btn_search">Suche</string>
+    <string name="btn_favorite">Favoriten</string>
+    <string name="btn_info">Information</string> 
+    <string name="btn_surronding">Umgebung</string>
+	
+    <!-- Buttons -->
+    <string name="b_call">Anrufen</string>
+	<string name="b_dial_phone_number">Anrufen</string>
+	<string name="b_visit_website">Zur Webseite</string>
+	<string name="b_send_mail">Mail senden</string>
+	<string name="b_switch_to_intents">Zu <i>Intents</i> wechseln</string>
+	<string name="b_switch_to_search">Zur <i>Suche</i> wechseln</string>
+	<string name="b_search_button">Suche</string>
+	<string name="b_choose_date">Nach Datum</string>
+	<string name="b_show_preferences">Einstellungen</string>
+	
+	<!-- Preferences - Titles -->
+	<string name="pc_general">Allgemein</string>
+	<string name="lp_access_mode">Zugriffsart</string>
+	<string name="lp_language">Sprache</string>
+	<string name="pc_local_data_storage">Lokale Datenspeicherung</string>
+	<string name="lp_storage_mode">Lokale Speicherung</string>
+	<string name="lp_update_mode">Verhalten bei neuen Daten</string>
+	<string name="p_manual_update">Jetzt aktualisieren</string>
+	<string name="p_export_db_to_sd">Export SQLite DB auf SD Card</string>
+	
+	<!-- Preferences - Summaries -->
+	<string name="lp_access_mode_sum">Aktuelle Art:</string>
+	<string name="lp_language_sum">Aktuelle Sprache:</string>
+	<string name="lp_storage_mode_sum">Aktuell:</string>
+	<string name="lp_update_mode_sum">Aktuelles Verhalten:</string>
+	<string name="p_manual_update_sum">Letzte Aktualisierung:</string>
+	
+	<!-- Preferences - Summaries values -->
+	<string name="p_manual_update_in_progress">Läuft gerade</string>
+	
+	<!-- Search -->
+	<string name="search_text_box">Heurigenname, Ort, etc.</string>
+	<string name="search_date_box">Suche nach Datum</string>
+	<string name="search_all_hint">Name, Website, Email,…</string>
+	<string name="search_location_hint">Stadt, Region, Bezirk,…</string>
+	<string name="search_all_heurigen">Alle Heurigen</string>
+    
+    <!-- Detail -->
+	<string name="detail_navigate"><u>Navigieren zu</u></string>
+	<string name="detail_opening_time_loading">Lade Öffnungszeiten</string>
+	<string name="l_detail">Detailansicht</string>
+	<string name="detail_no_calendar">Aktuell sind keine Kalenderdaten für diesen Heurigen eingetragen!</string>
+	
+	<!-- GPS Dialog -->
+	<string name="gps_dialog_message">GPS ist deaktiviert! Aktivieren?</string>
+	<string name="gps_dialog_enable">Aktiviere GPS</string>
+	<string name="gps_dialog_disable">Abbrechen</string>
+	
+	<!-- Info -->
+	<string name="info_about_us">Über uns</string>
+	<string name="duration_last_update">Dauer der letzten Aktualisierung</string>
+	<string name="info_submit_heurigen">Neuen Heurigen einreichen</string>
+	<string name="info_latest_update">Letzte Aktulisierung</string>
+	<string name="info_no_database">Noch nie aktualisiert</string>
+	<string name="time_entity">Minuten</string>
+	
+	<!-- ACRA -->
+    <string name="crash_toast_text">Ein Fehler is aufgetreten, die App startet neu!</string>
+</resources>

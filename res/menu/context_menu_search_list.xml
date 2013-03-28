@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+	Copyright (C) 2011  naikon, wexoo
+	android@geekosphere.org
+	
+	This program is free software: you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation, either version 3 of the License, or
+	(at your option) any later version.
+	
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
+	 
+	You should have received a copy of the GNU General Public License
+	along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<menu
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item 
+    	android:id="@+id/mi_show_details" 
+    	android:title="@string/mi_show_details" />
+    <item 
+    	android:id="@+id/mi_call" 
+    	android:title="@string/b_call" />
+    <item 
+    	android:id="@+id/mi_show_on_map" 
+    	android:title="@string/mi_show_on_map"/>
+    <item 
+    	android:id="@+id/mi_start_navigation" 
+    	android:title="@string/mi_start_navigation" />
+    <!-- <item 
+    	android:id="@+id/mi_show_surroundings"
+    	android:title="@string/mi_show_surroundings" /> -->
+    <item 
+    	android:id="@+id/mi_visit_website" 
+    	android:title="@string/b_visit_website" />
+    <item 
+    	android:id="@+id/mi_send_mail" 
+    	android:title="@string/b_send_mail" />
+    <item 
+    	android:id="@+id/mi_add_to_favorites" 
+    	android:title="@string/mi_add_to_favorites" />
+</menu>

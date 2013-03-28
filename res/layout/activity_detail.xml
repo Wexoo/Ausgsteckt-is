@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+	Copyright (C) 2011  naikon, wexoo
+	android@geekosphere.org
+	
+	This program is free software: you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation, either version 3 of the License, or
+	(at your option) any later version.
+	
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
+	 
+	You should have received a copy of the GNU General Public License
+	along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:orientation="vertical">
+	
+	 <LinearLayout style="@style/TitleBar">
+        <ImageButton style="@style/TitleBarAction"
+            android:contentDescription="@string/description_home"
+            android:src="@drawable/ic_title_home"
+            android:onClick="onHomeClick" />
+
+		<ImageView style="@style/TitleBarSeparator" />
+        <TextView style="@style/TitleBarText" />
+        
+        <ImageView 
+        	style="@style/TitleBarSeparator" 
+        	android:id="@+id/detail_map_separator" />
+        <ImageButton
+        	android:id="@+id/detail_btn_map" 
+        	style="@style/TitleBarAction"
+            android:contentDescription="@string/description_map"
+            android:src="@drawable/ic_title_map"
+            android:onClick="startAction" />
+
+        <ImageView style="@style/TitleBarSeparator" />
+        
+        <ImageView style="@style/TitleBarSeparator" />
+        <ImageButton style="@style/TitleBarAction"
+            android:contentDescription="@string/description_search"
+            android:src="@drawable/ic_title_search"
+            android:onClick="onQuickSearchClick" />
+    </LinearLayout>
+
+	
+	<ScrollView
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent">
+		<LinearLayout
+			android:layout_width="fill_parent"
+			android:layout_height="fill_parent"
+			android:orientation="vertical">
+	
+			<include layout="@layout/activity_detail_head" />
+		  
+		  	<TableLayout
+			  	xmlns:android="http://schemas.android.com/apk/res/android"
+			  	android:id="@+id/box_description"
+			  	android:layout_width="fill_parent"
+			  	android:layout_height="wrap_content"
+			  	android:background="@drawable/box_light"
+			  	android:layout_marginTop="5dip"
+			  	android:layout_marginLeft="5dip"
+			  	android:layout_marginRight="5dip"
+			  	android:visibility="gone" >
+				<TableRow>
+				   	<TextView
+				   		android:id="@+id/tv_detail_description"
+				   		android:layout_width="wrap_content" 
+				   		android:layout_height="wrap_content" 
+				   		style="@style/DetailText" 
+				   		android:gravity="center_vertical" />
+				</TableRow>
+			</TableLayout>
+			
+			<TableLayout
+			  	xmlns:android="http://schemas.android.com/apk/res/android"
+			  	android:layout_width="fill_parent"
+			  	android:layout_height="wrap_content"
+			  	android:background="@drawable/box_light"
+			  	android:layout_marginTop="5dip"
+			  	android:layout_marginLeft="5dip"
+			  	android:layout_marginRight="5dip">
+			  	<TableRow
+			  		android:id="@+id/tr_phone_row"
+			  		android:layout_marginTop="3dip"
+			  		android:onClick="startAction">
+					<ImageView
+						android:id="@+id/ic_phone_detail"
+						android:layout_width="wrap_content"		
+						android:layout_height="wrap_content"
+						android:src="@drawable/ic_phone_detail"/>
+				   	<TextView
+				   		android:id="@+id/tv_detail_phone"
+				   		android:layout_width="wrap_content" 
+				   		android:layout_height="wrap_content" 
+				   		style="@style/DetailTextWithImage"
+				   		android:textColor="@color/klickable" />
+				</TableRow>
+				<TableRow
+					android:id="@+id/tr_web_row"
+			  		android:onClick="startAction"
+			  		android:layout_marginTop="3dip">
+					<ImageView
+						android:id="@+id/ic_web_detail"
+						android:layout_width="wrap_content"		
+						android:layout_height="wrap_content"
+						android:src="@drawable/ic_web_detail"/>
+				   	<TextView
+				   		android:id="@+id/tv_detail_website"
+				   		android:layout_width="wrap_content" 
+				   		android:layout_height="wrap_content" 
+				   		style="@style/DetailTextWithImage" 
+				   		android:textColor="@color/klickable" />
+				</TableRow>
+				<TableRow
+					android:id="@+id/tr_mail_row"
+			  		android:onClick="startAction"
+			  		android:layout_marginTop="3dip">
+					<ImageView
+						android:id="@+id/ic_mail_detail"
+						android:layout_width="wrap_content"		
+						android:layout_height="wrap_content"
+						android:src="@drawable/ic_mail_detail"/>
+				   	<TextView
+				   		android:id="@+id/tv_detail_mail"
+				   		android:layout_width="wrap_content" 
+				   		android:layout_height="wrap_content" 
+				   		style="@style/DetailTextWithImage" 
+				   		android:textColor="@color/klickable" />
+				</TableRow>
+				<TableRow
+					android:id="@+id/tr_city_row"
+			  		android:onClick="startAction"
+			  		android:layout_marginTop="3dip">
+					<ImageView
+						android:id="@+id/ic_city_detail"
+						android:layout_width="wrap_content"		
+						android:layout_height="wrap_content"
+						android:src="@drawable/ic_city_detail"/>
+				   	<TextView
+				   		android:id="@+id/tv_detail_city"
+				   		android:layout_width="wrap_content" 
+				   		android:layout_height="wrap_content" 
+				   		style="@style/DetailTextWithImage" 
+				   		android:textColor="@color/klickable" />
+				</TableRow>
+				<TableRow
+					android:id="@+id/tr_street_row"
+			  		android:onClick="startAction">
+					<ImageView
+						android:id="@+id/ic_space"
+						android:layout_width="wrap_content"		
+						android:layout_height="wrap_content"
+						android:src="@drawable/ic_space"/>
+				   	<TextView
+				   		android:id="@+id/tv_detail_street"
+				   		android:layout_width="wrap_content" 
+				   		android:layout_height="wrap_content" 
+				   		style="@style/DetailTextWithImage" 
+				   		android:textColor="@color/klickable" />
+				</TableRow>
+				<TableRow
+					android:id="@+id/tr_navigation_row"
+			  		android:onClick="startAction"
+			  		android:layout_marginTop="3dip">
+					<ImageView
+						android:id="@+id/ic_navigate_detail"
+						android:layout_width="wrap_content"		
+						android:layout_height="wrap_content"
+						android:src="@drawable/ic_navigate_detail"/>
+				   	<TextView
+				   		android:id="@+id/tv_detail_navigate"
+				   		android:layout_width="wrap_content" 
+				   		android:layout_height="wrap_content" 
+				   		android:text="@string/detail_navigate"
+				   		android:textColor="@color/klickable"
+				   		style="@style/DetailTextWithImage" />
+				</TableRow>
+			</TableLayout>
+			<TableLayout
+			  	xmlns:android="http://schemas.android.com/apk/res/android"
+			  	android:layout_width="fill_parent"
+			  	android:layout_height="wrap_content"
+			  	android:id="@+id/box_detail_opening"
+			  	android:background="@drawable/box_light"
+			  	android:layout_marginTop="3dip"
+			  	android:layout_marginLeft="5dip"
+			  	android:layout_marginRight="5dip">
+				<TableRow>
+				   	<TextView
+				   		android:id="@+id/tv_detail_opening"
+				   		android:layout_width="wrap_content" 
+				   		android:layout_height="wrap_content" 
+				   		style="@style/DetailText" 
+				   		android:gravity="center_vertical" />
+				</TableRow>
+			</TableLayout>
+			<TableLayout
+			  	xmlns:android="http://schemas.android.com/apk/res/android"
+			  	android:layout_width="fill_parent"
+			  	android:layout_height="wrap_content"
+			  	android:background="@drawable/box_light"
+			  	android:layout_marginTop="4dip"
+			  	android:layout_marginLeft="5dip"
+			  	android:layout_marginRight="5dip">
+				<TableRow>
+					<ProgressBar style="@style/TitleBarProgressIndicator"
+			            android:id="@+id/title_refresh_progress"
+			            android:layout_width="wrap_content" 
+				   		android:layout_height="wrap_content" 
+			            android:gravity="center_vertical|center_horizontal"
+			            android:visibility="gone" />
+			        <TextView
+				   		android:id="@+id/tv_detail_opening_time_loading"
+				   		android:layout_width="wrap_content" 
+				   		android:layout_height="wrap_content" 
+				   		style="@style/DetailText" 
+				   		android:text="@string/detail_opening_time_loading"
+				   		android:layout_marginTop="5dip"
+				   		android:gravity="center_vertical|center_horizontal"
+				   		android:visibility="gone"/>
+				   	<TextView
+				   		android:id="@+id/tv_detail_opening_time"
+				   		android:layout_width="wrap_content" 
+				   		android:layout_height="wrap_content" 
+				   		style="@style/DetailText" 
+				   		android:layout_marginBottom="0dip"
+				   		android:gravity="center_vertical|center_horizontal" />
+				</TableRow>
+			</TableLayout>
+		</LinearLayout>
+	</ScrollView>
+</LinearLayout>

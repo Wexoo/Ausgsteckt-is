@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+	Copyright (C) 2011  naikon, wexoo
+	android@geekosphere.org
+	
+	This program is free software: you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation, either version 3 of the License, or
+	(at your option) any later version.
+	
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
+	 
+	You should have received a copy of the GNU General Public License
+	along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:paddingLeft="10sp"
+    android:paddingRight="10sp"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingTop="2sp"
+    android:paddingBottom="2sp" 
+	android:background="@drawable/list_selector">
+    <TextView 
+    	android:layout_height="wrap_content"
+        android:layout_width="fill_parent" 
+        android:id="@+id/tv_list_view_name"
+        android:textSize="@dimen/text_size_normal" 
+        android:textStyle="bold" 
+        android:paddingLeft="1sp"
+        android:paddingBottom="5sp" />
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent">
+        <TextView
+        	android:id="@+id/tv_list_view_city" 
+        	android:layout_width="wrap_content"
+            android:layout_height="wrap_content" 
+            android:textSize="@dimen/text_size_small" 
+            android:textColor="@color/grey"
+            android:layout_weight="1" />
+        <TextView
+        	android:id="@+id/tv_list_view_distance" 
+        	android:layout_width="wrap_content"
+            android:layout_height="wrap_content" 
+            android:textSize="@dimen/text_size_small" 
+            android:gravity="right"
+            android:layout_weight="1" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent">
+        <TextView
+        	android:id="@+id/tv_list_view_street" 
+        	android:layout_width="wrap_content"
+            android:layout_height="wrap_content" 
+            android:textSize="@dimen/text_size_small" 
+            android:layout_weight="1" 
+            android:textColor="@color/grey"
+            android:paddingBottom="2sp" />
+    </LinearLayout> 
+</LinearLayout>

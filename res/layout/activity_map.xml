@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+	Copyright (C) 2011  naikon, wexoo
+	android@geekosphere.org
+	
+	This program is free software: you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation, either version 3 of the License, or
+	(at your option) any later version.
+	
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
+	 
+	You should have received a copy of the GNU General Public License
+	along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    	<!--  android:layout_weight=".1"-->
+    <LinearLayout 
+    	style="@style/TitleBar"
+    	android:id="@+id/ll_title_bar">
+        <ImageButton 
+        	style="@style/TitleBarAction"
+            android:contentDescription="@string/description_home"
+            android:src="@drawable/ic_title_home"
+            android:onClick="onHomeClick"/>
+
+        <ImageView style="@style/TitleBarSeparator" />
+        <TextView style="@style/TitleBarText" />
+        
+        <ImageView style="@style/TitleBarSeparator" />
+        <ImageButton style="@style/TitleBarAction"
+            android:id="@+id/btn_title_refresh"
+            android:contentDescription="@string/description_refresh"
+            android:src="@drawable/ic_title_refresh"
+            android:onClick="onRefreshClick" />
+        <ProgressBar style="@style/TitleBarProgressIndicator"
+            android:id="@+id/title_refresh_progress"
+            android:visibility="gone" />
+
+        <ImageView style="@style/TitleBarSeparator" />
+        <ImageButton style="@style/TitleBarAction"
+            android:contentDescription="@string/description_search"
+            android:src="@drawable/ic_title_search"
+            android:onClick="onQuickSearchClick" />
+    </LinearLayout>
+    
+    <include layout="@layout/map_view"
+    	android:layout_width="fill_parent"
+    	android:layout_height="fill_parent"
+    	android:layout_below="@id/ll_title_bar"/>
+    
+    <!-- district selector -->
+	<!-- android:layout_weight=".1"
+    	android:minHeight="30dp" -->
+    
+    <View
+    	android:id="@+id/v_sliding_drawer_placeholder"
+      	android:layout_width="wrap_content"
+      	android:layout_height="150dp"/>
+    
+    <SlidingDrawer
+	    	android:id="@+id/sd_district_select"
+	    	android:layout_width="fill_parent"
+	    	android:layout_height="wrap_content"
+	    	
+	    	android:handle="@+id/sd_district_handle"
+	    	android:content="@+id/sd_district_content_lv"
+	    	android:layout_below="@id/v_sliding_drawer_placeholder">
+	    	
+	    <LinearLayout
+    		android:orientation="horizontal"
+    		android:id="@+id/sd_district_handle"
+    		android:layout_width="fill_parent"
+	    	android:layout_height="@dimen/sliding_drawer_handler_height"
+    		style="@style/TitleBar">
+    		<TextView
+    			android:id="@+id/tv_district_handle"
+    			android:layout_width="wrap_content"
+    			android:layout_height="wrap_content"
+    			android:layout_gravity="center_vertical"
+    			android:layout_weight=".9"
+    			android:text="@string/tv_district_handle"
+    			style="@style/TitleBarText"/>
+    		<include 
+    			layout="@layout/slide_button"
+    			android:layout_weight=".1"
+    			/>
+    		
+    	</LinearLayout>
+    	<ListView
+    		android:id="@+id/sd_district_content_lv"
+    		android:layout_width="fill_parent" 
+    		android:layout_height="wrap_content"
+    		style="@style/ListView" />
+    	</SlidingDrawer>
+</RelativeLayout>
