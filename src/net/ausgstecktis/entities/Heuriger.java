@@ -55,7 +55,7 @@ public class Heuriger {
    public static final String FAVORITE_COLUMN = "favorite";
    public static final String TOP_COLUMN = "top";
 
-   @DatabaseField(id = true, columnName = Heuriger.ID_COLUMN, allowGeneratedIdInsert = true)
+   @DatabaseField(id = true, columnName = Heuriger.ID_COLUMN)
    private Integer id;
 
    @DatabaseField(columnName = Heuriger.NAME_COLUMN)

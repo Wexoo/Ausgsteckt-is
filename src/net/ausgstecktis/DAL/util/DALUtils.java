@@ -30,10 +30,15 @@ import java.util.Locale;
  */
 public class DALUtils {
 
+   public static final String DEFAULT_DATE_FORMAT = "yyyy-MM-dd";
    public static final SimpleDateFormat DEFAULT_DATE_FORMATTER =
-         new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
-   public static final SimpleDateFormat GERMAN_DATE_FORMATTER = new SimpleDateFormat("dd.MM yyyy", Locale.getDefault());
-   public static final SimpleDateFormat DEFAULT_TIME_FORMATTER = new SimpleDateFormat("HH:mm:ss", Locale.getDefault());
+         new SimpleDateFormat(DEFAULT_DATE_FORMAT, Locale.getDefault());
+   public static final String GERMAN_DATE_FORMAT = "dd.MM yyyy";
+   public static final SimpleDateFormat GERMAN_DATE_FORMATTER = new SimpleDateFormat(GERMAN_DATE_FORMAT,
+         Locale.getDefault());
+   public static final String DEFAULT_TIME_FORMAT = "HH:mm:ss";
+   public static final SimpleDateFormat DEFAULT_TIME_FORMATTER = new SimpleDateFormat(DEFAULT_TIME_FORMAT,
+         Locale.getDefault());
 
    public static Long getLongValueOfString(final String value) {
       try {

@@ -22,6 +22,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.Callable;
 
 import net.ausgstecktis.DAL.util.DALUtils;
 import net.ausgstecktis.entities.City;
@@ -64,7 +66,7 @@ public class OfflineProxy extends AbstractProxy {
       helper = OpenHelperManager.getHelper(HeurigenApp.mainContext);
       Log.d(TAG, "Helper fetched using HeurigenApp.mainContext!");
 
-      getHeurigeByKeyword("blablablublu");
+      getHeurigeByKeyword("testkeyword");
    }
 
    @Override
@@ -581,6 +583,18 @@ public class OfflineProxy extends AbstractProxy {
       return conditionString;
    }
 
+   public static <T, K> void batchInsert(final List<T> objectsToCommit, final Dao<T, K> dao) throws Exception {
+      dao.callBatchTasks(new Callable<Void>() {
+
+         @Override
+         public Void call() throws Exception {
+            for (T obj : objectsToCommit)
+               dao.create(obj);
+            return null;
+         }
+      });
+   }
+
    /**
     * {@inheritDoc}
     * 
@@ -590,11 +604,6 @@ public class OfflineProxy extends AbstractProxy {
    public void releaseResources() {
    }
 
-   /**
-    * Gets the online proxy.
-    * 
-    * @return the online proxy
-    */
    public OnlineProxy getOnlineProxy() {
       if (onlineProxy == null)
          onlineProxy = new OnlineProxy();

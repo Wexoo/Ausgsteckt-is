@@ -20,13 +20,16 @@ package net.ausgstecktis.entities;
 
 import java.util.Date;
 
+import net.ausgstecktis.DAL.util.DALUtils;
+
+import com.j256.ormlite.field.DataType;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
 /**
  * The Class OpenTime.
  * 
- * @author naikon
+ * @author wexoo, naikon
  * @version Aug 26, 2011
  */
 @DatabaseTable(tableName = OpenTime.TABLE_NAME)
@@ -40,15 +43,12 @@ public class OpenTime {
    @DatabaseField(id = true, columnName = OpenTime.ID_COLUMN)
    private Integer id;
 
-   @DatabaseField(columnName = OpenTime.START_COLUMN)
+   @DatabaseField(columnName = OpenTime.START_COLUMN, format = DALUtils.DEFAULT_TIME_FORMAT, dataType = DataType.DATE_STRING)
    private Date start;
 
-   @DatabaseField(columnName = OpenTime.END_COLUMN)
+   @DatabaseField(columnName = OpenTime.END_COLUMN, format = DALUtils.DEFAULT_TIME_FORMAT, dataType = DataType.DATE_STRING)
    private Date end;
 
-   /**
-    * Instantiates a new open time.
-    */
    public OpenTime() {
    }
 
@@ -71,7 +71,7 @@ public class OpenTime {
     * @return the id
     */
    public Integer getId() {
-      return this.id;
+      return id;
    }
 
    /**
@@ -80,7 +80,7 @@ public class OpenTime {
     * @return the start
     */
    public Date getStart() {
-      return this.start;
+      return start;
    }
 
    /**
@@ -89,7 +89,7 @@ public class OpenTime {
     * @return the end
     */
    public Date getEnd() {
-      return this.end;
+      return end;
    }
 
    /**

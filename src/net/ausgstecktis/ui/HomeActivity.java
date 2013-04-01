@@ -48,7 +48,7 @@ public class HomeActivity extends SuperActivity {
    public void onIconClick(final View v) {
       switch (v.getId()){
 
-         // Today
+      // Today
          case R.id.home_btn_today:
             startActivity(new Intent(this, TodayActivity.class));
             break;
@@ -76,6 +76,9 @@ public class HomeActivity extends SuperActivity {
             break;
          // Info
          case R.id.home_btn_info:
+            // used to quickly export database to external memory for testing
+            //            ExportDatabaseFileTask exportTask = new ExportDatabaseFileTask();
+            //            exportTask.execute();
             startActivity(new Intent(this, InfoActivity.class));
             break;
       }

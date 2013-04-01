@@ -20,6 +20,8 @@ package net.ausgstecktis.entities;
 
 import java.util.Date;
 
+import net.ausgstecktis.DAL.util.DALUtils;
+
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
@@ -44,10 +46,10 @@ public class OpeningCalendar {
    @DatabaseField(canBeNull = false, foreign = true, columnName = OpeningCalendar.HEURIGER_COLUMN)
    private Heuriger heuriger;
 
-   @DatabaseField(columnName = OpeningCalendar.START_COLUMN)
+   @DatabaseField(columnName = OpeningCalendar.START_COLUMN, format = DALUtils.DEFAULT_DATE_FORMAT)
    private Date start;
 
-   @DatabaseField(columnName = OpeningCalendar.END_COLUMN)
+   @DatabaseField(columnName = OpeningCalendar.END_COLUMN, format = DALUtils.DEFAULT_DATE_FORMAT)
    private Date end;
 
    /**
@@ -77,7 +79,7 @@ public class OpeningCalendar {
     * @return the id
     */
    public Integer getId() {
-      return this.id;
+      return id;
    }
 
    /**
@@ -86,7 +88,7 @@ public class OpeningCalendar {
     * @return the heuriger
     */
    public Heuriger getHeuriger() {
-      return this.heuriger;
+      return heuriger;
    }
 
    /**
@@ -95,7 +97,7 @@ public class OpeningCalendar {
     * @return the start
     */
    public Date getStart() {
-      return this.start;
+      return start;
    }
 
    /**
@@ -104,7 +106,7 @@ public class OpeningCalendar {
     * @return the end
     */
    public Date getEnd() {
-      return this.end;
+      return end;
    }
 
    /**

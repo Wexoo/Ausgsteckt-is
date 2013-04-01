@@ -64,8 +64,8 @@ public class ExportDatabaseFileTask extends AsyncTask<String, Void, Boolean> {
       final File dbFile = new File(DB_PATH + HeurigenApp.getConfig().databaseName());
 
       // path on sd by convention
-      final File exportDir =
-            new File(Environment.getExternalStorageDirectory(), "/Android/data/net.ausgstecktis/exported_db/");
+      File exportDir =
+            new File(Environment.getExternalStorageDirectory(), "/exported_db/");
 
       if (!exportDir.exists()) {
          boolean result = exportDir.mkdirs();

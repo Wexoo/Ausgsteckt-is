@@ -55,17 +55,17 @@ import com.j256.ormlite.android.apptools.OpenHelperManager;
 import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.stmt.UpdateBuilder;
+import com.j256.ormlite.support.DatabaseConnection;
 
 /**
  * MigrationProxy.java
  * 
  * @author wexoo
- * @version Aug 27, 2011
  */
 public class MigrationProxy {
 
    private static final String TAG = MigrationProxy.class.getSimpleName();
-   private static final String DB_PATH = Environment.getDataDirectory() + "/data/net.ausgstecktis/databases/";
+   public static final String DB_PATH = Environment.getDataDirectory() + "/data/net.ausgstecktis/databases/";
    public static final String CREATED_HEURIGE_KEY = "c_heurige";
    public static final String UPDATE_HEURIGE_KEY = "u_heurige";
    public static final String CREATED_CALENDAR_KEY = "c_calendar";
@@ -99,7 +99,6 @@ public class MigrationProxy {
 
    /**
     * @author wexoo
-    * @since 1.0.0 Oct 19, 2011
     */
    public boolean isLocalDatabasePresent() {
       try {
@@ -125,16 +124,13 @@ public class MigrationProxy {
    /**
     * Creates an empty database on the system and rewrites it with your own database.
     * 
-    * @param onlineUpdate as boolean
     * @author wexoo
-    * @since 1.0.0 Jul 6, 2011
     */
    public void createDataBase(final boolean migrateLocalDatabase) {
 
       /*
-       * By calling this method an empty database will be created into the
-       * default system path
-       * of your application so we will be able to overwrite that
+       * By calling this method an empty database will be created into the default
+       * system path of your application so we will be able to overwrite that
        * database with our database.
        */
       helper.getReadableDatabase();
@@ -349,19 +345,23 @@ public class MigrationProxy {
                final JSONObject jsonData = jArray.getJSONObject(i);
 
                final Dao<City, Integer> cityDao = helper.getDao(City.class);
+               Integer idOfCity =
+                     DALUtils.getIntegerValueOfString(OnlineProxy.getNotNullStringFromJSONObject(jsonData,
+                           Heuriger.CITY_COLUMN));
                City cityOfHeurigen =
-                     cityDao.queryForId(DALUtils.getIntegerValueOfString(OnlineProxy.getNotNullStringFromJSONObject(
-                           jsonData, Heuriger.CITY_COLUMN)));
+                     cityDao.queryForId(idOfCity != 189 ? idOfCity : 188);
 
-               heuriger = new Heuriger(DALUtils.getIntegerValueOfString(jsonData.getString(Heuriger.ID_COLUMN)));
-               //               heuriger = OnlineProxy.parseHeurigerObjectFromJSONData(jsonData, cityOfHeurigen);
+               heuriger = OnlineProxy.parseHeurigerObjectFromJSONData(jsonData, cityOfHeurigen);
 
                final Dao<Heuriger, Integer> heurigerDao = helper.getDao(Heuriger.class);
+               Log.i(TAG, "heuriger with id " + heuriger.getId() + " is about to be inserted/updated!");
 
-               //               if (heuriger.getName().equalsIgnoreCase("xxx"))
-               //                  heurigerDao.delete(heuriger);
-               //               else
-               heurigerDao.createOrUpdate(heuriger);
+               if (heuriger.getName().equalsIgnoreCase("xxx"))
+                  heurigerDao.delete(heuriger);
+               else
+                  heurigerDao.createOrUpdate(heuriger);
+
+               Log.i(TAG, "heuriger with id " + heuriger.getId() + " saved!");
             }
          } else
             Log.e(TAG, "Returned objectJSON is null!");
@@ -378,68 +378,97 @@ public class MigrationProxy {
       prepareRestClientAndCallWebServiceWithLastUpdateDateAttached(RestClient.GET_NEW_AND_UPDATED_CALENDAR,
             RestClient.GET);
 
+      Dao<OpenTime, Integer> openTimeDao = null;
+      DatabaseConnection openTimeConn = null;
+      boolean commitOpenTime = false;
+      Dao<OpeningCalendar, Integer> calendarDao = null;
+      DatabaseConnection calendarConn = null;
+      boolean commitCalendar = false;
+      Dao<OpenDay, Integer> openDayDao = null;
+      DatabaseConnection openDayConn = null;
+
       try {
          if (currentRestClient.getObjectJson() != null) {
             final JSONArray jArray = currentRestClient.getObjectJson();
 
+            openTimeDao = helper.getDao(OpenTime.class);
+            openTimeConn = openTimeDao.startThreadConnection();
+            openTimeConn.setAutoCommit(false);
+            calendarDao = helper.getDao(OpeningCalendar.class);
+            calendarConn = calendarDao.startThreadConnection();
+            calendarConn.setAutoCommit(false);
+            openDayDao = helper.getDao(OpenDay.class);
+            openDayConn = openDayDao.startThreadConnection();
+            openDayConn.setAutoCommit(false);
+            //            openDayDao.setObjectCache(false);
+
             for (int i = 0; i < jArray.length(); i++) {
                final JSONObject jsonData = jArray.getJSONObject(i);
 
-               OpenTime openTime = new OpenTime(
-                     DALUtils.getIntegerValueOfString(jsonData.getString("id")),
-                     DALUtils.getTimeValueOfString(jsonData.getString("ot_start")),
-                     DALUtils.getTimeValueOfString(jsonData.getString("ot_end")));
+               OpenTime openTime = openTimeDao.queryForId(DALUtils.getIntegerValueOfString(jsonData.getString("id")));
 
-               final Dao<OpenTime, Integer> openTimeDao = helper.getDao(OpenTime.class);
-               openTimeDao.createOrUpdate(openTime);
+               if (openTime == null) {
+                  openTime = new OpenTime(
+                        DALUtils.getIntegerValueOfString(jsonData.getString("id")),
+                        DALUtils.getTimeValueOfString(jsonData.getString("ot_start")),
+                        DALUtils.getTimeValueOfString(jsonData.getString("ot_end")));
 
-               OpeningCalendar calendar = new OpeningCalendar(
-                     DALUtils.getIntegerValueOfString(jsonData.getString("c_id")),
-                     new Heuriger(DALUtils.getIntegerValueOfString(jsonData.getString("id_heuriger"))),
-                     DALUtils.getDefaultDateValueOfString(jsonData.getString("c_start")),
-                     DALUtils.getDefaultDateValueOfString(jsonData.getString("c_end")));
+                  openTimeDao.createOrUpdate(openTime);
+                  commitOpenTime = true;
+               }
 
-               final Dao<OpeningCalendar, Integer> calendarDao = helper.getDao(OpeningCalendar.class);
-               calendarDao.createOrUpdate(calendar);
+               OpeningCalendar calendar =
+                     calendarDao.queryForId(DALUtils.getIntegerValueOfString(jsonData.getString("c_id")));
+
+               if (calendar == null) {
+                  calendar = new OpeningCalendar(
+                        DALUtils.getIntegerValueOfString(jsonData.getString("c_id")),
+                        new Heuriger(DALUtils.getIntegerValueOfString(jsonData.getString("id_heuriger"))),
+                        DALUtils.getDefaultDateValueOfString(jsonData.getString("c_start")),
+                        DALUtils.getDefaultDateValueOfString(jsonData.getString("c_end")));
+
+                  calendarDao.createOrUpdate(calendar);
+                  commitCalendar = true;
+               }
 
                OpenDay openDay = new OpenDay(
                      DALUtils.getIntegerValueOfString(jsonData.getString("od_id")),
                      calendar, openTime,
                      DALUtils.getIntegerValueOfString(jsonData.getString("day")));
 
-               final Dao<OpenDay, Integer> openDayDao = helper.getDao(OpenDay.class);
                openDayDao.createOrUpdate(openDay);
+
+               if (i % 20 == 0) {
+                  if (commitOpenTime) {
+                     openTimeDao.commit(openTimeConn);
+                     commitOpenTime = false;
+                  }
+                  if (commitCalendar) {
+                     calendarDao.commit(calendarConn);
+                     commitCalendar = false;
+                  }
+                  openDayDao.commit(openDayConn);
+               }
             }
          } else
             Log.e(TAG, "Returned objectJSON is null!");
       } catch (final JSONException e) {
          Log.e(TAG, "Error parsing data " + e.toString());
+         e.printStackTrace();
       } catch (final SQLException e) {
          Log.e(TAG, e.getMessage());
+         e.printStackTrace();
+      } finally {
+         try {
+            openTimeDao.endThreadConnection(openTimeConn);
+            calendarDao.endThreadConnection(calendarConn);
+            openDayDao.endThreadConnection(openDayConn);
+         } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+         }
       }
    }
-
-   //   static Heuriger parseHeurigerObjectFromJSONData(final JSONObject jsonData) throws JSONException {
-   //      return new Heuriger(
-   //            DALUtils.getIntegerValueOfString(jsonData.getString(Heuriger.ID_COLUMN)),
-   //            jsonData.getString(Heuriger.NAME_COLUMN),
-   //            jsonData.getString(Heuriger.SORT_NAME_COLUMN),
-   //            jsonData.getString(Heuriger.STREET_COLUMN),
-   //            DALUtils.getIntegerValueOfString(jsonData.getString(Heuriger.STREETNUMBER_COLUMN)),
-   //            new City(DALUtils.getIntegerValueOfString(jsonData.getString(Heuriger.CITY_COLUMN))),
-   //            DALUtils.getLongValueOfString(jsonData.getString(Heuriger.PHONE_COLUMN)),
-   //            DALUtils.getLongValueOfString(jsonData.getString(Heuriger.FAX_COLUMN)),
-   //            jsonData.getString(Heuriger.EMAIL_COLUMN),
-   //            jsonData.getString(Heuriger.WEBSITE_COLUMN),
-   //            DALUtils.getIntegerValueOfString(jsonData.getString(Heuriger.INDOOR_COLUMN)),
-   //            DALUtils.getIntegerValueOfString(jsonData.getString(Heuriger.OUTDOOR_COLUMN)),
-   //            jsonData.getString(Heuriger.DESCRIPTION_COLUMN),
-   //            jsonData.getString(Heuriger.OPENING_COLUMN),
-   //            DALUtils.getDoubleValueOfString(jsonData.getString(Heuriger.LONGITUDE_COLUMN)),
-   //            DALUtils.getDoubleValueOfString(jsonData.getString(Heuriger.LATITUDE_COLUMN)),
-   //            jsonData.has("distance") ?
-   //                  DALUtils.getDoubleValueOfString(jsonData.getString("distance")) : null);
-   //   }
 
    private void prepareRestClientAndCallWebServiceWithLastUpdateDateAttached(final String service, int requestType) {
       String lastUpdateString = PreferencesActivity.getStringPreference(R.string.last_database_update_key, null);

@@ -26,7 +26,6 @@ import net.ausgstecktis.util.Log;
  * A factory for creating Proxy objects.
  * 
  * @author wexoo
- * @version Aug 27, 2011
  */
 public class ProxyFactory {
 
@@ -39,9 +38,7 @@ public class ProxyFactory {
    /**
     * Checks which proxy to return
     * 
-    * @return the proxy
     * @author wexoo
-    * @since 1.0.0 Jul 22, 2011
     */
    public static AbstractProxy getProxy() {
       if (ProxyFactory.proxy == null || ProxyFactory.ACCESS_MODE_CHANGED) {

@@ -20,6 +20,8 @@ package net.ausgstecktis.entities;
 
 import java.util.Date;
 
+import net.ausgstecktis.DAL.util.DALUtils;
+
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
@@ -43,7 +45,7 @@ public class DayIncluded {
    @DatabaseField(canBeNull = false, foreign = true, columnName = DayIncluded.HEURIGER_COLUMN)
    private Heuriger heuriger;
 
-   @DatabaseField(columnName = DayIncluded.DAY_COLUMN)
+   @DatabaseField(columnName = DayIncluded.DAY_COLUMN, format = DALUtils.DEFAULT_DATE_FORMAT)
    private Date day;
 
    /**
@@ -71,7 +73,7 @@ public class DayIncluded {
     * @return the id
     */
    public Integer getId() {
-      return this.id;
+      return id;
    }
 
    /**
@@ -80,7 +82,7 @@ public class DayIncluded {
     * @return the heuriger
     */
    public Heuriger getHeuriger() {
-      return this.heuriger;
+      return heuriger;
    }
 
    /**
@@ -89,7 +91,7 @@ public class DayIncluded {
     * @return the day
     */
    public Date getDay() {
-      return this.day;
+      return day;
    }
 
    /**
