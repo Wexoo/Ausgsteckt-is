@@ -29,10 +29,11 @@ import net.ausgstecktis.util.Log;
  */
 public class ProxyFactory {
 
-   /** Dynamic configuration values - changeable during runtime. */
+   private static final String TAG = ProxyFactory.class.getSimpleName();
+
+   /** Dynamic configuration value - changeable during runtime. */
    public static boolean ACCESS_MODE_CHANGED = false;
 
-   private static final String TAG = ProxyFactory.class.getSimpleName();
    private static AbstractProxy proxy;
 
    /**

@@ -24,6 +24,7 @@ import java.util.Map;
 import net.ausgstecktis.R;
 import net.ausgstecktis.DAL.MigrationProxy;
 import net.ausgstecktis.DAL.ProxyFactory;
+import net.ausgstecktis.DAL.util.DALUtils;
 import net.ausgstecktis.util.AbstractAlertDialogBuilder;
 import net.ausgstecktis.util.AbstractAsyncTask;
 import net.ausgstecktis.util.Log;
@@ -288,8 +289,8 @@ public class SplashScreenActivity extends SuperActivity {
                setLastDataUpdateReminderPreference(new Date(cal.getTimeInMillis()));
                PreferencesActivity.setStringPreference(R.string.last_database_update_key, null, INITIAL_DATABASE_DATE);
             } else
-               PreferencesActivity.setStringPreference(R.string.last_database_update_key, null, INITIAL_DATABASE_DATE);
-            //                     DALUtils.DEFAULT_DATE_FORMATTER.format(new Date()));
+               PreferencesActivity.setStringPreference(R.string.last_database_update_key, null,
+                     DALUtils.DEFAULT_DATE_FORMATTER.format(new Date()));
 
             checkOnlineStatusAndSwitchModeIfNecessary();
          }

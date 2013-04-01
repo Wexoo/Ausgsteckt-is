@@ -55,7 +55,6 @@ import com.j256.ormlite.android.apptools.OpenHelperManager;
 import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.stmt.UpdateBuilder;
-import com.j256.ormlite.support.DatabaseConnection;
 
 /**
  * MigrationProxy.java
@@ -378,29 +377,13 @@ public class MigrationProxy {
       prepareRestClientAndCallWebServiceWithLastUpdateDateAttached(RestClient.GET_NEW_AND_UPDATED_CALENDAR,
             RestClient.GET);
 
-      Dao<OpenTime, Integer> openTimeDao = null;
-      DatabaseConnection openTimeConn = null;
-      boolean commitOpenTime = false;
-      Dao<OpeningCalendar, Integer> calendarDao = null;
-      DatabaseConnection calendarConn = null;
-      boolean commitCalendar = false;
-      Dao<OpenDay, Integer> openDayDao = null;
-      DatabaseConnection openDayConn = null;
-
       try {
          if (currentRestClient.getObjectJson() != null) {
             final JSONArray jArray = currentRestClient.getObjectJson();
 
-            openTimeDao = helper.getDao(OpenTime.class);
-            openTimeConn = openTimeDao.startThreadConnection();
-            openTimeConn.setAutoCommit(false);
-            calendarDao = helper.getDao(OpeningCalendar.class);
-            calendarConn = calendarDao.startThreadConnection();
-            calendarConn.setAutoCommit(false);
-            openDayDao = helper.getDao(OpenDay.class);
-            openDayConn = openDayDao.startThreadConnection();
-            openDayConn.setAutoCommit(false);
-            //            openDayDao.setObjectCache(false);
+            Dao<OpenTime, Integer> openTimeDao = helper.getDao(OpenTime.class);
+            Dao<OpeningCalendar, Integer> calendarDao = helper.getDao(OpeningCalendar.class);
+            Dao<OpenDay, Integer> openDayDao = helper.getDao(OpenDay.class);
 
             for (int i = 0; i < jArray.length(); i++) {
                final JSONObject jsonData = jArray.getJSONObject(i);
@@ -414,7 +397,6 @@ public class MigrationProxy {
                         DALUtils.getTimeValueOfString(jsonData.getString("ot_end")));
 
                   openTimeDao.createOrUpdate(openTime);
-                  commitOpenTime = true;
                }
 
                OpeningCalendar calendar =
@@ -428,7 +410,6 @@ public class MigrationProxy {
                         DALUtils.getDefaultDateValueOfString(jsonData.getString("c_end")));
 
                   calendarDao.createOrUpdate(calendar);
-                  commitCalendar = true;
                }
 
                OpenDay openDay = new OpenDay(
@@ -437,18 +418,6 @@ public class MigrationProxy {
                      DALUtils.getIntegerValueOfString(jsonData.getString("day")));
 
                openDayDao.createOrUpdate(openDay);
-
-               if (i % 20 == 0) {
-                  if (commitOpenTime) {
-                     openTimeDao.commit(openTimeConn);
-                     commitOpenTime = false;
-                  }
-                  if (commitCalendar) {
-                     calendarDao.commit(calendarConn);
-                     commitCalendar = false;
-                  }
-                  openDayDao.commit(openDayConn);
-               }
             }
          } else
             Log.e(TAG, "Returned objectJSON is null!");
@@ -458,15 +427,6 @@ public class MigrationProxy {
       } catch (final SQLException e) {
          Log.e(TAG, e.getMessage());
          e.printStackTrace();
-      } finally {
-         try {
-            openTimeDao.endThreadConnection(openTimeConn);
-            calendarDao.endThreadConnection(calendarConn);
-            openDayDao.endThreadConnection(openDayConn);
-         } catch (SQLException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-         }
       }
    }
 
