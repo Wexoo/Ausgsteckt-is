@@ -19,16 +19,22 @@
 <LinearLayout
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	style="@style/TitleBar">
+	
+    <!-- home button -->
 	<ImageButton style="@style/TitleBarAction"
 		android:contentDescription="@string/description_home"
 		android:src="@drawable/ic_title_home"
 		android:onClick="onHomeClick" />
 	
 	<ImageView style="@style/TitleBarSeparator" />
+	
+	<!-- title --> 
 	<TextView style="@style/TitleBarText" />
 	
 	<ImageView 
 		style="@style/TitleBarSeparator" />
+	
+	<!-- quicksearch button -->
 	<ImageButton 
 		style="@style/TitleBarAction"
 		android:contentDescription="@string/description_search"

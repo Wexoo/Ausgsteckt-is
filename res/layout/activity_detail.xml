@@ -22,47 +22,19 @@
 	android:layout_height="fill_parent"
 	android:orientation="vertical">
 	
-	 <LinearLayout style="@style/TitleBar">
-        <ImageButton style="@style/TitleBarAction"
-            android:contentDescription="@string/description_home"
-            android:src="@drawable/ic_title_home"
-            android:onClick="onHomeClick" />
-
-		<ImageView style="@style/TitleBarSeparator" />
-        <TextView style="@style/TitleBarText" />
-        
-        <ImageView 
-        	style="@style/TitleBarSeparator" 
-        	android:id="@+id/detail_map_separator" />
-        <ImageButton
-        	android:id="@+id/detail_btn_map" 
-        	style="@style/TitleBarAction"
-            android:contentDescription="@string/description_map"
-            android:src="@drawable/ic_title_map"
-            android:onClick="startAction" />
-
-        <ImageView style="@style/TitleBarSeparator" />
-        
-        <ImageView style="@style/TitleBarSeparator" />
-        <ImageButton style="@style/TitleBarAction"
-            android:contentDescription="@string/description_search"
-            android:src="@drawable/ic_title_search"
-            android:onClick="onQuickSearchClick" />
-    </LinearLayout>
-
+	<include layout="@layout/title_bar" />
 	
 	<ScrollView
 		android:layout_width="fill_parent"
 		android:layout_height="fill_parent">
 		<LinearLayout
 			android:layout_width="fill_parent"
-			android:layout_height="fill_parent"
+			android:layout_height="wrap_content"
 			android:orientation="vertical">
 	
 			<include layout="@layout/activity_detail_head" />
 		  
 		  	<TableLayout
-			  	xmlns:android="http://schemas.android.com/apk/res/android"
 			  	android:id="@+id/box_description"
 			  	android:layout_width="fill_parent"
 			  	android:layout_height="wrap_content"
@@ -82,7 +54,6 @@
 			</TableLayout>
 			
 			<TableLayout
-			  	xmlns:android="http://schemas.android.com/apk/res/android"
 			  	android:layout_width="fill_parent"
 			  	android:layout_height="wrap_content"
 			  	android:background="@drawable/box_light"
@@ -187,7 +158,6 @@
 				</TableRow>
 			</TableLayout>
 			<TableLayout
-			  	xmlns:android="http://schemas.android.com/apk/res/android"
 			  	android:layout_width="fill_parent"
 			  	android:layout_height="wrap_content"
 			  	android:id="@+id/box_detail_opening"
@@ -205,7 +175,6 @@
 				</TableRow>
 			</TableLayout>
 			<TableLayout
-			  	xmlns:android="http://schemas.android.com/apk/res/android"
 			  	android:layout_width="fill_parent"
 			  	android:layout_height="wrap_content"
 			  	android:background="@drawable/box_light"

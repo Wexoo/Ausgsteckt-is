@@ -89,6 +89,7 @@
 	<string name="tv_district">District:</string>
 	<string name="search_keyword_title">Keyword search</string>
 	<string name="search_location_title">Location search</string>
+	<string name="tv_menu_handle">Menu</string>
 	
 	<!-- CheckBoxes -->
 	<string name="include_date_to_search">Only show if open on</string>

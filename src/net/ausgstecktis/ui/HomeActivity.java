@@ -22,7 +22,6 @@ import android.content.ComponentName;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.TextView;
 
 /**
  * Displays the dashboard to the users.
@@ -41,8 +40,6 @@ public class HomeActivity extends SuperActivity {
       super.onCreate(savedInstanceState);
 
       HeurigenApp.mainContext = this;
-
-      ((TextView) findViewById(R.id.title_text)).setText("");
    }
 
    public void onIconClick(final View v) {

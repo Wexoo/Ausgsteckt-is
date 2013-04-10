@@ -52,8 +52,7 @@ import com.google.android.maps.OverlayItem;
 /**
  * MapActivity.java
  * 
- * @author naikon
- * @version Aug 27, 2011
+ * @author wexoo, naikon
  */
 public class MapActivity extends SuperMapActivity {
 
@@ -102,6 +101,7 @@ public class MapActivity extends SuperMapActivity {
 
       slidingDrawer.setOnDrawerOpenListener(new OnDrawerOpenListener() {
 
+         @Override
          public void onDrawerOpened() {
             slideHandleButton.setBackgroundResource(android.R.drawable.arrow_down_float);
          }
@@ -109,6 +109,7 @@ public class MapActivity extends SuperMapActivity {
 
       slidingDrawer.setOnDrawerCloseListener(new OnDrawerCloseListener() {
 
+         @Override
          public void onDrawerClosed() {
             slideHandleButton.setBackgroundResource(android.R.drawable.arrow_up_float);
          }
@@ -120,6 +121,7 @@ public class MapActivity extends SuperMapActivity {
       list = (ListView) findViewById(R.id.sd_district_content_lv);
       list.setOnItemClickListener(new OnItemClickListener() {
 
+         @Override
          public void onItemClick(final AdapterView<?> parent, final View view, final int position, final long rowId) {
 
             PreferencesActivity.setStringPreference(R.string.key_district_name_for_map, null,

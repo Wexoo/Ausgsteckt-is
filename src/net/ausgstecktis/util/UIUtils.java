@@ -30,8 +30,6 @@ import android.content.Intent;
 import android.widget.Toast;
 
 /**
- * The Class UIUtils.
- * 
  * @author wexoo
  * @version Aug 27, 2011
  */
@@ -121,12 +119,6 @@ public class UIUtils {
       return null;
    }
 
-   /**
-    * Adds the leading zero to long.
-    * 
-    * @param value the value
-    * @return the string
-    */
    public static String addLeadingZeroToLong(final Long value) {
       return value < 10 ? "0" + value : value.toString();
    }

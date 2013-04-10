@@ -21,26 +21,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
 
-    <LinearLayout style="@style/TitleBar">
-        <ImageButton style="@style/TitleBarAction"
-            android:contentDescription="@string/description_home"
-            android:src="@drawable/ic_title_home"
-            android:onClick="onHomeClick" />
-
-        <ImageView style="@style/TitleBarSeparator" />
-        <TextView style="@style/TitleBarText" />
-        
-        <ImageView style="@style/TitleBarSeparator" />   
-        <ProgressBar style="@style/TitleBarProgressIndicator"
-            android:id="@+id/title_refresh_progress"
-            android:visibility="gone" />
-
-        <ImageView style="@style/TitleBarSeparator" />
-        <ImageButton style="@style/TitleBarAction"
-            android:contentDescription="@string/description_search"
-            android:src="@drawable/ic_title_search"
-            android:onClick="onQuickSearchClick" />
-    </LinearLayout>
+    <include layout="@layout/title_bar" />
     
     <include layout="@layout/map_view"/>
 </LinearLayout>

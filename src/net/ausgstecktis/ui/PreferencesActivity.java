@@ -37,14 +37,10 @@ import android.preference.PreferenceManager;
 import android.view.KeyEvent;
 
 /**
- * The Class PreferencesActivity.
- * 
  * @author wexoo
- * @version Aug 27, 2011
  */
 public class PreferencesActivity extends PreferenceActivity implements OnSharedPreferenceChangeListener {
 
-   /** The Constant TAG. */
    private static final String TAG = PreferencesActivity.class.getSimpleName();
 
    private static String LP_ACCESS_MODE_KEY;
@@ -54,22 +50,11 @@ public class PreferencesActivity extends PreferenceActivity implements OnSharedP
    private static SharedPreferences sharedPrefs;
    private Preference exportDbPreference;
 
-   /**
-    * Gets the shared prefs.
-    * 
-    * @return the shared prefs
-    */
    public static SharedPreferences getSharedPrefs() {
       if (PreferencesActivity.sharedPrefs == null)
          PreferencesActivity.sharedPrefs = PreferenceManager.getDefaultSharedPreferences(HeurigenApp.mainContext);
       return PreferencesActivity.sharedPrefs;
    }
-
-   /**
-    * {@inheritDoc}
-    * 
-    * @see android.preference.PreferenceActivity#onCreate(android.os.Bundle)
-    */
 
    @Override
    protected void onCreate(final Bundle savedInstanceState) {
@@ -91,12 +76,6 @@ public class PreferencesActivity extends PreferenceActivity implements OnSharedP
       });
    }
 
-   /**
-    * {@inheritDoc}
-    * 
-    * @see android.app.Activity#onResume()
-    */
-
    @Override
    protected void onResume() {
       super.onResume();
@@ -106,12 +85,6 @@ public class PreferencesActivity extends PreferenceActivity implements OnSharedP
       PreferencesActivity.getSharedPrefs().registerOnSharedPreferenceChangeListener(this);
    }
 
-   /**
-    * {@inheritDoc}
-    * 
-    * @see android.app.Activity#onPause()
-    */
-
    @Override
    protected void onPause() {
       super.onPause();
@@ -119,25 +92,10 @@ public class PreferencesActivity extends PreferenceActivity implements OnSharedP
       PreferencesActivity.getSharedPrefs().unregisterOnSharedPreferenceChangeListener(this);
    }
 
-   /**
-    * Gets the string preference.
-    * 
-    * @param keyCode the key code
-    * @param key the key
-    * @return the string preference
-    */
    public static String getStringPreference(final Integer keyCode, final String key) {
       return PreferencesActivity.getStringPreference(HeurigenApp.mainContext, keyCode, key);
    }
 
-   /**
-    * Gets the string preference.
-    * 
-    * @param appContext the app context
-    * @param keyCode the key code
-    * @param key the key
-    * @return the string preference
-    */
    public static String getStringPreference(final Context appContext, final Integer keyCode, String key) {
       String value = "";
 
@@ -153,20 +111,10 @@ public class PreferencesActivity extends PreferenceActivity implements OnSharedP
       return value;
    }
 
-   /**
-    * Sets the string preference.
-    * 
-    * @param keyCode the key code
-    * @param key the key
-    * @param value the value
-    */
    public static void setStringPreference(final Integer keyCode, final String key, final String value) {
       PreferencesActivity.setStringPreference(HeurigenApp.mainContext, keyCode, key, value);
    }
 
-   /**
-    * Sets the string preference.
-    */
    public static void setStringPreference(final Context appContext, final Integer keyCode, String key,
          final String value) {
       if (keyCode != null)
@@ -175,12 +123,6 @@ public class PreferencesActivity extends PreferenceActivity implements OnSharedP
       e.putString(key, value);
       e.commit();
    }
-
-   /**
-    * {@inheritDoc}
-    * 
-    * @see android.content.SharedPreferences.OnSharedPreferenceChangeListener#onSharedPreferenceChanged(android.content.SharedPreferences, java.lang.String)
-    */
 
    @Override
    public void onSharedPreferenceChanged(final SharedPreferences sharedPreferences, final String key) {
@@ -191,32 +133,18 @@ public class PreferencesActivity extends PreferenceActivity implements OnSharedP
       }
    }
 
-   /**
-    * Update summary.
-    * 
-    * @param key the key
-    */
    private void updateSummary(final String key) {
       if (key.equals(PreferencesActivity.LP_ACCESS_MODE_KEY))
          accessModePreference.setSummary(getResources().getString(R.string.lp_access_mode_sum)
                + " " + accessModePreference.getEntry().toString());
    }
 
-   /**
-    * Export database.
-    */
    protected void exportDatabase() {
       if (((HeurigenApp) getApplication()).isExternalStorageAvailable())
          new ExportDatabaseFileTask().execute();
       else
          UIUtils.showShortToast("External storage is not available, unable to export data.");
    }
-
-   /**
-    * {@inheritDoc}
-    * 
-    * @see android.app.Activity#onKeyDown(int, android.view.KeyEvent)
-    */
 
    @Override
    public boolean onKeyDown(final int keyCode, final KeyEvent event) {

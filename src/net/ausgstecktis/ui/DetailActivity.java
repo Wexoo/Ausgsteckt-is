@@ -182,29 +182,6 @@ public class DetailActivity extends SuperActivity {
       if ((selectedHeuriger.getLatitude().toString().equals("0.0"))
             || (selectedHeuriger.getLongitude().toString().equals("0.0"))) {
 
-         mapSeparator = (ImageView) findViewById(R.id.detail_map_separator);
-         mapSeparator.setVisibility(View.INVISIBLE);
-
-         mapIcon = (ImageView) findViewById(R.id.detail_btn_map);
-         mapIcon.setVisibility(View.INVISIBLE);
-
-         mapNavigate = (TableRow) findViewById(R.id.tr_navigation_row);
-         mapNavigate.setVisibility(View.INVISIBLE);
-      }
-
-      /**
-       * GPS data
-       * if no GPS data available don't show map and navigate features
-       */
-      if ((selectedHeuriger.getLatitude().toString().equals("0.0"))
-            || (selectedHeuriger.getLongitude().toString().equals("0.0"))) {
-
-         mapSeparator = (ImageView) findViewById(R.id.detail_map_separator);
-         mapSeparator.setVisibility(View.INVISIBLE);
-
-         mapIcon = (ImageView) findViewById(R.id.detail_btn_map);
-         mapIcon.setVisibility(View.INVISIBLE);
-
          mapNavigate = (TableRow) findViewById(R.id.tr_navigation_row);
          mapNavigate.setVisibility(View.INVISIBLE);
       }

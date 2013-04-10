@@ -121,7 +121,6 @@ public class SuperActivity extends OrmLiteBaseActivity<DBHelper> {
          case R.id.mi_show_on_map:
          case R.id.tr_city_row:
          case R.id.tr_street_row:
-         case R.id.detail_btn_map:
             startActivity(new Intent(this, HeurigenMapActivity.class));
             // startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("geo:"
             // + ProxyFactory.getProxy().getSelectedHeuriger().getLongitude() +

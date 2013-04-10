@@ -83,7 +83,7 @@ public class SuperMapActivity extends MapActivity {
     */
    private void doAction(final Integer idOfElement) {
       switch (idOfElement){
-         // Show detail activity
+      // Show detail activity
          case R.id.mi_show_details:
             startActivity(new Intent(SuperMapActivity.this, DetailActivity.class));
             break;
@@ -97,7 +97,6 @@ public class SuperMapActivity extends MapActivity {
          case R.id.mi_show_on_map:
          case R.id.tr_city_row:
          case R.id.tr_street_row:
-         case R.id.detail_btn_map:
             startActivity(new Intent(this, HeurigenMapActivity.class));
             // startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("geo:"
             // + ProxyFactory.getProxy().getSelectedHeuriger().getLongitude() +
