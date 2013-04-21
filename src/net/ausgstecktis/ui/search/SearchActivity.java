@@ -56,8 +56,9 @@ public class SearchActivity extends SuperActivity {
 
    @Override
    public void onCreate(final Bundle savedInstanceState) {
-      this.setContentView(R.layout.activity_search);
       super.onCreate(savedInstanceState);
+
+      this.setContentView(R.layout.activity_search);
 
       final Button buttonAll = (Button) findViewById(R.id.b_search_all_button);
       buttonAll.getBackground().setColorFilter(new LightingColorFilter(0xFF297508, 0xFF000000));
@@ -102,6 +103,7 @@ public class SearchActivity extends SuperActivity {
       areasTextView.setAdapter(areasAdapter);
       areasTextView.setOnItemClickListener(new OnItemClickListener() {
 
+         @Override
          public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             startSearch(false);
          }
@@ -130,6 +132,7 @@ public class SearchActivity extends SuperActivity {
       textView.setAdapter(adapter);
       textView.setOnItemClickListener(new OnItemClickListener() {
 
+         @Override
          public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             ProxyFactory.getProxy().setSelectedHeurigenById((int) id);
 
@@ -171,7 +174,7 @@ public class SearchActivity extends SuperActivity {
    private void updateSearchDate() {
       if (((CheckBox) findViewById(R.id.include_date_in_search)).isChecked())
          searchDate = new Date(searchDatePicker.getYear() - 1900, searchDatePicker.getMonth(),
-                     searchDatePicker.getDayOfMonth());
+               searchDatePicker.getDayOfMonth());
       else
          searchDate = null;
    }

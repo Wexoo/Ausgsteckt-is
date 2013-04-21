@@ -33,33 +33,31 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.ProgressBar;
 
 /**
  * TodayActivity.java
  * 
- * @author naikon
- * @version Aug 27, 2011
+ * @author naikon, wexoo
  */
 public class TodayActivity extends SuperActivity {
 
    private ListView list;
    private CityListAdapter cityAdapter;
-   private ProgressBar progressBar;
-   private ImageView refreshIcon;
 
    private AsyncTask<Void, Integer, Void> cityByDateAsyncTask;
 
    @Override
    protected void onCreate(final Bundle savedInstanceState) {
-      this.setContentView(R.layout.activity_today);
       super.onCreate(savedInstanceState);
+
+      this.setContentView(R.layout.activity_today);
+      setProgressBarIndeterminateVisibility(true);
 
       list = (ListView) findViewById(R.id.lv_search_results);
       list.setOnItemClickListener(new OnItemClickListener() {
 
+         @Override
          public void onItemClick(final AdapterView<?> parent, final View view,
                final int position, final long rowId) {
 
@@ -76,23 +74,13 @@ public class TodayActivity extends SuperActivity {
 
       cityByDateAsyncTask = new GetCityByDateAsyncTask();
       cityByDateAsyncTask.execute();
-
-      progressBar = (ProgressBar) findViewById(R.id.title_refresh_progress);
-      progressBar.setVisibility(View.VISIBLE);
-
-      refreshIcon = (ImageView) findViewById(R.id.btn_title_refresh);
-      refreshIcon.setVisibility(View.GONE);
    }
 
    public void onRefreshClick(final View v) {
       cityByDateAsyncTask = new GetCityByDateAsyncTask();
       cityByDateAsyncTask.execute();
 
-      progressBar = (ProgressBar) findViewById(R.id.title_refresh_progress);
-      progressBar.setVisibility(View.VISIBLE);
-
-      refreshIcon = (ImageView) findViewById(R.id.btn_title_refresh);
-      refreshIcon.setVisibility(View.GONE);
+      setProgressBarIndeterminateVisibility(true);
    }
 
    @Override
@@ -118,8 +106,7 @@ public class TodayActivity extends SuperActivity {
 
             list.setAdapter(cityAdapter);
 
-            progressBar.setVisibility(View.GONE);
-            refreshIcon.setVisibility(View.VISIBLE);
+            setProgressBarIndeterminateVisibility(false);
 
          } else {
 

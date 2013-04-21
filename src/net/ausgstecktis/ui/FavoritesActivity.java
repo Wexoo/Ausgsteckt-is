@@ -30,9 +30,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.ProgressBar;
 
 /**
  * The Class FavoritesActivity.
@@ -44,18 +42,19 @@ public class FavoritesActivity extends SuperActivity {
 
    private ListView list;
    private HeurigerListAdapter adapter;
-   private ProgressBar progressBar;
-   private ImageView refreshIcon;
    private LoadFavoritesAsyncTask favoritesAsyncTask;
 
    @Override
    protected void onCreate(final Bundle savedInstanceState) {
-      this.setContentView(R.layout.activity_favorites);
       super.onCreate(savedInstanceState);
+
+      this.setContentView(R.layout.activity_favorites);
+      setProgressBarIndeterminateVisibility(true);
 
       list = (ListView) findViewById(R.id.lv_search_results);
       list.setOnItemClickListener(new OnItemClickListener() {
 
+         @Override
          public void onItemClick(final AdapterView<?> parent, final View view, final int position, final long rowId) {
             ProxyFactory.getProxy().setSelectedHeuriger((Heuriger) parent.getItemAtPosition(position));
 
@@ -74,11 +73,6 @@ public class FavoritesActivity extends SuperActivity {
       favoritesAsyncTask = new LoadFavoritesAsyncTask();
       favoritesAsyncTask.execute();
 
-      progressBar = (ProgressBar) findViewById(R.id.title_refresh_progress);
-      progressBar.setVisibility(View.VISIBLE);
-
-      refreshIcon = (ImageView) findViewById(R.id.btn_title_refresh);
-      refreshIcon.setVisibility(View.GONE);
    }
 
    public void onRefreshClick(final View v) {
@@ -86,11 +80,7 @@ public class FavoritesActivity extends SuperActivity {
       favoritesAsyncTask = new LoadFavoritesAsyncTask();
       favoritesAsyncTask.execute();
 
-      progressBar = (ProgressBar) findViewById(R.id.title_refresh_progress);
-      progressBar.setVisibility(View.VISIBLE);
-
-      refreshIcon = (ImageView) findViewById(R.id.btn_title_refresh);
-      refreshIcon.setVisibility(View.GONE);
+      setProgressBarIndeterminateVisibility(true);
    }
 
    /**
@@ -143,8 +133,7 @@ public class FavoritesActivity extends SuperActivity {
          adapter = new HeurigerListAdapter(FavoritesActivity.this);
          list.setAdapter(adapter);
 
-         progressBar.setVisibility(View.GONE);
-         refreshIcon.setVisibility(View.VISIBLE);
+         setProgressBarIndeterminateVisibility(false);
       }
    }
 }

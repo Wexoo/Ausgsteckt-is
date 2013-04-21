@@ -35,9 +35,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.ProgressBar;
 import android.widget.SlidingDrawer;
 import android.widget.SlidingDrawer.OnDrawerCloseListener;
 import android.widget.SlidingDrawer.OnDrawerOpenListener;
@@ -79,22 +77,12 @@ public class MapActivity extends SuperMapActivity {
    private String heurigerStreetOverlay;
    private String heurigerStreetNumberOverlay;
 
-   private ProgressBar progressBar;
-   private ImageView refreshIcon;
-
    @Override
    public void onCreate(final Bundle savedInstanceState) {
-
       super.onCreate(savedInstanceState);
+
       this.setContentView(R.layout.activity_map);
-
-      ((TextView) findViewById(R.id.title_text)).setText(getTitle());
-
-      progressBar = (ProgressBar) findViewById(R.id.title_refresh_progress);
-      progressBar.setVisibility(View.VISIBLE);
-
-      refreshIcon = (ImageView) findViewById(R.id.btn_title_refresh);
-      refreshIcon.setVisibility(View.GONE);
+      setProgressBarIndeterminateVisibility(true);
 
       slideHandleButton = (Button) findViewById(R.id.sd_city_button);
       slidingDrawer = (SlidingDrawer) findViewById(R.id.sd_district_select);
@@ -243,11 +231,7 @@ public class MapActivity extends SuperMapActivity {
 
       @Override
       protected void onPreExecute() {
-         progressBar = (ProgressBar) findViewById(R.id.title_refresh_progress);
-         progressBar.setVisibility(View.VISIBLE);
-
-         refreshIcon = (ImageView) findViewById(R.id.btn_title_refresh);
-         refreshIcon.setVisibility(View.GONE);
+         setProgressBarIndeterminateVisibility(true);
       }
 
       @Override
@@ -261,8 +245,7 @@ public class MapActivity extends SuperMapActivity {
             finish();
          }
 
-         progressBar.setVisibility(View.GONE);
-         refreshIcon.setVisibility(View.GONE);
+         setProgressBarIndeterminateVisibility(false);
       }
 
       @Override
@@ -276,18 +259,14 @@ public class MapActivity extends SuperMapActivity {
 
       @Override
       protected void onPreExecute() {
-         progressBar = (ProgressBar) findViewById(R.id.title_refresh_progress);
-         progressBar.setVisibility(View.VISIBLE);
-
-         refreshIcon = (ImageView) findViewById(R.id.btn_title_refresh);
-         refreshIcon.setVisibility(View.GONE);
+         setProgressBarIndeterminateVisibility(true);
       }
 
       @Override
       protected void onPostExecute(final Void result) {
          updateMarkers();
-         progressBar.setVisibility(View.GONE);
-         refreshIcon.setVisibility(View.VISIBLE);
+
+         setProgressBarIndeterminateVisibility(false);
       }
 
       @Override
@@ -301,11 +280,7 @@ public class MapActivity extends SuperMapActivity {
    }
 
    public void onRefreshClick(final View v) {
-      progressBar = (ProgressBar) findViewById(R.id.title_refresh_progress);
-      progressBar.setVisibility(View.VISIBLE);
-
-      refreshIcon = (ImageView) findViewById(R.id.btn_title_refresh);
-      refreshIcon.setVisibility(View.GONE);
+      setProgressBarIndeterminateVisibility(true);
 
       new GetHeurigeByDistrictAsyncTask().execute();
    }

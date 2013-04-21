@@ -24,50 +24,80 @@ import net.ausgstecktis.DAL.ProxyFactory;
 import net.ausgstecktis.entities.City;
 import net.ausgstecktis.entities.District;
 import net.ausgstecktis.entities.Heuriger;
+import net.ausgstecktis.ui.search.SearchActivity;
+import net.ausgstecktis.ui.slidemenu.SlideMenuView;
+import net.ausgstecktis.util.IntentAlertDialogBuilder;
 import net.ausgstecktis.util.Log;
 import net.ausgstecktis.util.UIUtils;
+import android.content.ComponentName;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
-import android.view.MenuItem;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.ListView;
-import android.widget.TextView;
 
+import com.actionbarsherlock.ActionBarSherlock;
+import com.actionbarsherlock.ActionBarSherlock.OnActionModeFinishedListener;
+import com.actionbarsherlock.ActionBarSherlock.OnActionModeStartedListener;
+import com.actionbarsherlock.ActionBarSherlock.OnCreatePanelMenuListener;
+import com.actionbarsherlock.ActionBarSherlock.OnMenuItemSelectedListener;
+import com.actionbarsherlock.ActionBarSherlock.OnPreparePanelListener;
+import com.actionbarsherlock.app.ActionBar;
+import com.actionbarsherlock.view.ActionMode;
+import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuInflater;
+import com.actionbarsherlock.view.MenuItem;
+import com.actionbarsherlock.view.Window;
 import com.j256.ormlite.android.apptools.OrmLiteBaseActivity;
+import com.slidingmenu.lib.SlidingMenu;
 
 /**
  * SuperActivity.java
  * 
  * @author wexoo
- * @since Aug 27, 2011
  */
-public class SuperActivity extends OrmLiteBaseActivity<DBHelper> {
+public class SuperActivity extends OrmLiteBaseActivity<DBHelper> implements OnCreatePanelMenuListener,
+      OnPreparePanelListener, OnMenuItemSelectedListener, OnActionModeStartedListener, OnActionModeFinishedListener {
 
    private static final String TAG = SuperActivity.class.getSimpleName();
    private static boolean newFavorite;
 
    @Override
    protected void onCreate(final Bundle savedInstanceState) {
+      //ABS Features - must be requested before onCreate call
+      //      requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
+      requestWindowFeature(Window.FEATURE_PROGRESS);
       super.onCreate(savedInstanceState);
 
       checkOnlineStatusAndSwitchModeIfNecessary();
-
-      TextView titleTextView = ((TextView) findViewById(R.id.title_text));
-      if (titleTextView != null)
-         titleTextView.setText(getTitle());
    }
 
    @Override
    protected void onResume() {
-
       Log.d(TAG, "on Resume called!");
 
       super.onResume();
+   }
+
+   protected void buildSlidingMenu() {
+      SlidingMenu slidingMenu = new SlidingMenu(this, SlidingMenu.SLIDING_CONTENT) {
+
+         @SuppressWarnings("unused")
+         public void onIconClick(final View v) {
+            SuperActivity.this.onIconClick(v);
+         }
+      };
+      slidingMenu.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
+      slidingMenu.setTouchModeBehind(SlidingMenu.TOUCHMODE_FULLSCREEN);
+      slidingMenu.setBehindOffsetRes(R.dimen.sliding_menu_behind_offset);
+      slidingMenu.setMenu(new SlideMenuView(this));
    }
 
    public void onHomeClick(final View v) {
@@ -85,6 +115,7 @@ public class SuperActivity extends OrmLiteBaseActivity<DBHelper> {
     * @param view GUI element which is calling the action (eg. tr_phone_row)
     */
    public void startAction(final View view) {
+      view.getTag();
       doAction(view.getId());
    }
 
@@ -93,7 +124,7 @@ public class SuperActivity extends OrmLiteBaseActivity<DBHelper> {
     */
 
    @Override
-   public boolean onContextItemSelected(final MenuItem item) {
+   public boolean onContextItemSelected(final android.view.MenuItem item) {
       item.getMenuInfo();
 
       doAction(item.getItemId());
@@ -154,7 +185,10 @@ public class SuperActivity extends OrmLiteBaseActivity<DBHelper> {
          // Visit our website
          case R.id.tv_visit_us:
          case R.id.tr_visit_us:
-            visitWebsite(getText(R.string.tv_visit_us).toString());
+            visitWebsite(getString(R.string.tv_visit_us));
+            break;
+         case R.id.home_btn_donate:
+            visitWebsite(getString(R.string.link_paypal_donate));
             break;
          case R.id.tv_submit_new_heurigen:
             visitWebsite(getText(R.string.tv_submit_new_heurigen).toString());
@@ -201,6 +235,65 @@ public class SuperActivity extends OrmLiteBaseActivity<DBHelper> {
     */
    protected void sendMail(final String mailAddress) {
       startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("mailto:" + mailAddress)));
+   }
+
+   /**
+    * Navigate to different menus
+    */
+   public void onIconClick(final View v) {
+      switch (Integer.parseInt(v.getTag().toString())){
+
+      // Today
+         case 1:
+            startActivity(new Intent(this, TodayActivity.class));
+            break;
+         // Surroundings
+         case 2:
+            if (checkIfOnline())
+               startActivity(new Intent(this, SurroundingsActivity.class));
+            else
+               showMobileNetworkIntent();
+            break;
+         // Search
+         case 3:
+            startActivity(new Intent(this, SearchActivity.class));
+            break;
+         // Map
+         case 4:
+            if (checkIfOnline())
+               startActivity(new Intent(this, MapActivity.class));
+            else
+               showMobileNetworkIntent();
+            break;
+         // Favorites
+         case 5:
+            startActivity(new Intent(this, FavoritesActivity.class));
+            break;
+         // Info
+         case 6:
+            // used to quickly export database to external memory for testing
+            //            ExportDatabaseFileTask exportTask = new ExportDatabaseFileTask();
+            //            exportTask.execute();
+            startActivity(new Intent(this, InfoActivity.class));
+            break;
+      }
+   }
+
+   private void showMobileNetworkIntent() {
+      // Prepare mobile network intent
+      Intent mobileNetworkIntent = new Intent(android.provider.Settings.ACTION_DATA_ROAMING_SETTINGS);
+
+      ComponentName cName = new ComponentName("com.android.phone", "com.android.phone.Settings");
+
+      // Build and show AlertDialog
+      new IntentAlertDialogBuilder(
+            this,
+            mobileNetworkIntent.setComponent(cName),
+            new Intent(android.provider.Settings.ACTION_WIFI_SETTINGS),
+            null, R.string.alert_no_local_data,
+            R.string.alert_mobile_network_prefs,
+            R.string.alert_wifi_prefs, R.string.alert_return, true)
+            .showAlertDialog();
    }
 
    /**
@@ -290,12 +383,6 @@ public class SuperActivity extends OrmLiteBaseActivity<DBHelper> {
       super.onBackPressed();
    }
 
-   @Override
-   protected void onStop() {
-      cancelAllAsyncTasksOfActivity();
-      super.onStop();
-   }
-
    protected void cancelAllAsynTasks(AsyncTask<?, ?, ?>... asyncTasks) {
       for (AsyncTask<?, ?, ?> asyncTask : asyncTasks)
          cancelAsyncTask(asyncTask);
@@ -319,5 +406,254 @@ public class SuperActivity extends OrmLiteBaseActivity<DBHelper> {
    }
 
    protected void onListItemClick(final ListView l, final View v, final int position, final long id) {
+   }
+
+   /**
+    * ACTION BAR SHERLOCK ACTIVITY - Code
+    */
+   private ActionBarSherlock mSherlock;
+
+   protected final ActionBarSherlock getSherlock() {
+      if (mSherlock == null)
+         mSherlock = ActionBarSherlock.wrap(this, ActionBarSherlock.FLAG_DELEGATE);
+      return mSherlock;
+   }
+
+   ///////////////////////////////////////////////////////////////////////////
+   // Action bar and mode
+   ///////////////////////////////////////////////////////////////////////////
+
+   public ActionBar getSupportActionBar() {
+      return getSherlock().getActionBar();
+   }
+
+   public ActionMode startActionMode(ActionMode.Callback callback) {
+      return getSherlock().startActionMode(callback);
+   }
+
+   @Override
+   public void onActionModeStarted(ActionMode mode) {
+   }
+
+   @Override
+   public void onActionModeFinished(ActionMode mode) {
+   }
+
+   ///////////////////////////////////////////////////////////////////////////
+   // General lifecycle/callback dispatching
+   ///////////////////////////////////////////////////////////////////////////
+
+   @Override
+   public void onConfigurationChanged(Configuration newConfig) {
+      super.onConfigurationChanged(newConfig);
+      getSherlock().dispatchConfigurationChanged(newConfig);
+   }
+
+   @Override
+   protected void onPostResume() {
+      super.onPostResume();
+      getSherlock().dispatchPostResume();
+   }
+
+   @Override
+   protected void onPause() {
+      getSherlock().dispatchPause();
+      super.onPause();
+   }
+
+   @Override
+   protected void onStop() {
+      cancelAllAsyncTasksOfActivity();
+      getSherlock().dispatchStop();
+      super.onStop();
+   }
+
+   @Override
+   protected void onDestroy() {
+      getSherlock().dispatchDestroy();
+      super.onDestroy();
+   }
+
+   @Override
+   protected void onPostCreate(Bundle savedInstanceState) {
+      getSherlock().dispatchPostCreate(savedInstanceState);
+      super.onPostCreate(savedInstanceState);
+   }
+
+   @Override
+   protected void onTitleChanged(CharSequence title, int color) {
+      getSherlock().dispatchTitleChanged(title, color);
+      super.onTitleChanged(title, color);
+   }
+
+   @Override
+   public final boolean onMenuOpened(int featureId, android.view.Menu menu) {
+      if (getSherlock().dispatchMenuOpened(featureId, menu))
+         return true;
+      return super.onMenuOpened(featureId, menu);
+   }
+
+   @Override
+   public void onPanelClosed(int featureId, android.view.Menu menu) {
+      getSherlock().dispatchPanelClosed(featureId, menu);
+      super.onPanelClosed(featureId, menu);
+   }
+
+   @Override
+   public boolean dispatchKeyEvent(KeyEvent event) {
+      if (getSherlock().dispatchKeyEvent(event))
+         return true;
+      return super.dispatchKeyEvent(event);
+   }
+
+   @Override
+   protected void onSaveInstanceState(Bundle outState) {
+      super.onSaveInstanceState(outState);
+      getSherlock().dispatchSaveInstanceState(outState);
+   }
+
+   @Override
+   protected void onRestoreInstanceState(Bundle savedInstanceState) {
+      super.onRestoreInstanceState(savedInstanceState);
+      getSherlock().dispatchRestoreInstanceState(savedInstanceState);
+   }
+
+   ///////////////////////////////////////////////////////////////////////////
+   // Native menu handling
+   ///////////////////////////////////////////////////////////////////////////
+
+   public MenuInflater getSupportMenuInflater() {
+      return getSherlock().getMenuInflater();
+   }
+
+   @Override
+   public void invalidateOptionsMenu() {
+      getSherlock().dispatchInvalidateOptionsMenu();
+   }
+
+   //   public void supportInvalidateOptionsMenu() {
+   //      invalidateOptionsMenu();
+   //   }
+
+   @Override
+   public final boolean onCreateOptionsMenu(android.view.Menu menu) {
+      return getSherlock().dispatchCreateOptionsMenu(menu);
+   }
+
+   @Override
+   public final boolean onPrepareOptionsMenu(android.view.Menu menu) {
+      return getSherlock().dispatchPrepareOptionsMenu(menu);
+   }
+
+   @Override
+   public final boolean onOptionsItemSelected(android.view.MenuItem item) {
+      return getSherlock().dispatchOptionsItemSelected(item);
+   }
+
+   @Override
+   public void openOptionsMenu() {
+      if (!getSherlock().dispatchOpenOptionsMenu())
+         super.openOptionsMenu();
+   }
+
+   @Override
+   public void closeOptionsMenu() {
+      if (!getSherlock().dispatchCloseOptionsMenu())
+         super.closeOptionsMenu();
+   }
+
+   ///////////////////////////////////////////////////////////////////////////
+   // Sherlock menu handling
+   ///////////////////////////////////////////////////////////////////////////
+
+   @Override
+   public boolean onCreatePanelMenu(int featureId, Menu menu) {
+      if (featureId == android.view.Window.FEATURE_OPTIONS_PANEL)
+         return onCreateOptionsMenu(menu);
+      return false;
+   }
+
+   public boolean onCreateOptionsMenu(Menu menu) {
+      return true;
+   }
+
+   @Override
+   public boolean onPreparePanel(int featureId, View view, Menu menu) {
+      if (featureId == android.view.Window.FEATURE_OPTIONS_PANEL)
+         return onPrepareOptionsMenu(menu);
+      return false;
+   }
+
+   public boolean onPrepareOptionsMenu(Menu menu) {
+      return true;
+   }
+
+   @Override
+   public boolean onMenuItemSelected(int featureId, MenuItem item) {
+      if (featureId == android.view.Window.FEATURE_OPTIONS_PANEL)
+         return onOptionsItemSelected(item);
+      return false;
+   }
+
+   public boolean onOptionsItemSelected(MenuItem item) {
+      return false;
+   }
+
+   ///////////////////////////////////////////////////////////////////////////
+   // Content
+   ///////////////////////////////////////////////////////////////////////////
+
+   @Override
+   public void addContentView(View view, LayoutParams params) {
+      getSherlock().addContentView(view, params);
+   }
+
+   @Override
+   public void setContentView(int layoutResId) {
+      setContentView(layoutResId, true);
+   }
+
+   public void setContentView(int layoutResId, boolean addSlidingMenu) {
+      getSherlock().setContentView(layoutResId);
+
+      buildSlidingMenu();
+   }
+
+   @Override
+   public void setContentView(View view, LayoutParams params) {
+      getSherlock().setContentView(view, params);
+   }
+
+   @Override
+   public void setContentView(View view) {
+      getSherlock().setContentView(view);
+   }
+
+   public void requestWindowFeature(long featureId) {
+      getSherlock().requestFeature((int) featureId);
+   }
+
+   ///////////////////////////////////////////////////////////////////////////
+   // Progress Indication
+   ///////////////////////////////////////////////////////////////////////////
+
+   public void setSupportProgress(int progress) {
+      getSherlock().setProgress(progress);
+   }
+
+   public void setSupportProgressBarIndeterminate(boolean indeterminate) {
+      getSherlock().setProgressBarIndeterminate(indeterminate);
+   }
+
+   public void setSupportProgressBarIndeterminateVisibility(boolean visible) {
+      getSherlock().setProgressBarIndeterminateVisibility(visible);
+   }
+
+   public void setSupportProgressBarVisibility(boolean visible) {
+      getSherlock().setProgressBarVisibility(visible);
+   }
+
+   public void setSupportSecondaryProgress(int secondaryProgress) {
+      getSherlock().setSecondaryProgress(secondaryProgress);
    }
 }

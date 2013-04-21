@@ -21,7 +21,5 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
 
-    <include layout="@layout/title_bar" />
-    
     <include layout="@layout/map_view"/>
 </LinearLayout>

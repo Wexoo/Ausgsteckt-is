@@ -31,10 +31,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.ProgressBar;
-import android.widget.TextView;
 
 /**
  * TodaySearchActivity.java
@@ -46,24 +43,25 @@ public class TodaySearchActivity extends SuperActivity {
 
    private ListView list;
    private HeurigerListAdapter adapter;
-   private ProgressBar progressBar;
-   private ImageView refreshIcon;
    private String cityId;
 
    private GetHeurigeByDateAndCityAsyncTask heurigeByDateAndCityAsyncTask;
 
    @Override
    protected void onCreate(final Bundle savedInstanceState) {
-      this.setContentView(R.layout.activity_today);
       super.onCreate(savedInstanceState);
+
+      this.setContentView(R.layout.activity_today);
 
       cityId = getIntent().getExtras().getString("param1");
 
-      ((TextView) findViewById(R.id.title_text)).setText(getIntent().getExtras().getString("param2"));
+      // TODO: see how to integrate this into abs
+      // ((TextView) findViewById(R.id.title_text)).setText(getIntent().getExtras().getString("param2"));
 
       list = (ListView) findViewById(R.id.lv_search_results);
       list.setOnItemClickListener(new OnItemClickListener() {
 
+         @Override
          public void onItemClick(final AdapterView<?> parent, final View view, final int position, final long rowId) {
             ProxyFactory.getProxy().setSelectedHeuriger((Heuriger) parent.getItemAtPosition(position));
             TodaySearchActivity.this.startActivity(new Intent(TodaySearchActivity.this, DetailActivity.class));
@@ -74,22 +72,14 @@ public class TodaySearchActivity extends SuperActivity {
       heurigeByDateAndCityAsyncTask = new GetHeurigeByDateAndCityAsyncTask();
       heurigeByDateAndCityAsyncTask.execute();
 
-      progressBar = (ProgressBar) findViewById(R.id.title_refresh_progress);
-      progressBar.setVisibility(View.VISIBLE);
-
-      refreshIcon = (ImageView) findViewById(R.id.btn_title_refresh);
-      refreshIcon.setVisibility(View.GONE);
+      setProgressBarIndeterminateVisibility(true);
    }
 
    /**
     * Executed when the refresh button in the title bar is clicked
     */
    public void onRefreshClick(final View v) {
-      progressBar = (ProgressBar) findViewById(R.id.title_refresh_progress);
-      progressBar.setVisibility(View.VISIBLE);
-
-      refreshIcon = (ImageView) findViewById(R.id.btn_title_refresh);
-      refreshIcon.setVisibility(View.GONE);
+      setProgressBarIndeterminateVisibility(true);
 
       heurigeByDateAndCityAsyncTask = new GetHeurigeByDateAndCityAsyncTask();
       heurigeByDateAndCityAsyncTask.execute();
@@ -123,8 +113,7 @@ public class TodaySearchActivity extends SuperActivity {
             adapter = new HeurigerListAdapter(TodaySearchActivity.this);
             list.setAdapter(adapter);
 
-            progressBar.setVisibility(View.GONE);
-            refreshIcon.setVisibility(View.VISIBLE);
+            setProgressBarIndeterminateVisibility(false);
          }
       }
 

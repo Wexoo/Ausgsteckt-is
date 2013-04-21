@@ -56,8 +56,9 @@ public class DetailActivity extends SuperActivity {
 
    @Override
    public void onCreate(final Bundle savedInstanceState) {
-      setContentView(R.layout.activity_detail);
       super.onCreate(savedInstanceState);
+
+      setContentView(R.layout.activity_detail);
 
       selectedHeuriger = ProxyFactory.getProxy().getSelectedHeuriger();
 

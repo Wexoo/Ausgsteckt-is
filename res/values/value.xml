@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="title_today">1</integer>
+	<integer name="title_surrounding">2</integer>
+	<integer name="title_search">3</integer>
+	<integer name="title_map">4</integer>
+	<integer name="title_favorite">5</integer>
+	<integer name="title_info">6</integer>
+	<integer name="title_donate">7</integer>
+</resources>

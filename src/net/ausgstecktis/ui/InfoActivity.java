@@ -22,19 +22,14 @@ import android.widget.TextView;
  * InfoActivity.java
  * 
  * @author naikon, wexoo
- * @version Aug 27, 2011
  */
 public class InfoActivity extends SuperActivity {
 
-   /**
-    * {@inheritDoc}
-    * 
-    * @see net.ausgstecktis.ui.SuperActivity#onCreate(android.os.Bundle)
-    */
    @Override
    protected void onCreate(final Bundle savedInstanceState) {
-      this.setContentView(R.layout.activity_info);
       super.onCreate(savedInstanceState);
+
+      this.setContentView(R.layout.activity_info);
 
       if (!PreferencesActivity.getStringPreference(R.string.last_database_migration_key, null).equals(""))
          ((TextView) findViewById(R.id.tv_local_database_version)).setText(PreferencesActivity.getStringPreference(

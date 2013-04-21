@@ -19,13 +19,15 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name">Ausgsteckt is</string>
     
-    <!-- Titles -->
-    <string name="title_info">Information</string>
-    <string name="title_favorite">Favoriten</string>
+    <!-- Titles / MainMenu items / SlideMenu items / ...-->
     <string name="title_today">Heute offen</string>
-    <string name="title_map">Kartenansicht</string>
-    <string name="title_surronding">Umgebung</string>
+    <string name="title_surrounding">Umgebung</string>
     <string name="title_search">Suche</string>
+    <string name="title_map">Karte</string>
+    <string name="title_favorite">Favoriten</string>
+    <string name="title_info">Information</string>
+    <string name="title_donate"></string>
+
     <string name="title_result">Suchergebnisse</string>
     <string name="title_preferences">Einstellungen</string>
     <string name="title_quick_search">Suche</string>
@@ -53,7 +55,7 @@
 	<string name="toast_no_data_reveived">Keine Daten empfangen. Keine Verbindung zu Server.</string>
 	<string name="toast_offline_not_supported">Funktion offline nicht verfügbar, bitte Internetverbindung herstellen!</string>
 	<string name="alert_no_local_data">Für diese Funktion wird eine Internetverbindung benötigt. Gehe zu…</string>
-	<string name="toast_server_problems_update">Diese Funktion ist wegen Server-Problemen vorrübergehend nicht verfügbar, wir arbeiten daran diese zu beseitigen! Bitte etwas später nochmal versuchen.</string>
+	<string name="toast_server_problems_update">Diese Funktion ist wegen Server-Problemen vorübergehend nicht verfügbar, wir arbeiten daran diese zu beseitigen! Bitte etwas später nochmal versuchen.</string>
 	<string name="toast_new_update_declined">Daten-Aktualisierung abgelehnt. Aufforderung für 24h deaktiviert!</string>
 	    
 	<string name="alert_yes">Ja</string>
@@ -103,14 +105,6 @@
 	<string name="mi_show_surroundings">Umgebung anzeigen</string>
 	<string name="mi_add_to_favorites">Zu Favoriten hinzufügen</string>
 	<string name="mi_remove_from_favorites">Von Favoriten entfernen</string>
-	
-	<!-- Buttons Dashboard-->
-    <string name="btn_today">Heute offen</string>
-    <string name="btn_map">Kartenansicht</string>
-    <string name="btn_search">Suche</string>
-    <string name="btn_favorite">Favoriten</string>
-    <string name="btn_info">Information</string> 
-    <string name="btn_surronding">Umgebung</string>
 	
     <!-- Buttons -->
     <string name="b_call">Anrufen</string>

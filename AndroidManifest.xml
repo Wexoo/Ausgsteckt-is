@@ -20,8 +20,7 @@
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	android:versionCode="11"
 	android:versionName="1.0.5" 
-	package="net.ausgstecktis"
-	>
+	package="net.ausgstecktis" >
 	
 	<uses-sdk
 	    android:minSdkVersion="7"
@@ -40,12 +39,13 @@
 		android:name=".ui.HeurigenApp"
 		android:label="@string/app_name"
 	    android:icon="@drawable/ic_launcher"
-	    android:debuggable="true">
+	    android:theme="@style/Theme.AusgstecktIs.Sherlock" 
+	    android:allowBackup="true">
 
 	    <activity 
 	        android:name=".ui.SplashScreenActivity"
 	        android:configChanges="orientation"
-            android:theme="@style/Theme.HeurigenSched"
+            android:theme="@style/Theme.Sherlock.Light.NoActionBar"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -55,73 +55,61 @@
 	    
 		<activity
 			android:name=".ui.HomeActivity"
-			android:theme="@style/Theme.HeurigenSched"
 			android:label="@string/app_name">
 		</activity>
         
 		<activity
 			android:name=".ui.TodayActivity"
 			android:configChanges="orientation"
-			android:theme="@style/Theme.HeurigenSched"
 			android:label="@string/title_today" />
 			
 		<activity
 			android:name=".ui.TodaySearchActivity"
 			android:configChanges="orientation"
-			android:theme="@style/Theme.HeurigenSched"
 			android:label="@string/title_today" />
        
         <activity
            android:name=".ui.FavoritesActivity"
            android:configChanges="orientation"
-           android:theme="@style/Theme.HeurigenSched"
            android:label="@string/title_favorite" />
            
         <activity
            android:name=".ui.HeurigenMapActivity"
            android:configChanges="orientation"
-           android:theme="@style/Theme.HeurigenSched"
            android:label="@string/title_map" />
         
         <activity
            android:name=".ui.PreferencesActivity"
            android:configChanges="orientation"
-           android:theme="@style/Theme.HeurigenSched"
            android:label="@string/title_preferences"/>
          
 		<activity
            android:name=".ui.InfoActivity"
            android:configChanges="orientation"
-           android:theme="@style/Theme.HeurigenSched"
            android:label="@string/title_info" />
             
 		<activity
 		   android:name=".ui.search.SearchActivity"
-		   android:theme="@style/Theme.HeurigenSched"
 		   android:label="@string/title_search" />
 		   
 		<activity
 		   android:name=".ui.ResultActivity"
 		   android:configChanges="orientation"
-		   android:theme="@style/Theme.HeurigenSched"
 		   android:label="@string/title_result" />
            
    	 	<activity 
    	 		android:name=".ui.DetailActivity"
    	 		android:configChanges="orientation"
-   	 		android:theme="@style/Theme.HeurigenSched"
    	 		android:label="@string/l_detail" />
             
         <activity 
    	 		android:name=".ui.SurroundingsActivity"
    	 		android:configChanges="orientation"
-   	 		android:theme="@style/Theme.HeurigenSched"
-   	 		android:label="@string/title_surronding" />
+   	 		android:label="@string/title_surrounding" />
    	 		
    	 	<activity 
    	 		android:name=".ui.MapActivity"
    	 		android:configChanges="orientation"
-   	 		android:theme="@style/Theme.HeurigenSched"
    	 		android:label="@string/title_map" />
    	 		
    	 	<uses-library android:name="com.google.android.maps" />

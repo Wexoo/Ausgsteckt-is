@@ -19,27 +19,23 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name">Ausgsteckt is</string>
     
-    <!-- Titles -->
-    <string name="title_info">Information</string>
-    <string name="title_favorite">Favorites</string>
+    <!-- Titles / MainMenu items / SlideMenu items / ...-->
     <string name="title_today">Open Today</string>
-    <string name="title_map">Map View</string>
-    <string name="title_surronding">Surroundings</string>
+    <string name="title_surrounding">Surrounding</string>
     <string name="title_search">Search</string>
+    <string name="title_map">Map</string>
+    <string name="title_favorite">Favorites</string>
+    <string name="title_info">Information</string>
+    <string name="title_donate"></string>
+    
     <string name="title_result">Search results</string>
     <string name="title_preferences">Preferences</string>
-    <string name="title_quick_search">Search</string>
     
     <!-- Tabs -->
-	<string name="tab_general">General</string>
-	<string name="tab_search">Search</string>
-	<string name="tab_detail">Details</string>
-	<string name="tab_map">Map</string>
      
     <!-- Description -->
     <string name="description_logo">Ausgsteckt is</string>
     <string name="description_home">Home</string>
-    <string name="description_search">Search</string>
     <string name="description_refresh">Refresh</string>
     <string name="description_map">Map</string>
 
@@ -98,6 +94,8 @@
 	<string name="tv_visit_us"><u>http://ausgstecktis.net</u></string>
 	<string name="tv_mail_us"><u>android@geekosphere.org</u></string>
 	<string name="tv_submit_new_heurigen"><u>http://ausgstecktis.net/submit</u></string>
+	<string name="link_paypal_donate" formatted="false"><u>https://www.paypal.com/cgi-bin/webscr?cmd=_donations\u0026business=8VXV9BAUSQZEU\u0026lc=AT\u0026currency_code=EUR\u0026bn=PP%2dDonationsBF%3abtn_donate_LG%2egif%3aNonHosted</u></string>
+	
 		
 	<!-- MenuItems -->
 	<string name="mi_info">Info</string>
@@ -110,14 +108,6 @@
 	<string name="mi_add_to_favorites">Add to favorites</string>
 	<string name="mi_remove_from_favorites">Remove from favorites</string>
 	
-	<!-- Buttons Dashboard-->
-    <string name="btn_today">Open Today</string>
-    <string name="btn_map">Map View</string>
-    <string name="btn_search">Search</string>
-    <string name="btn_favorite">Favorites</string>
-    <string name="btn_info">Info</string> 
-    <string name="btn_surronding">Surrondings</string>
-	
 	<!-- Buttons -->
 	<string name="b_call">Call</string>
 	<string name="b_dial_phone_number">Call</string>
@@ -125,7 +115,6 @@
 	<string name="b_send_mail">Send mail</string>
 	<string name="b_switch_to_intents">Switch to <i>intents</i></string>
 	<string name="b_switch_to_search">Switch to <i>search</i></string>
-	<string name="b_search_button">Search</string>
 	<string name="b_choose_date">By Date</string>
 	<string name="b_show_preferences">Preferences</string>
 	

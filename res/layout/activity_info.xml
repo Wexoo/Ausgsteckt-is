@@ -16,151 +16,153 @@
 	You should have received a copy of the GNU General Public License
 	along with this program.  If not, see <http://www.gnu.org/licenses/>.
 -->
-<LinearLayout 
-	xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent" >
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
 
-    <include layout="@layout/title_bar" />
-    
-    <ScrollView
-		android:layout_width="fill_parent"
-		android:layout_height="wrap_content">
-		<LinearLayout
-			android:layout_width="fill_parent"
-			android:layout_height="wrap_content"
-			android:orientation="vertical">
-		    <TextView
-				android:id="@+id/tv_info_database_version"
-				android:layout_width="wrap_content" 
-				android:layout_height="wrap_content" 
-				style="@style/InfoText" 
-				android:text="@string/info_latest_update"/>
-			
-			<View
-			    android:background="@drawable/black_white_gradient"
-			    android:layout_height="1dp" 
-			    android:layout_marginLeft="5dip"
-				android:layout_marginRight="5dip"
-			    android:layout_width="fill_parent" />
-		    
-		    <TextView
-		    	android:id="@+id/tv_local_database_version"
-		    	android:layout_width="fill_parent"
-		    	android:layout_height="wrap_content"
-		    	android:layout_marginLeft="10dip"
-				android:layout_marginTop="5dip" />
-		    	
-			  
-			<TextView
-				android:layout_width="wrap_content" 
-				android:layout_height="wrap_content" 
-				style="@style/InfoText" 
-				android:text="@string/duration_last_update"/>
-				
-			<View
-			    android:background="@drawable/black_white_gradient"
-			    android:layout_height="1dp" 
-			    android:layout_marginLeft="5dip"
-				android:layout_marginRight="5dip"
-			    android:layout_width="fill_parent" />
-		    
-		    <TextView
-		    	android:id="@+id/tv_duration_last_update"
-		    	android:layout_width="fill_parent"
-		    	android:layout_height="wrap_content"
-		    	android:layout_marginLeft="10dip"
-				android:layout_marginTop="5dip"  />
-		
-			<TextView
-				android:layout_width="wrap_content" 
-				android:layout_height="wrap_content" 
-				style="@style/InfoText" 
-				android:text="@string/info_submit_heurigen"/>
-				
-			<View
-			    android:background="@drawable/black_white_gradient"
-			    android:layout_height="1dp" 
-			    android:layout_marginLeft="5dip"
-				android:layout_marginRight="5dip"
-			    android:layout_width="fill_parent" />
-		    
-		    <TextView
-				android:id="@+id/tv_submit_new_heurigen"
-		    	android:layout_width="fill_parent"
-		    	android:layout_height="wrap_content"
-		    	android:layout_marginLeft="10dip"
-				android:layout_marginTop="5dip"
-				android:textColor="@color/klickable"
-				style="@style/InfoKlickableText"
-				android:text="@string/tv_submit_new_heurigen"
-				android:onClick="startAction"
-				android:clickable="true" />
-		
-			<TextView
-				android:id="@+id/tv_about_us"
-				android:layout_width="wrap_content" 
-				android:layout_height="wrap_content" 
-				style="@style/InfoText" 
-				android:text="@string/info_about_us"/>
-				
-			<View
-			    android:background="@drawable/black_white_gradient"
-			    android:layout_height="1dp" 
-			    android:layout_marginLeft="5dip"
-				android:layout_marginRight="5dip"
-			    android:layout_width="fill_parent" />
-				
-			<TableLayout
-				android:layout_width="fill_parent"
-				android:layout_height="wrap_content"
-				android:layout_marginTop="5dip"
-				android:layout_marginLeft="5dip"
-				android:layout_marginRight="5dip">
-				<TableRow
-					android:id="@+id/tr_mail_us"
-					android:layout_marginTop="3dip"
-					android:onClick="startAction">
-					<ImageView
-						android:layout_width="wrap_content"		
-						android:layout_height="wrap_content"
-						android:layout_marginLeft="5dip"
-						android:src="@drawable/ic_mail_detail" 
-						android:contentDescription="@string/tv_mail_us"/>
-					<TextView
-				    	android:id="@+id/tv_mail_us"
-				    	android:layout_width="fill_parent"
-				    	android:layout_height="wrap_content"
-				    	android:layout_marginLeft="10dip"
-						android:textColor="@color/klickable"
-						style="@style/InfoKlickableText"
-						android:text="@string/tv_mail_us"
-						android:onClick="startAction"
-						android:clickable="true" />
-				</TableRow>
-				<TableRow
-					android:id="@+id/tr_visit_us"
-					android:layout_marginTop="10dip"
-					android:onClick="startAction">
-					<ImageView
-						android:layout_width="wrap_content"		
-						android:layout_height="wrap_content"
-						android:layout_marginLeft="5dip"
-						android:src="@drawable/ic_web_detail" 
-						android:contentDescription="@string/tv_mail_us"/>
-					<TextView
-				    	android:id="@+id/tv_visit_us"
-				    	android:layout_width="fill_parent"
-				    	android:layout_height="wrap_content"
-				    	android:layout_marginLeft="10dip"
-						android:textColor="@color/klickable"
-						style="@style/InfoKlickableText"
-						android:text="@string/tv_visit_us"
-						android:onClick="startAction" 
-						android:clickable="true" />
-				</TableRow>
-			</TableLayout>
-		</LinearLayout>
-	</ScrollView>
-</LinearLayout>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/tv_info_database_version"
+            style="@style/InfoText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/info_latest_update" />
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="5dip"
+            android:layout_marginRight="5dip"
+            android:background="@drawable/black_white_gradient" />
+
+        <TextView
+            android:id="@+id/tv_local_database_version"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dip"
+            android:layout_marginTop="5dip" 
+            android:textIsSelectable="true"/>
+
+        <TextView
+            style="@style/InfoText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/duration_last_update" />
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="5dip"
+            android:layout_marginRight="5dip"
+            android:background="@drawable/black_white_gradient" />
+
+        <TextView
+            android:id="@+id/tv_duration_last_update"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dip"
+            android:layout_marginTop="5dip" 
+            android:textIsSelectable="true"/>
+
+        <TextView
+            style="@style/InfoText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/info_submit_heurigen" />
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="5dip"
+            android:layout_marginRight="5dip"
+            android:background="@drawable/black_white_gradient" />
+
+        <TextView
+            android:id="@+id/tv_submit_new_heurigen"
+            style="@style/InfoKlickableText"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dip"
+            android:layout_marginTop="5dip"
+            android:clickable="true"
+            android:onClick="startAction"
+            android:text="@string/tv_submit_new_heurigen"
+            android:textColor="@color/clickable" />
+
+        <TextView
+            android:id="@+id/tv_about_us"
+            style="@style/InfoText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/info_about_us" />
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="5dip"
+            android:layout_marginRight="5dip"
+            android:background="@drawable/black_white_gradient" />
+
+        <TableLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dip"
+            android:layout_marginRight="5dip"
+            android:layout_marginTop="5dip" >
+
+            <TableRow
+                android:id="@+id/tr_mail_us"
+                android:layout_marginTop="3dip"
+                android:onClick="startAction" >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dip"
+                    android:contentDescription="@string/tv_mail_us"
+                    android:src="@drawable/ic_mail_detail" />
+
+                <TextView
+                    android:id="@+id/tv_mail_us"
+                    style="@style/InfoKlickableText"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dip"
+                    android:clickable="true"
+                    android:onClick="startAction"
+                    android:text="@string/tv_mail_us"
+                    android:textColor="@color/clickable" />
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/tr_visit_us"
+                android:layout_marginTop="10dip"
+                android:onClick="startAction" >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dip"
+                    android:contentDescription="@string/tv_mail_us"
+                    android:src="@drawable/ic_web_detail" />
+
+                <TextView
+                    android:id="@+id/tv_visit_us"
+                    style="@style/InfoKlickableText"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dip"
+                    android:clickable="true"
+                    android:onClick="startAction"
+                    android:text="@string/tv_visit_us"
+                    android:textColor="@color/clickable" />
+            </TableRow>
+        </TableLayout>
+    </LinearLayout>
+
+</ScrollView>

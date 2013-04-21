@@ -62,9 +62,10 @@ public class SplashScreenActivity extends SuperActivity {
 
    @Override
    public void onCreate(Bundle savedInstanceState) {
-      setContentView(R.layout.activity_splashscreen);
       HeurigenApp.mainContext = this;
       super.onCreate(savedInstanceState);
+
+      setContentView(R.layout.activity_splashscreen, false);
 
       buildSplashHandler();
 

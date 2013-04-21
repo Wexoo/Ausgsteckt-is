@@ -35,10 +35,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.ProgressBar;
-import android.widget.TextView;
 
 /**
  * Displays the search results from SearchActivity
@@ -53,14 +50,14 @@ public class ResultActivity extends SuperActivity {
    private ListView list;
    private HeurigerAlphabetizedListAdapter adapter;
    private GetHeurigeAsyncTask heurigeAsyncTask;
-   private ProgressBar progressBar;
-   private ImageView imageSearch;
    private String titleString = "";
 
    @Override
    public void onCreate(final Bundle savedInstanceState) {
-      this.setContentView(R.layout.activity_results);
       super.onCreate(savedInstanceState);
+
+      this.setContentView(R.layout.activity_results);
+      setProgressBarIndeterminateVisibility(true);
 
       boolean searchKeyword = getIntent().getExtras().getBoolean("extra_search_keyword");
       String searchString = getIntent().getExtras().getString("extra_search_string");
@@ -73,12 +70,13 @@ public class ResultActivity extends SuperActivity {
       else
          titleString = this.getString(R.string.search_all_heurigen);
 
-      ((TextView) findViewById(R.id.title_text)).setText(titleString);
+      getSupportActionBar().setTitle(titleString);
 
       list = (ListView) findViewById(R.id.lv_search_results);
       list.setFastScrollEnabled(true);
       list.setOnItemClickListener(new OnItemClickListener() {
 
+         @Override
          public void onItemClick(final AdapterView<?> parent, final View view,
                final int position, final long rowId) {
             ProxyFactory.getProxy().setSelectedHeuriger((Heuriger) parent.getItemAtPosition(position));
@@ -145,11 +143,7 @@ public class ResultActivity extends SuperActivity {
          String elapsedTime = MigrationProxy.calculateElapsedTime(start);
          Log.d(TAG, "Adapter action took: " + elapsedTime);
 
-         progressBar = (ProgressBar) findViewById(R.id.title_refresh_progress);
-         progressBar.setVisibility(View.GONE);
-
-         imageSearch = (ImageView) findViewById(R.id.btn_title_search);
-         imageSearch.setVisibility(View.VISIBLE);
+         setProgressBarIndeterminateVisibility(false);
       }
 
    }

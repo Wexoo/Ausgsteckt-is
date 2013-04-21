@@ -40,22 +40,18 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.ProgressBar;
 
 /**
  * SurroundingsActivity.java
  * 
- * @author naikon
+ * @author naikon, wexoo
  * @version Aug 27, 2011
  */
 public class SurroundingsActivity extends SuperActivity {
 
    private ListView list;
    private SurrondingListAdapter adapter;
-   private ProgressBar progressBar;
-   private ImageView refreshIcon;
    private Location lastLocation = null;
    private LocationListener locationListener;
    private LocationManager locationManager;
@@ -70,8 +66,10 @@ public class SurroundingsActivity extends SuperActivity {
 
    @Override
    protected void onCreate(final Bundle savedInstanceState) {
-      this.setContentView(R.layout.activity_surroundings);
       super.onCreate(savedInstanceState);
+
+      this.setContentView(R.layout.activity_surroundings);
+      setProgressBarIndeterminateVisibility(true);
 
       locationListener = new MyLocationListener();
       locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
@@ -86,15 +84,10 @@ public class SurroundingsActivity extends SuperActivity {
       if (!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER))
          createGpsDisabledAlert();
 
-      progressBar = (ProgressBar) findViewById(R.id.title_refresh_progress);
-      progressBar.setVisibility(View.VISIBLE);
-
-      refreshIcon = (ImageView) findViewById(R.id.btn_title_refresh);
-      refreshIcon.setVisibility(View.GONE);
-
       list = (ListView) findViewById(R.id.lv_search_results);
       list.setOnItemClickListener(new OnItemClickListener() {
 
+         @Override
          public void onItemClick(final AdapterView<?> parent, final View view, final int position, final long rowId) {
             ProxyFactory.getProxy().setSelectedHeuriger((Heuriger) parent.getItemAtPosition(position));
             SurroundingsActivity.this.startActivity(new Intent(SurroundingsActivity.this, DetailActivity.class));
@@ -126,11 +119,7 @@ public class SurroundingsActivity extends SuperActivity {
       nearbyHeurigeAsyncTask = new GetNearbyHeurigeAsyncTask();
       nearbyHeurigeAsyncTask.execute();
 
-      progressBar = (ProgressBar) findViewById(R.id.title_refresh_progress);
-      progressBar.setVisibility(View.VISIBLE);
-
-      refreshIcon = (ImageView) findViewById(R.id.btn_title_refresh);
-      refreshIcon.setVisibility(View.GONE);
+      setProgressBarIndeterminateVisibility(true);
    }
 
    /**
@@ -143,6 +132,7 @@ public class SurroundingsActivity extends SuperActivity {
             .setPositiveButton(this.getString(R.string.gps_dialog_enable),
                   new DialogInterface.OnClickListener() {
 
+                     @Override
                      public void onClick(final DialogInterface dialog, final int id) {
                         SurroundingsActivity.this.showGpsOptions();
                      }
@@ -150,6 +140,7 @@ public class SurroundingsActivity extends SuperActivity {
       builder.setNegativeButton(this.getString(R.string.gps_dialog_disable),
             new DialogInterface.OnClickListener() {
 
+               @Override
                public void onClick(final DialogInterface dialog, final int id) {
                   dialog.cancel();
                   SurroundingsActivity.this.finish();
@@ -185,12 +176,14 @@ public class SurroundingsActivity extends SuperActivity {
     */
    private final class MyLocationListener implements LocationListener {
 
+      @Override
       public void onLocationChanged(final Location locFromGps) {
          locationMillis = SystemClock.elapsedRealtime();
          latitude = locFromGps.getLatitude();
          longitude = locFromGps.getLongitude();
       }
 
+      @Override
       public void onStatusChanged(final String provider, final int status, final Bundle extras) {
 
          /** called when the status of the GPS provider changes **/
@@ -214,9 +207,11 @@ public class SurroundingsActivity extends SuperActivity {
          }
       }
 
+      @Override
       public void onProviderEnabled(String provider) {
       }
 
+      @Override
       public void onProviderDisabled(String provider) {
       }
    }
@@ -230,6 +225,7 @@ public class SurroundingsActivity extends SuperActivity {
     */
    private class MyGPSListener implements GpsStatus.Listener {
 
+      @Override
       public void onGpsStatusChanged(final int event) {
          switch (event){
             case GpsStatus.GPS_EVENT_SATELLITE_STATUS:
@@ -249,6 +245,7 @@ public class SurroundingsActivity extends SuperActivity {
                   Handler handler = new Handler();
                   handler.postDelayed(new Runnable() {
 
+                     @Override
                      public void run() {
                         nearbyHeurigeAsyncTask = new GetNearbyHeurigeAsyncTask();
                         nearbyHeurigeAsyncTask.execute();
@@ -268,8 +265,7 @@ public class SurroundingsActivity extends SuperActivity {
          adapter = new SurrondingListAdapter(SurroundingsActivity.this);
          list.setAdapter(adapter);
 
-         progressBar.setVisibility(View.GONE);
-         refreshIcon.setVisibility(View.VISIBLE);
+         setProgressBarIndeterminateVisibility(false);
          firstFix = true;
       }
 

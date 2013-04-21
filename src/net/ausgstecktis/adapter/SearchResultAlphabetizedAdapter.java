@@ -39,8 +39,7 @@ import android.widget.TextView;
  * Copied from https://eshyu.wordpress.com/2010/08/15/cursoradapter-with-alphabet-indexed-section-headers/
  * SearchResultAlphabetizedAdapter.java
  * 
- * @author naikon
- * @since 1.0.0 Aug 5, 2011
+ * @author naikon, wexoo
  */
 public class SearchResultAlphabetizedAdapter extends SimpleCursorAdapter implements SectionIndexer {
 
@@ -54,15 +53,6 @@ public class SearchResultAlphabetizedAdapter extends SimpleCursorAdapter impleme
    private final Map<Integer, Integer> sectionToPosition;
    private final Context context;
 
-   /**
-    * Instantiates a new search result alphabetized adapter.
-    * 
-    * @param context the context
-    * @param layout the layout
-    * @param c the c
-    * @param from the from
-    * @param to the to
-    */
    public SearchResultAlphabetizedAdapter(final Context context, final int layout, final Cursor c,
          final String[] from, final int[] to) {
       super(context, layout, c, from, to);
@@ -119,6 +109,7 @@ public class SearchResultAlphabetizedAdapter extends SimpleCursorAdapter impleme
       return null;
    }
 
+   @Override
    public int getPositionForSection(final int section) {
       if (!sectionToOffset.containsKey(section)) {
          //This is only the case when the FastScroller is scrolling,
@@ -145,6 +136,7 @@ public class SearchResultAlphabetizedAdapter extends SimpleCursorAdapter impleme
       return indexer.getPositionForSection(section) + sectionToOffset.get(section);
    }
 
+   @Override
    public int getSectionForPosition(final int position) {
       int i = 0;
       final int maxLength = usedSectionNumbers.length;
@@ -156,6 +148,7 @@ public class SearchResultAlphabetizedAdapter extends SimpleCursorAdapter impleme
       return usedSectionNumbers[i - 1];
    }
 
+   @Override
    public Object[] getSections() {
       return indexer.getSections();
    }

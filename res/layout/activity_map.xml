@@ -21,14 +21,10 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
 
-    <include layout="@layout/title_bar" />
-    
     <include layout="@layout/map_view"
     	android:layout_width="fill_parent"
     	android:layout_height="fill_parent"
 		/>
-        	<!-- android:layout_below="@id/ll_title_bar" -->
-    
     
     <!-- district selector -->
 	<!-- android:layout_weight=".1"

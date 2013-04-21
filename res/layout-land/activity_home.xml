@@ -56,19 +56,19 @@
             	android:id="@+id/home_btn_today"
                 style="@style/HomeButton"
                 android:onClick="onIconClick"
-                android:text="@string/btn_today"
+                android:text="@string/title_today"
                 android:drawableTop="@drawable/home_btn_today"/>
             <Button 
             	android:id="@+id/home_btn_surronding"
                 style="@style/HomeButton"
                 android:onClick="onIconClick"
-                android:text="@string/btn_surronding"
+                android:text="@string/title_surrounding"
                 android:drawableTop="@drawable/home_btn_surronding"/>
            <Button 
            		android:id="@+id/home_btn_search"
                 style="@style/HomeButton"
                 android:onClick="onIconClick"
-                android:text="@string/btn_search"
+                android:text="@string/title_search"
                 android:drawableTop="@drawable/home_btn_search"/>
         </LinearLayout>
     
@@ -81,19 +81,19 @@
             	android:id="@+id/home_btn_map"
                 style="@style/HomeButton"
                 android:onClick="onIconClick"
-                android:text="@string/btn_map"
+                android:text="@string/title_map"
                 android:drawableTop="@drawable/home_btn_map"/>
             <Button 
             	android:id="@+id/home_btn_favorite"
                 style="@style/HomeButton"
                 android:onClick="onIconClick"
-                android:text="@string/btn_favorite"
+                android:text="@string/title_favorite"
                 android:drawableTop="@drawable/home_btn_favorite"/>
             <Button 
             	android:id="@+id/home_btn_info"
                 style="@style/HomeButton"
                 android:onClick="onIconClick"
-                android:text="@string/btn_info"
+                android:text="@string/title_info"
                 android:drawableTop="@drawable/home_btn_info"/>
         </LinearLayout>
         <LinearLayout

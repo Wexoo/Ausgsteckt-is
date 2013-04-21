@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+	Copyright (C) 2011  naikon, wexoo
+	android@geekosphere.org
+	
+	This program is free software: you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation, either version 3 of the License, or
+	(at your option) any later version.
+	
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
+	 
+	You should have received a copy of the GNU General Public License
+	along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"
+  android:orientation="horizontal">
+  
+  <Button
+      android:id="@+id/ib_slide_menu_item_icon"
+      style="@style/HomeButton"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:onClick="onIconClick"
+      android:gravity="left|center_vertical"
+      android:drawableRight="@color/title_background" />
+  
+
+  <Button
+      android:id="@+id/surfaceView1"
+      android:layout_width="3dp"
+      android:layout_height="fill_parent"
+      android:background="@color/title_background"
+      android:layout_gravity="center_vertical"
+      android:layout_marginBottom="-5dp"
+      android:layout_marginTop="-5dp"/>
+
+</LinearLayout>

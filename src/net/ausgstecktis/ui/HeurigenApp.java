@@ -21,13 +21,8 @@ package net.ausgstecktis.ui;
 import static net.ausgstecktis.util.AppEnvironmentField.APP_VERSION_CODE;
 import static net.ausgstecktis.util.AppEnvironmentField.APP_VERSION_NAME;
 import static net.ausgstecktis.util.AppEnvironmentField.PACKAGE_NAME;
-import net.ausgstecktis.R;
 import net.ausgstecktis.annotation.Settings;
 import net.ausgstecktis.util.AppEnvironmentField;
-
-import org.acra.ReportingInteractionMode;
-import org.acra.annotation.ReportsCrashes;
-
 import android.app.Application;
 import android.content.Context;
 import android.net.ConnectivityManager;
@@ -41,16 +36,8 @@ import android.os.Environment;
  * 
  * @author wexoo, naikon
  */
-
-@ReportsCrashes(
-      formKey = "", // will not be used by own server mode
-      formUri = "http://dev.ausgstecktis.net/crash/app/report/submit",
-      mode = ReportingInteractionMode.TOAST,
-      resToastText = R.string.crash_toast_text,
-      formUriBasicAuthLogin = "crashreporter",
-      formUriBasicAuthPassword = "crashreporter")
 @Settings(
-      apiUri = "http://dev.ausgstecktis.net/v1/app/",
+      apiUri = "http://dev.ausgstecktis.net/app/",
       apiValue = "apikey",
       apiKey = "foo")
 public class HeurigenApp extends Application {

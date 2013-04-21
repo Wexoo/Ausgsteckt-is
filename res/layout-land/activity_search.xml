@@ -41,14 +41,14 @@
 		        <TableRow android:layout_height="wrap_content" android:layout_width="wrap_content">
 		            <TextView style="@style/SearchText" android:text="@string/search_keyword_title" android:layout_height="wrap_content" android:layout_width="150dp"></TextView>
 		            <AutoCompleteTextView android:id="@+id/actv_search" android:textColor="@color/black" android:hint="@string/search_all_hint" android:layout_height="wrap_content" android:completionThreshold="2" android:layout_width="280dp" android:layout_marginTop="1dp"></AutoCompleteTextView>
-		            <Button style="@style/SearchButtonText" android:text="@string/btn_search" android:onClick="startSearch" android:id="@+id/b_search_all_button" android:layout_height="wrap_content" android:layout_width="80dp" android:gravity="center_vertical|center_horizontal"></Button>
+		            <Button style="@style/SearchButtonText" android:text="@string/title_search" android:onClick="startSearch" android:id="@+id/b_search_all_button" android:layout_height="wrap_content" android:layout_width="80dp" android:gravity="center_vertical|center_horizontal"></Button>
 		        </TableRow>
 		        <TableRow android:layout_height="wrap_content" android:layout_width="wrap_content">
 		            <TextView style="@style/SearchText" android:text="@string/search_location_title" android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
 		            <AutoCompleteTextView android:id="@+id/actv_search_location" android:layout_width="210dp" android:textColor="@color/black" android:hint="@string/search_location_hint" android:layout_height="wrap_content" android:completionThreshold="2" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:layout_marginTop="1dp">
 		                <requestFocus></requestFocus>
 		            </AutoCompleteTextView>
-		            <Button style="@style/SearchButtonText" android:text="@string/btn_search" android:gravity="center_vertical|center_horizontal" android:onClick="startSearch" android:id="@+id/b_search_location_button"></Button>
+		            <Button style="@style/SearchButtonText" android:text="@string/title_search" android:gravity="center_vertical|center_horizontal" android:onClick="startSearch" android:id="@+id/b_search_location_button"></Button>
 		        </TableRow>
 		    </TableLayout>
 		    <TableLayout android:layout_height="wrap_content" android:layout_width="wrap_content" android:layout_marginTop="0dp">

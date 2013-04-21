@@ -16,14 +16,33 @@
 	You should have received a copy of the GNU General Public License
 	along with this program.  If not, see <http://www.gnu.org/licenses/>.
 -->
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme is the default theme. -->
-    <style name="Theme" parent="android:Theme"></style>
+    <style name="Theme" parent="android:Theme" />
 
     <!-- Variation of the Light theme that turns off the title -->
-    <style name="Theme.HeurigenSched" parent="android:style/Theme.Light">
+    <style name="Theme.AusgstecktIs.Light" parent="android:style/Theme.Light">
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowContentOverlay">@null</item>
+    </style>
+
+    <style name="Theme.AusgstecktIs.Sherlock" parent="Theme.Sherlock.Light">
+        <item name="actionBarStyle">@style/Widget.AusgstecktIs.ActionBar</item>
+        <item name="android:actionBarStyle" tools:ignore="NewApi">@style/Widget.AusgstecktIs.ActionBar</item>
+    </style>
+
+    <style name="Widget.AusgstecktIs.ActionBar" parent="Widget.Sherlock.ActionBar">
+        <item name="android:background">@color/title_background</item>
+        <item name="background">@color/title_background</item>
+        <item name="titleTextStyle">@style/Widget.AusgstecktIs.TitleTextStyle</item>
+        <item name="android:titleTextStyle" tools:ignore="NewApi">@style/Widget.AusgstecktIs.TitleTextStyle</item>
+    </style>
+    
+
+    <style name="Widget.AusgstecktIs.TitleTextStyle" parent="TextAppearance.Sherlock.Widget.ActionBar.Title">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/text_size_medium</item>
+        <item name="android:textStyle">bold</item>
     </style>
 
     <style name="HomeButton">
@@ -31,10 +50,10 @@
         <item name="android:layout_width">fill_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_weight">1</item>
-        <item name="android:gravity">center_horizontal</item>
+        <item name="android:gravity">center</item>
         <item name="android:textSize">@dimen/text_size_medium</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:textColor">@color/foreground1</item>
+        <item name="android:textColor">@color/menu_item_text</item>
         <item name="android:background">@null</item>
     </style>
 
@@ -58,11 +77,11 @@
         <item name="android:layout_marginLeft">14dip</item>
         <item name="android:layout_marginRight">15dip</item>
         <item name="android:layout_marginTop">14dip</item>
-        <item name="android:indeterminate">true</item> 
+        <item name="android:indeterminate">true</item>
     </style>
 
     <style name="TitleBarSeparator">
-        <item name="android:layout_width">1px</item>
+        <item name="android:layout_width">1dp</item>
         <item name="android:layout_height">fill_parent</item>
         <item name="android:background">@color/title_separator</item>
     </style>
@@ -87,75 +106,77 @@
         <item name="android:layout_weight">1</item>
         <item name="android:gravity">center_vertical</item>
         <item name="android:textSize">@dimen/text_size_medium</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textStyle">bold</item>
         <item name="android:paddingLeft">12dip</item>
         <item name="android:paddingRight">12dip</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:textColor">@color/title_text</item>
         <item name="android:singleLine">true</item>
         <item name="android:ellipsize">end</item>
     </style>
 
     <style name="TextNormal" parent="android:Widget.TextView">
-		<item name="android:textColor">@color/black</item>
-		<item name="android:textSize">@dimen/text_size_medium</item>
-	</style>
-	<style parent="@style/TextNormal" name="TextLarge">
-		<item name="android:textSize">@dimen/text_size_large</item>
-	</style>
-	<style name="TextHeader" parent="@android:style/TextAppearance.Large">
-		<item name="android:textSize">@dimen/text_size_large</item>
-		<item name="android:textColor">@color/white</item>
-		<item name="android:layout_width">fill_parent</item>
-		<item name="android:layout_marginBottom">8dip</item>
-		<item name="android:gravity">center_horizontal</item>
-	</style>
-	
-	<style name="DetailTitle">
-		<item name="android:paddingLeft">12dip</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">@dimen/text_size_medium</item>
+    </style>
+
+    <style name="TextLarge" parent="@style/TextNormal">
+        <item name="android:textSize">@dimen/text_size_large</item>
+    </style>
+
+    <style name="TextHeader" parent="@android:style/TextAppearance.Large">
+        <item name="android:textSize">@dimen/text_size_large</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_marginBottom">8dip</item>
+        <item name="android:gravity">center_horizontal</item>
+    </style>
+
+    <style name="DetailTitle">
+        <item name="android:paddingLeft">12dip</item>
         <item name="android:paddingTop">12dip</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">@dimen/text_size_medium</item>
         <item name="android:textColor">@android:color/primary_text_light</item>
     </style>
-	
-	<style name="DetailText">
-		<item name="android:paddingLeft">5dip</item>
-		<item name="android:paddingRight">10dip</item>
+
+    <style name="DetailText">
+        <item name="android:paddingLeft">5dip</item>
+        <item name="android:paddingRight">10dip</item>
         <item name="android:textColor">@android:color/primary_text_light</item>
         <item name="android:textSize">@dimen/text_size_small</item>
     </style>
-    
+
     <style name="DetailTextWithImage">
-		<item name="android:paddingLeft">15dip</item>
-		<item name="android:paddingRight">10dip</item>
+        <item name="android:paddingLeft">15dip</item>
+        <item name="android:paddingRight">10dip</item>
         <item name="android:textColor">@android:color/primary_text_light</item>
         <item name="android:textSize">@dimen/text_size_small</item>
     </style>
-    
+
     <style name="InfoKlickableText">
-		<item name="android:paddingRight">10dip</item>
+        <item name="android:paddingRight">10dip</item>
         <item name="android:textColor">@android:color/primary_text_light</item>
         <item name="android:textSize">@dimen/text_size_normal</item>
     </style>
-    
+
     <style name="SearchText">
-   		<item name="android:paddingTop">10dip</item>
-		<item name="android:paddingLeft">10dip</item>
-		<item name="android:paddingRight">10dip</item>
+        <item name="android:paddingTop">10dip</item>
+        <item name="android:paddingLeft">10dip</item>
+        <item name="android:paddingRight">10dip</item>
         <item name="android:textColor">@color/search_text</item>
         <item name="android:textSize">@dimen/text_size_medium</item>
     </style>
-    
+
     <style name="SearchTextCheckBox">
         <item name="android:textColor">@color/search_text</item>
         <item name="android:textSize">@dimen/text_size_medium</item>
     </style>
-    
+
     <style name="SearchButtonText">
         <item name="android:textColor">@color/white</item>
         <item name="android:gravity">center_horizontal</item>
     </style>
-    
+
     <style name="SearchButton">
         <item name="android:layout_gravity">center_vertical</item>
         <item name="android:layout_width">fill_parent</item>
@@ -163,15 +184,15 @@
         <item name="android:layout_weight">1</item>
         <item name="android:background">@null</item>
     </style>
-    
+
     <style name="InfoText">
-   		<item name="android:paddingTop">10dip</item>
-		<item name="android:paddingLeft">10dip</item>
-		<item name="android:paddingRight">10dip</item>
+        <item name="android:paddingTop">10dip</item>
+        <item name="android:paddingLeft">10dip</item>
+        <item name="android:paddingRight">10dip</item>
         <item name="android:textColor">@color/search_text</item>
         <item name="android:textSize">@dimen/text_size_medium</item>
     </style>
-    
+
     <style name="ListView">
         <item name="android:layout_width">fill_parent</item>
         <item name="android:layout_height">fill_parent</item>
@@ -179,5 +200,5 @@
         <item name="android:cacheColorHint">@color/white</item>
         <item name="android:listSelector">@drawable/list_selector</item>
     </style>
-	
+
 </resources>

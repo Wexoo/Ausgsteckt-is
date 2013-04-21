@@ -20,14 +20,11 @@
 	<!-- Titlebar background -->
     <color name="title_background">#2c740d</color>
     
-    <!-- Titlebar text color -->
-    <color name="title_text">#ffffffff</color>
-    
     <!-- Titlebar separator line -->
     <color name="title_separator">#40ffffff</color>
     
     <!-- Dashbaord button text color -->
-    <color name="foreground1">#ff2c740d</color>
+    <color name="menu_item_text">#ff2c740d</color>
 
     <!-- Dashboard background -->
     <color name="main_background">#e9e9e9</color>
@@ -36,8 +33,8 @@
     <color name="list_background">#e6e4e4</color>
     <color name="list_background_pressed">#ffe6e4e4</color>
 	
-	<!-- Klickable strings in DetailActivity -->
-	<color name="klickable">#2c740d</color>
+	<!-- Clickable strings in DetailActivity -->
+	<color name="clickable">#2c740d</color>
 	
 	<!-- Text color SearchActivity -->
 	<color name="search_text">#ff2c740d</color>

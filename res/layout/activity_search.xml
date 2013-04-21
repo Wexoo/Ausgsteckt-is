@@ -20,16 +20,6 @@
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
-
-    <LinearLayout style="@style/TitleBar">
-        <ImageButton style="@style/TitleBarAction"
-            android:contentDescription="@string/description_home"
-            android:src="@drawable/ic_title_home"
-            android:onClick="onHomeClick" />
-
-        <ImageView style="@style/TitleBarSeparator" />
-        <TextView style="@style/TitleBarText" />
-    </LinearLayout>
     
  	<ScrollView 
  		android:layout_width="fill_parent"
@@ -69,7 +59,7 @@
 				 			android:layout_marginTop="13dip"
 				 			android:id="@+id/b_search_all_button" 
 					    	android:onClick="startSearch"
-					    	android:text="@string/btn_search"
+					    	android:text="@string/title_search"
 					    	android:gravity="center_vertical|center_horizontal"  />         
 				 	</TableRow>
 			 	</TableLayout>
@@ -87,7 +77,7 @@
 		                <Button style="@style/SearchButtonText" 
 		                android:layout_marginTop="13dip" 
 		                android:gravity="center_vertical|center_horizontal" 
-		                android:text="@string/btn_search" 
+		                android:text="@string/title_search" 
 		                android:id="@+id/b_search_location_button" 
 		                android:onClick="startSearch"></Button>
 		            </TableRow>
