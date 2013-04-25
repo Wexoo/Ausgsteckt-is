@@ -33,8 +33,26 @@
   			android:entries="@array/lp_language_strings"
   			android:entryValues="@array/lp_languages"
   			android:defaultValue="system"/> -->
-  		<Preference 
+  		<!-- <Preference 
   			android:title="@string/p_export_db_to_sd"
-  			android:key="@string/p_export_db_to_sd_key"/>
+  			android:key="@string/p_export_db_to_sd_key"/>-->
+  	</PreferenceCategory>
+  	<PreferenceCategory
+  		android:title="@string/pc_take_me_home">
+  		<EditTextPreference
+  			android:title="@string/etp_home_street_and_number"
+  			android:key="@string/etp_home_street_and_number_key" />
+  		<EditTextPreference
+  			android:title="@string/etp_home_zipcode_and_city"
+  			android:key="@string/etp_home_zipcode_and_city_key" />
+  		<!-- <ListPreference
+  			android:title="@string/lp_language"
+  			android:key="@string/lp_language_key"
+  			android:entries="@array/lp_language_strings"
+  			android:entryValues="@array/lp_languages"
+  			android:defaultValue="system"/> -->
+  		<!-- <Preference 
+  			android:title="@string/p_export_db_to_sd"
+  			android:key="@string/p_export_db_to_sd_key"/>-->
   	</PreferenceCategory>
 </PreferenceScreen>

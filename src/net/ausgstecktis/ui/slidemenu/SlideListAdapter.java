@@ -17,25 +17,29 @@
  */
 package net.ausgstecktis.ui.slidemenu;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import net.ausgstecktis.R;
+import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.TextView;
 
 /**
+ * Adapter which fills the ListView of our SlidingMenu
+ * 
  * @author wexoo
  */
 public class SlideListAdapter extends BaseAdapter {
 
-   private ArrayList<MenuItemBean> menuItems;
+   private List<MenuItemBean> menuItems;
    private static LayoutInflater inflater = null;
 
-   public SlideListAdapter(Context context, ArrayList<MenuItemBean> menuItems) {
+   public SlideListAdapter(Activity context, List<MenuItemBean> menuItems) {
       this.menuItems = menuItems;
 
       inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -63,7 +67,12 @@ public class SlideListAdapter extends BaseAdapter {
 
       MenuItemBean menuItem = menuItems.get(position);
 
-      Button menuItemIcon = (Button) convertView.findViewById(R.id.ib_slide_menu_item_icon);
+      if (menuItem.getImageDrawable() == R.drawable.home_btn_today) {
+         TextView menuTitle = (TextView) convertView.findViewById(R.id.tv_slide_menu_title);
+         menuTitle.setVisibility(View.VISIBLE);
+      }
+
+      Button menuItemIcon = (Button) convertView.findViewById(R.id.b_slide_menu_item_icon);
       menuItemIcon.setCompoundDrawablesWithIntrinsicBounds(menuItem.getImageDrawable(), 0, 0, 0);
       menuItemIcon.setText(menuItem.getTitle());
       menuItemIcon.setTag(menuItem.getTagId());

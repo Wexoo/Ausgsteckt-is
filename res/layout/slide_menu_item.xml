@@ -18,27 +18,38 @@
 -->
 <LinearLayout
   xmlns:android="http://schemas.android.com/apk/res/android"
+  android:id="@+id/ll_slide_menu_item"
   android:layout_width="fill_parent"
   android:layout_height="fill_parent"
-  android:orientation="horizontal">
+  android:orientation="vertical">
   
-  <Button
-      android:id="@+id/ib_slide_menu_item_icon"
-      style="@style/HomeButton"
-      android:layout_width="wrap_content"
+  <TextView 
+      android:id="@+id/tv_slide_menu_title"
+      android:layout_width="fill_parent"
       android:layout_height="wrap_content"
-      android:onClick="onIconClick"
-      android:gravity="left|center_vertical"
-      android:drawableRight="@color/title_background" />
+      android:text="@string/tv_menu_handle"
+      android:textSize="@dimen/text_size_small"
+      style="@style/HomeButton"
+      android:visibility="gone"/>
   
+  	<Button
+      android:id="@+id/b_slide_menu_item_icon"
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      android:gravity="left|center_vertical"
+      android:textSize="@dimen/text_size_medium"
+      android:textStyle="bold"
+      android:textColor="@color/white"
+      android:background="@color/title_background"
+      android:onClick="onIconClick"/>
 
-  <Button
-      android:id="@+id/surfaceView1"
+  <!--<Button
+      android:id="@+id/b_slide_menu_seperator"
       android:layout_width="3dp"
       android:layout_height="fill_parent"
       android:background="@color/title_background"
       android:layout_gravity="center_vertical"
       android:layout_marginBottom="-5dp"
-      android:layout_marginTop="-5dp"/>
+      android:layout_marginTop="-5dp"/> -->
 
 </LinearLayout>

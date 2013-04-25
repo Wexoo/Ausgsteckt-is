@@ -26,7 +26,6 @@ import net.ausgstecktis.entities.Heuriger;
 import net.ausgstecktis.util.MyItemizedOverlay;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.widget.TextView;
 
 import com.google.android.maps.GeoPoint;
 import com.google.android.maps.MapController;
@@ -61,13 +60,12 @@ public class HeurigenMapActivity extends SuperMapActivity {
     * 
     * @see net.ausgstecktis.ui.SuperMapActivity#onCreate(android.os.Bundle)
     */
-   
+
+   @Override
    public void onCreate(final Bundle savedInstanceState) {
-
       super.onCreate(savedInstanceState);
-      this.setContentView(R.layout.activity_heurigen_map);
 
-      ((TextView) findViewById(R.id.title_text)).setText(getTitle());
+      this.setContentView(R.layout.activity_heurigen_map);
 
       mapView = (MapView) findViewById(R.id.mapview);
       mapView.setBuiltInZoomControls(true);
@@ -81,7 +79,7 @@ public class HeurigenMapActivity extends SuperMapActivity {
       drawable = getResources().getDrawable(R.drawable.marker);
       itemizedOverlay = new MyItemizedOverlay(drawable, mapView) {
 
-         
+         @Override
          protected void showContextMenu(final int index) {
             HeurigenMapActivity.this.openContextMenu(mapView);
          }
@@ -95,11 +93,10 @@ public class HeurigenMapActivity extends SuperMapActivity {
       heurigerCityOverlay = heuriger.getCity().getName();
       heurigerStreetOverlay = heuriger.getStreet();
 
-      if (heuriger.getStreetNumber() != 0) {
+      if (heuriger.getStreetNumber() != 0)
          heurigerStreetNumberOverlay = heuriger.getStreetNumber().toString();
-      } else {
+      else
          heurigerStreetNumberOverlay = "";
-      }
 
       final OverlayItem overlayItem =
             new OverlayItem(point, heurigerNameOverlay, heurigerZipCodeOverlay + " "
@@ -122,7 +119,8 @@ public class HeurigenMapActivity extends SuperMapActivity {
     * 
     * @see net.ausgstecktis.ui.SuperMapActivity#isRouteDisplayed()
     */
-   
+
+   @Override
    protected boolean isRouteDisplayed() {
       return false;
    }

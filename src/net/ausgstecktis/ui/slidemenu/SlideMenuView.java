@@ -19,9 +19,10 @@
 package net.ausgstecktis.ui.slidemenu;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import net.ausgstecktis.R;
-import android.content.Context;
+import android.app.Activity;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 
@@ -32,7 +33,9 @@ import android.widget.RelativeLayout;
  */
 public class SlideMenuView extends RelativeLayout {
 
-   public SlideMenuView(final Context context) {
+   private List<MenuItemBean> menuItems = new ArrayList<MenuItemBean>();;
+
+   public SlideMenuView(final Activity context) {
       super(context);
 
       RelativeLayout.LayoutParams rlp = new RelativeLayout.LayoutParams(
@@ -57,17 +60,19 @@ public class SlideMenuView extends RelativeLayout {
       listView.setAdapter(new SlideListAdapter(context, buildMenuItemList()));
    }
 
-   private ArrayList<MenuItemBean> buildMenuItemList() {
-      ArrayList<MenuItemBean> menuItems = new ArrayList<MenuItemBean>();
-      menuItems.add(new MenuItemBean(R.drawable.home_btn_today, R.string.title_today, R.integer.title_today));
-      menuItems.add(new MenuItemBean(R.drawable.home_btn_surronding, R.string.title_surrounding,
-            R.integer.title_surrounding));
-      menuItems.add(new MenuItemBean(R.drawable.home_btn_search, R.string.title_search, R.integer.title_search));
-      menuItems.add(new MenuItemBean(R.drawable.home_btn_map, R.string.title_map, R.integer.title_map));
-      menuItems.add(new MenuItemBean(R.drawable.home_btn_favorite, R.string.title_favorite, R.integer.title_favorite));
-      menuItems.add(new MenuItemBean(R.drawable.home_btn_info, R.string.title_info, R.integer.title_info));
-      menuItems.add(new MenuItemBean(R.drawable.home_btn_donate, R.string.title_donate, R.integer.title_donate));
+   private List<MenuItemBean> buildMenuItemList() {
+      addMenuItemToList(R.drawable.home_btn_today, R.string.title_today, R.integer.title_today);
+      addMenuItemToList(R.drawable.home_btn_surronding, R.string.title_surrounding, R.integer.title_surrounding);
+      addMenuItemToList(R.drawable.home_btn_search, R.string.title_search, R.integer.title_search);
+      addMenuItemToList(R.drawable.home_btn_map, R.string.title_map, R.integer.title_map);
+      addMenuItemToList(R.drawable.home_btn_favorite, R.string.title_favorite, R.integer.title_favorite);
+      addMenuItemToList(R.drawable.home_btn_info, R.string.title_info, R.integer.title_info);
+      addMenuItemToList(R.drawable.home_btn_donate, R.string.title_donate, R.integer.title_donate);
 
       return menuItems;
+   }
+
+   private void addMenuItemToList(int imageDrawable, int title, int tagId) {
+      menuItems.add(new MenuItemBean(imageDrawable, title, getResources().getInteger(tagId)));
    }
 }

@@ -118,6 +118,9 @@
 	<string name="b_show_preferences">Einstellungen</string>
 	
 	<!-- Preferences - Titles -->
+	<string name="pc_take_me_home">Bring mi ham! - Adresse</string>
+	<string name="etp_home_street_and_number" formatted="false">Straße \u0026 Hausnummer</string>
+	<string name="etp_home_zipcode_and_city" formatted="false">PLZ \u0026 Ort</string>
 	<string name="pc_general">Allgemein</string>
 	<string name="lp_access_mode">Zugriffsart</string>
 	<string name="lp_language">Sprache</string>

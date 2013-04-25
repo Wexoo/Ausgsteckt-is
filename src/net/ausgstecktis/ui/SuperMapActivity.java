@@ -75,9 +75,9 @@ public class SuperMapActivity extends MapActivity implements OnCreatePanelMenuLi
    protected void buildSlidingMenu() {
       SlidingMenu slidingMenu = new SlidingMenu(this, SlidingMenu.SLIDING_CONTENT);
       slidingMenu.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
-      slidingMenu.setTouchModeBehind(SlidingMenu.TOUCHMODE_FULLSCREEN);
       slidingMenu.setBehindOffsetRes(R.dimen.sliding_menu_behind_offset);
       slidingMenu.setMenu(new SlideMenuView(this));
+
    }
 
    public void onHomeClick(final View v) {

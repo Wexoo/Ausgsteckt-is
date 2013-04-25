@@ -67,6 +67,8 @@ public class SuperActivity extends OrmLiteBaseActivity<DBHelper> implements OnCr
       OnPreparePanelListener, OnMenuItemSelectedListener, OnActionModeStartedListener, OnActionModeFinishedListener {
 
    private static final String TAG = SuperActivity.class.getSimpleName();
+   private SlidingMenu slidingMenu;
+
    private static boolean newFavorite;
 
    @Override
@@ -87,15 +89,8 @@ public class SuperActivity extends OrmLiteBaseActivity<DBHelper> implements OnCr
    }
 
    protected void buildSlidingMenu() {
-      SlidingMenu slidingMenu = new SlidingMenu(this, SlidingMenu.SLIDING_CONTENT) {
-
-         @SuppressWarnings("unused")
-         public void onIconClick(final View v) {
-            SuperActivity.this.onIconClick(v);
-         }
-      };
+      slidingMenu = new SlidingMenu(this, SlidingMenu.SLIDING_CONTENT);
       slidingMenu.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
-      slidingMenu.setTouchModeBehind(SlidingMenu.TOUCHMODE_FULLSCREEN);
       slidingMenu.setBehindOffsetRes(R.dimen.sliding_menu_behind_offset);
       slidingMenu.setMenu(new SlideMenuView(this));
    }
@@ -277,6 +272,8 @@ public class SuperActivity extends OrmLiteBaseActivity<DBHelper> implements OnCr
             startActivity(new Intent(this, InfoActivity.class));
             break;
       }
+      if (slidingMenu.isMenuShowing())
+         slidingMenu.toggle();
    }
 
    private void showMobileNetworkIntent() {

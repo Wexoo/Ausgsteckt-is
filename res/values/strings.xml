@@ -119,6 +119,9 @@
 	<string name="b_show_preferences">Preferences</string>
 	
 	<!-- Preferences - Titles -->
+	<string name="pc_take_me_home">Take me home! - address</string>
+	<string name="etp_home_street_and_number" formatted="false">Street \u0026 Street-No.</string>
+	<string name="etp_home_zipcode_and_city" formatted="false">Zipcode \u0026 City</string>
 	<string name="pc_general">General</string>
 	<string name="lp_access_mode">Access Mode</string>
 	<string name="lp_language">Language</string>
@@ -149,7 +152,7 @@
 	<!-- Detail -->
 	<string name="detail_navigate"><u>Navigate to</u></string>
 	<string name="detail_opening_time_loading">Loading open times</string>
-	<string name="l_detail">Detailed View</string>
+	<string name="l_detail">Detail</string>
 	<string name="detail_no_calendar">No data available!</string>
 	
 	<!-- GPS Dialog -->
@@ -171,6 +174,9 @@
 	<!-- Preferences - Keys -->
 	<string name="lp_access_mode_key">access_mode</string>
 	<string name="p_export_db_to_sd_key">export_db_to_sd</string>
+	<string name="etp_home_street_and_number_key">street_and_streetno</string>
+	<string name="etp_home_zipcode_and_city_key">zipcode_and_city</string>
+	
 	
 	<!-- Preferences - Keys (not shown in preferences menu) -->
 	<string name="last_database_migration_key">last_database_migration</string>
