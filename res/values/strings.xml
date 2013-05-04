@@ -29,15 +29,12 @@
     <string name="title_donate"></string>
     
     <string name="title_result">Search results</string>
-    <string name="title_preferences">Preferences</string>
+    <string name="title_preferences">Settings</string>
     
     <!-- Tabs -->
      
     <!-- Description -->
-    <string name="description_logo">Ausgsteckt is</string>
     <string name="description_home">Home</string>
-    <string name="description_refresh">Refresh</string>
-    <string name="description_map">Map</string>
 
 	<!-- Toasts / Alerts / Error messages -->
 	<string name="toast_unknown_host">Connection error, please check your internet connection.</string>
@@ -55,8 +52,8 @@
 	<string name="alert_yes">Yes</string>
 	<string name="alert_no">No</string>
 	<string name="alert_neutral">Never</string>
-	<string name="alert_mobile_network_prefs">Network Preferences</string>
-	<string name="alert_wifi_prefs">WiFi Preferences</string>
+	<string name="alert_mobile_network_prefs">Network settings</string>
+	<string name="alert_wifi_prefs">WiFi settings</string>
 	<string name="alert_return">Back</string>
 	<string name="alert_exit">Close app</string>
 	<string name="alert_new_updates_available">New data available!\nHeurige:\n%1$d added\n%2$d updated\nHours:\n%3$d added\n%4$d updated\nWould you like to update?</string>
@@ -100,7 +97,6 @@
 	<!-- MenuItems -->
 	<string name="mi_info">Info</string>
 	<string name="mi_preferences">Settings</string>
-	<string name="mi_back">Back</string>
 	<string name="mi_show_details">Show details</string>
 	<string name="mi_show_on_map">Show on map</string>
 	<string name="mi_start_navigation">Start navigation</string>
@@ -112,11 +108,13 @@
 	<string name="b_call">Call</string>
 	<string name="b_dial_phone_number">Call</string>
 	<string name="b_visit_website">Visit website</string>
+	<string name="b_visit_our_website">Visit our website</string>
 	<string name="b_send_mail">Send mail</string>
+	<string name="b_send_us_mail">Send us a mail</string>
 	<string name="b_switch_to_intents">Switch to <i>intents</i></string>
 	<string name="b_switch_to_search">Switch to <i>search</i></string>
 	<string name="b_choose_date">By Date</string>
-	<string name="b_show_preferences">Preferences</string>
+	<string name="b_settings">Settings</string>
 	
 	<!-- Preferences - Titles -->
 	<string name="pc_take_me_home">Take me home! - address</string>
@@ -130,6 +128,9 @@
 	<string name="lp_update_mode">Behavior on new data</string>
 	<string name="p_manual_update">Update now</string>
 	<string name="p_export_db_to_sd">Export SQLite DB to SD Card</string>
+	<string name="h_powered_by">Powered by</string>
+	<string name="pc_partners">Partners</string>
+	<string name="pc_used_frameworks">Used frameworks</string>
 
 	<!-- Preferences - Summaries -->
 	<string name="lp_access_mode_sum">Current mode:</string>
@@ -137,6 +138,12 @@
 	<string name="lp_storage_mode_sum">Current:</string>
 	<string name="lp_update_mode_sum">Current bahavior:</string>
 	<string name="p_manual_update_sum">Last update:</string>	
+	
+	<string name="pc_general_sum">Basic settings</string>
+	<string name="pc_take_me_home_sum">Your home address - only saved locally!</string>
+	<string name="b_visit_our_website_sum">Get more info about this app</string>
+	<string name="b_send_us_mail_sum">Send us feedback, bugs, beer invitations&#8230;</string>
+	<string name="h_powered_by_sum">Thanks goes out to&#8230;</string>
 	
 	<!-- Preferences - Summaries values -->
 	<string name="p_manual_update_in_progress">Currently running</string>
@@ -199,5 +206,4 @@
     
     <!-- ACRA -->
     <string name="crash_toast_text">Sorry I crashed, I\'m rebooting as soon as possible!</string>
-
 </resources>

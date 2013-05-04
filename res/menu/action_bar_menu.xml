@@ -16,28 +16,16 @@
 	You should have received a copy of the GNU General Public License
 	along with this program.  If not, see <http://www.gnu.org/licenses/>.
 -->
-<LinearLayout
-	xmlns:android="http://schemas.android.com/apk/res/android"
-	style="@style/TitleBar">
-	
-    <!-- home button -->
-	<ImageButton style="@style/TitleBarAction"
-		android:contentDescription="@string/description_home"
-		android:src="@drawable/ic_title_home"
-		android:onClick="onHomeClick" />
-	
-	<ImageView style="@style/TitleBarSeparator" />
-	
-	<!-- title --> 
-	<TextView style="@style/TitleBarText" />
-	
-	<ImageView 
-		style="@style/TitleBarSeparator" />
-	
-	<!-- quicksearch button -->
-	<ImageButton 
-		style="@style/TitleBarAction"
-		android:contentDescription="@string/description_search"
-		android:src="@drawable/ic_title_search"
-		android:onClick="onQuickSearchClick" />
-</LinearLayout>
+<menu
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item 
+    	android:icon="@android:drawable/ic_menu_preferences" 
+    	android:id="@+id/mi_preferences" 
+    	android:title="@string/b_settings" 
+    	android:showAsAction="ifRoom"/>
+    <item 
+    	android:icon="@android:drawable/ic_menu_info_details" 
+    	android:id="@+id/mi_info" 
+    	android:title="@string/mi_info" 
+    	android:showAsAction="ifRoom" />
+</menu>

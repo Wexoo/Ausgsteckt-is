@@ -74,9 +74,13 @@ public class SuperActivity extends OrmLiteBaseActivity<DBHelper> implements OnCr
    @Override
    protected void onCreate(final Bundle savedInstanceState) {
       //ABS Features - must be requested before onCreate call
-      //      requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
-      requestWindowFeature(Window.FEATURE_PROGRESS);
+      requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
       super.onCreate(savedInstanceState);
+
+      if (getSupportActionBar() != null) {
+         getSupportActionBar().setDisplayShowHomeEnabled(true);
+         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+      }
 
       checkOnlineStatusAndSwitchModeIfNecessary();
    }
@@ -135,7 +139,7 @@ public class SuperActivity extends OrmLiteBaseActivity<DBHelper> implements OnCr
       switch (idOfElement){
       // Show detail activity
          case R.id.mi_show_details:
-            startActivity(new Intent(SuperActivity.this, DetailActivity.class));
+            startActivity(new Intent(this, DetailActivity.class));
             break;
          // Call current Heurigen
          case R.id.mi_call:
@@ -571,6 +575,8 @@ public class SuperActivity extends OrmLiteBaseActivity<DBHelper> implements OnCr
    }
 
    public boolean onCreateOptionsMenu(Menu menu) {
+      MenuInflater inflater = getSupportMenuInflater();
+      inflater.inflate(R.menu.action_bar_menu, menu);
       return true;
    }
 
@@ -593,7 +599,19 @@ public class SuperActivity extends OrmLiteBaseActivity<DBHelper> implements OnCr
    }
 
    public boolean onOptionsItemSelected(MenuItem item) {
-      return false;
+      switch (item.getItemId()){
+         case android.R.id.home:
+            // app icon in action bar clicked
+            slidingMenu.toggle();
+            break;
+         case R.id.mi_info:
+            startActivity(new Intent(this, InfoActivity.class));
+            break;
+         case R.id.mi_preferences:
+            startActivity(new Intent(this, PreferencesActivity.class));
+            break;
+      }
+      return true;
    }
 
    ///////////////////////////////////////////////////////////////////////////

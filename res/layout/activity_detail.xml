@@ -20,7 +20,7 @@
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	android:layout_width="fill_parent"
 	android:layout_height="fill_parent"
-	android:orientation="vertical">
+	android:orientation="vertical" xmlns:tools="http://schemas.android.com/tools">
 	
 		<LinearLayout
 			android:layout_width="fill_parent"
@@ -39,12 +39,15 @@
 			  	android:layout_marginRight="5dip"
 			  	android:visibility="gone" >
 				<TableRow>
+
 				   	<TextView
-				   		android:id="@+id/tv_detail_description"
-				   		android:layout_width="wrap_content" 
-				   		android:layout_height="wrap_content" 
-				   		style="@style/DetailText" 
-				   		android:gravity="center_vertical" />
+				   	    android:id="@+id/tv_detail_description"
+				   	    style="@style/DetailText"
+				   	    android:layout_width="wrap_content"
+				   	    android:layout_height="wrap_content"
+				   	    android:gravity="center_vertical"
+				   	    tools:ignore="SelectableText" />
+
 				</TableRow>
 			</TableLayout>
 			

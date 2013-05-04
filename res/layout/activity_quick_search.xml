@@ -21,19 +21,6 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
 
-    <LinearLayout style="@style/TitleBar">
-       
-
-        <ImageView style="@style/TitleBarSeparator" />
-        <TextView style="@style/TitleBarText" />
-
-        <ImageView style="@style/TitleBarSeparator" />
-        <ImageButton style="@style/TitleBarAction"
-            android:contentDescription="@string/description_search"
-            android:src="@drawable/ic_title_search"
-            android:onClick="onSearchClick" />
-    </LinearLayout>
-
     <TabHost
         android:id="@android:id/tabhost"
         android:layout_width="fill_parent"

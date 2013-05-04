@@ -16,18 +16,16 @@
 	You should have received a copy of the GNU General Public License
 	along with this program.  If not, see <http://www.gnu.org/licenses/>.
 -->
-<menu
+<PreferenceScreen
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item 
-    	android:icon="@android:drawable/ic_menu_info_details" 
-    	android:id="@+id/mi_info" 
-    	android:title="@string/mi_info" />
-    <item 
-    	android:icon="@android:drawable/ic_menu_preferences" 
-    	android:id="@+id/mi_preferences" 
-    	android:title="@string/b_show_preferences" />
-    <item 
-    	android:icon="@android:drawable/ic_menu_revert" 
-    	android:id="@+id/mi_back" 
-    	android:title="@string/mi_back" />
-</menu>
+    
+  	<PreferenceCategory
+  		android:title="@string/pc_general">
+  		<ListPreference
+  			android:title="@string/lp_access_mode"
+  			android:key="@string/lp_access_mode_key"
+  			android:entries="@array/lp_access_mode_strings"
+  			android:entryValues="@array/lp_access_modes"
+  			android:defaultValue="online"/>
+  	</PreferenceCategory>
+</PreferenceScreen>

@@ -18,37 +18,39 @@
 
 package net.ausgstecktis.ui;
 
+import java.util.List;
+
 import net.ausgstecktis.R;
 import net.ausgstecktis.DAL.ExportDatabaseFileTask;
 import net.ausgstecktis.DAL.ProxyFactory;
 import net.ausgstecktis.util.Log;
 import net.ausgstecktis.util.UIUtils;
+import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.os.Bundle;
 import android.preference.ListPreference;
-import android.preference.Preference;
-import android.preference.Preference.OnPreferenceClickListener;
 import android.preference.PreferenceActivity;
+import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
-import android.view.KeyEvent;
 
 /**
  * @author wexoo
  */
+@SuppressLint("NewApi")
 public class PreferencesActivity extends PreferenceActivity implements OnSharedPreferenceChangeListener {
 
    private static final String TAG = PreferencesActivity.class.getSimpleName();
 
    private static String LP_ACCESS_MODE_KEY;
-   private static String P_EXPORT_DB_KEY;
+   //   private static String P_EXPORT_DB_KEY;
 
    private ListPreference accessModePreference;
    private static SharedPreferences sharedPrefs;
-   private Preference exportDbPreference;
+
+   //   private Preference exportDbPreference;
 
    public static SharedPreferences getSharedPrefs() {
       if (PreferencesActivity.sharedPrefs == null)
@@ -59,28 +61,16 @@ public class PreferencesActivity extends PreferenceActivity implements OnSharedP
    @Override
    protected void onCreate(final Bundle savedInstanceState) {
       super.onCreate(savedInstanceState);
-      addPreferencesFromResource(R.xml.preferences);
+   }
 
-      PreferencesActivity.LP_ACCESS_MODE_KEY = this.getString(R.string.lp_access_mode_key);
-      accessModePreference = (ListPreference) findPreference(PreferencesActivity.LP_ACCESS_MODE_KEY);
-
-      PreferencesActivity.P_EXPORT_DB_KEY = this.getString(R.string.p_export_db_to_sd_key);
-      exportDbPreference = findPreference(PreferencesActivity.P_EXPORT_DB_KEY);
-      exportDbPreference.setOnPreferenceClickListener(new OnPreferenceClickListener() {
-
-         @Override
-         public boolean onPreferenceClick(final Preference preference) {
-            PreferencesActivity.this.exportDatabase();
-            return true;
-         }
-      });
+   @Override
+   public void onBuildHeaders(List<Header> target) {
+      loadHeadersFromResource(R.xml.preference_headers, target);
    }
 
    @Override
    protected void onResume() {
       super.onResume();
-
-      updateSummary(PreferencesActivity.LP_ACCESS_MODE_KEY);
 
       PreferencesActivity.getSharedPrefs().registerOnSharedPreferenceChangeListener(this);
    }
@@ -90,6 +80,51 @@ public class PreferencesActivity extends PreferenceActivity implements OnSharedP
       super.onPause();
 
       PreferencesActivity.getSharedPrefs().unregisterOnSharedPreferenceChangeListener(this);
+   }
+
+   /**
+    * Basic Preferences
+    */
+   public static class GeneralPrefs extends PreferenceFragment {
+      @Override
+      public void onCreate(Bundle savedInstanceState) {
+         super.onCreate(savedInstanceState);
+
+         // Make sure default values are applied.  In a real app, you would
+         // want this in a shared function that is used to retrieve the
+         // SharedPreferences wherever they are needed.
+         //           PreferenceManager.setDefaultValues(getActivity(),
+         //                   R.xml.advanced_preferences, false);
+
+         // Load the preferences from an XML resource
+         addPreferencesFromResource(R.xml.general_prefs);
+      }
+   }
+
+   /**
+    * Prefs for TakeMeHome - Feature
+    */
+   public static class TakeMeHomePrefs extends PreferenceFragment {
+      @Override
+      public void onCreate(Bundle savedInstanceState) {
+         super.onCreate(savedInstanceState);
+
+         // Load the preferences from an XML resource
+         addPreferencesFromResource(R.xml.take_me_home_prefs);
+      }
+   }
+
+   /**
+    * Prefs for TakeMeHome - Feature
+    */
+   public static class PoweredByFragment extends PreferenceFragment {
+      @Override
+      public void onCreate(Bundle savedInstanceState) {
+         super.onCreate(savedInstanceState);
+
+         // Load the preferences from an XML resource
+         addPreferencesFromResource(R.xml.powered_by_links);
+      }
    }
 
    public static String getStringPreference(final Integer keyCode, final String key) {
@@ -146,12 +181,12 @@ public class PreferencesActivity extends PreferenceActivity implements OnSharedP
          UIUtils.showShortToast("External storage is not available, unable to export data.");
    }
 
-   @Override
-   public boolean onKeyDown(final int keyCode, final KeyEvent event) {
-      if ((keyCode == KeyEvent.KEYCODE_BACK)) {
-         startActivity(new Intent(this, HomeActivity.class));
-         return true;
-      }
-      return super.onKeyDown(keyCode, event);
-   }
+   //   @Override
+   //   public boolean onKeyDown(final int keyCode, final KeyEvent event) {
+   //      if ((keyCode == KeyEvent.KEYCODE_BACK)) {
+   //         startActivity(new Intent(this, HomeActivity.class));
+   //         return true;
+   //      }
+   //      return super.onKeyDown(keyCode, event);
+   //   }
 }

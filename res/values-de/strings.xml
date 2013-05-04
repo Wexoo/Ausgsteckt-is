@@ -25,23 +25,15 @@
     <string name="title_search">Suche</string>
     <string name="title_map">Karte</string>
     <string name="title_favorite">Favoriten</string>
-    <string name="title_info">Information</string>
+    <string name="title_info">Info</string>
     <string name="title_donate"></string>
 
     <string name="title_result">Suchergebnisse</string>
     <string name="title_preferences">Einstellungen</string>
-    <string name="title_quick_search">Suche</string>
-    
-    <!-- Tabs -->
-	<string name="tab_general">Übersicht</string>
-	<string name="tab_search">Suche</string>
-	<string name="tab_detail">Details</string>
-	<string name="tab_map">Karte</string>
 	
 	<!-- Description -->
     <string name="description_logo">Ausgsteckt is</string>
     <string name="description_home">Home</string>
-    <string name="description_search">Suche</string>
     <string name="description_refresh">Aktualisieren</string>
     <string name="description_map">Karte</string>
     
@@ -98,7 +90,7 @@
 	<!-- MenuItems -->
 	<string name="mi_info">Info</string>
 	<string name="mi_preferences">Einstellungen</string>
-	<string name="mi_back">Zurück</string>
+	<string name="close">Zurück</string>
 	<string name="mi_show_details">Details anzeigen</string>
 	<string name="mi_show_on_map">Auf Karte zeigen</string>
 	<string name="mi_start_navigation">Navigation starten</string>
@@ -110,12 +102,13 @@
     <string name="b_call">Anrufen</string>
 	<string name="b_dial_phone_number">Anrufen</string>
 	<string name="b_visit_website">Zur Webseite</string>
+	<string name="b_visit_our_website">Besuche unsere Webseite</string>
 	<string name="b_send_mail">Mail senden</string>
+	<string name="b_send_us_mail">Schreib uns</string>
 	<string name="b_switch_to_intents">Zu <i>Intents</i> wechseln</string>
 	<string name="b_switch_to_search">Zur <i>Suche</i> wechseln</string>
-	<string name="b_search_button">Suche</string>
 	<string name="b_choose_date">Nach Datum</string>
-	<string name="b_show_preferences">Einstellungen</string>
+	<string name="b_settings">Einstellungen</string>
 	
 	<!-- Preferences - Titles -->
 	<string name="pc_take_me_home">Bring mi ham! - Adresse</string>
@@ -129,6 +122,8 @@
 	<string name="lp_update_mode">Verhalten bei neuen Daten</string>
 	<string name="p_manual_update">Jetzt aktualisieren</string>
 	<string name="p_export_db_to_sd">Export SQLite DB auf SD Card</string>
+	<string name="pc_partners">Partner</string>
+	<string name="pc_used_frameworks">Verwendete Frameworks</string>
 	
 	<!-- Preferences - Summaries -->
 	<string name="lp_access_mode_sum">Aktuelle Art:</string>
@@ -136,6 +131,12 @@
 	<string name="lp_storage_mode_sum">Aktuell:</string>
 	<string name="lp_update_mode_sum">Aktuelles Verhalten:</string>
 	<string name="p_manual_update_sum">Letzte Aktualisierung:</string>
+	
+	<string name="pc_general_sum">Basiseinstellungen</string>
+	<string name="pc_take_me_home_sum">Deine Adresse - wird nur lokal gespeichert!</string>
+	<string name="b_visit_our_website_sum">Infoseite über diese App</string>
+	<string name="b_send_us_mail_sum">Feedback, Fehler, Biereinladungen,&#8230;</string>
+	<string name="h_powered_by_sum">Vielen Dank an &#8230;</string>
 	
 	<!-- Preferences - Summaries values -->
 	<string name="p_manual_update_in_progress">Läuft gerade</string>
