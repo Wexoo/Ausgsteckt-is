@@ -19,97 +19,51 @@
 package net.ausgstecktis.util;
 
 /**
- * The Class SQLiteCondition.
+ * SQLiteCondition.java
  * 
  * @author wexoo
  * @version Aug 27, 2011
  */
 public class SQLiteCondition {
 
-   /** The operator. */
    private LogicalOperator operator;
 
-   /** The condition. */
    private String condition;
 
-   /** The parenthesis. */
    private ParenthesisBehaviour parenthesis;
 
-   /**
-    * Instantiates a new sQ lite condition.
-    * 
-    * @param operator the operator
-    * @param condition the condition
-    */
    public SQLiteCondition(final LogicalOperator operator, final String condition) {
       this.operator = operator;
       this.condition = condition;
-      this.parenthesis = ParenthesisBehaviour.NONE;
+      parenthesis = ParenthesisBehaviour.NONE;
    }
 
-   /**
-    * Instantiates a new sQ lite condition.
-    * 
-    * @param operator the operator
-    * @param condition the condition
-    * @param parenthesis the parenthesis
-    */
    public SQLiteCondition(final LogicalOperator operator, final String condition, final ParenthesisBehaviour parenthesis) {
       this.operator = operator;
       this.condition = condition;
       this.parenthesis = parenthesis;
    }
 
-   /**
-    * Gets the operator.
-    * 
-    * @return the operator
-    */
    public LogicalOperator getOperator() {
-      return this.operator;
+      return operator;
    }
 
-   /**
-    * Gets the condition.
-    * 
-    * @return the condition
-    */
    public String getCondition() {
-      return this.condition;
+      return condition;
    }
 
-   /**
-    * Gets the parenthesis.
-    * 
-    * @return the parenthesis
-    */
    public ParenthesisBehaviour getParenthesis() {
-      return this.parenthesis;
+      return parenthesis;
    }
 
-   /**
-    * Sets the operator.
-    * 
-    * @param operator the new operator
-    */
    public void setOperator(final LogicalOperator operator) {
       this.operator = operator;
    }
 
-   /**
-    * Sets the condition.
-    * 
-    * @param condition the new condition
-    */
    public void setCondition(final String condition) {
       this.condition = condition;
    }
 
-   /**
-    * Sets the parenthesis.
-    * 
-    * @param parenthesis the new parenthesis
-    */
    public void setParenthesis(final ParenthesisBehaviour parenthesis) {
       this.parenthesis = parenthesis;
    }

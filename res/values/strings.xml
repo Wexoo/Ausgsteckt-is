@@ -27,6 +27,7 @@
     <string name="title_favorite">Favorites</string>
     <string name="title_info">Information</string>
     <string name="title_donate"></string>
+    <string name="title_take_me_home">Take me home!</string>
     
     <string name="title_result">Search results</string>
     <string name="title_preferences">Settings</string>
@@ -95,7 +96,7 @@
 	
 		
 	<!-- MenuItems -->
-	<string name="mi_info">Info</string>
+	<string name="mi_info">App info</string>
 	<string name="mi_preferences">Settings</string>
 	<string name="mi_show_details">Show details</string>
 	<string name="mi_show_on_map">Show on map</string>
@@ -131,6 +132,7 @@
 	<string name="h_powered_by">Powered by</string>
 	<string name="pc_partners">Partners</string>
 	<string name="pc_used_frameworks">Used frameworks</string>
+	<string name="h_submit_heurigen">Submit new Heurigen</string>
 
 	<!-- Preferences - Summaries -->
 	<string name="lp_access_mode_sum">Current mode:</string>
@@ -144,6 +146,8 @@
 	<string name="b_visit_our_website_sum">Get more info about this app</string>
 	<string name="b_send_us_mail_sum">Send us feedback, bugs, beer invitations&#8230;</string>
 	<string name="h_powered_by_sum">Thanks goes out to&#8230;</string>
+	<string name="h_info_sum">Some stats about the app</string>
+	<string name="h_submit_heurigen_sum">Register a missing Heurigen</string>
 	
 	<!-- Preferences - Summaries values -->
 	<string name="p_manual_update_in_progress">Currently running</string>
@@ -169,7 +173,6 @@
 	
 	<!-- Info -->
 	<string name="info_about_us">About Us</string>
-	<string name="info_submit_heurigen">Submit New Heurigen</string>
 	<string name="duration_last_update">Duration of latest update</string>
 	<string name="info_latest_update">Latest update</string>
 	<string name="info_no_database">Never updated</string>
@@ -183,7 +186,6 @@
 	<string name="p_export_db_to_sd_key">export_db_to_sd</string>
 	<string name="etp_home_street_and_number_key">street_and_streetno</string>
 	<string name="etp_home_zipcode_and_city_key">zipcode_and_city</string>
-	
 	
 	<!-- Preferences - Keys (not shown in preferences menu) -->
 	<string name="last_database_migration_key">last_database_migration</string>

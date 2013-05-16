@@ -66,7 +66,7 @@ public class SlideMenuView extends RelativeLayout {
       addMenuItemToList(R.drawable.home_btn_search, R.string.title_search, R.integer.title_search);
       addMenuItemToList(R.drawable.home_btn_map, R.string.title_map, R.integer.title_map);
       addMenuItemToList(R.drawable.home_btn_favorite, R.string.title_favorite, R.integer.title_favorite);
-      addMenuItemToList(R.drawable.home_btn_info, R.string.title_info, R.integer.title_info);
+      addMenuItemToList(R.drawable.ic_menu_home, R.string.title_take_me_home, R.integer.title_take_me_home);
       addMenuItemToList(R.drawable.home_btn_donate, R.string.title_donate, R.integer.title_donate);
 
       return menuItems;

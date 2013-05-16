@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    
+    <TextView
+    		android:id="@+android:id/title"
+            style="@style/InfoText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" 
+            android:textIsSelectable="true"/>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="5dip"
+            android:layout_marginRight="5dip"
+            android:background="@drawable/black_white_gradient" />
+
+        <TextView
+            android:id="@+android:id/summary"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dip"
+            android:layout_marginTop="5dip" 
+            android:textIsSelectable="true"/>
+
+    <!-- Preference should place its actual preference widget here. -->
+    <LinearLayout android:id="@+android:id/widget_frame"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:gravity="center_vertical"
+        android:orientation="vertical" />
+
+</LinearLayout>

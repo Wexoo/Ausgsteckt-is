@@ -42,7 +42,11 @@ public class HomeActivity extends SuperActivity {
 
    @Override
    public void onBackPressed() {
-      suspendApp();
-      super.onBackPressed();
+      if (slidingMenu.isMenuShowing())
+         slidingMenu.toggle();
+      else {
+         suspendApp();
+         super.onBackPressed();
+      }
    }
 }

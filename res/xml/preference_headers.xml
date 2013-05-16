@@ -24,22 +24,38 @@
   		android:icon="@drawable/ic_menu_manage"
   		android:title="@string/pc_general"
   		android:summary="@string/pc_general_sum"
+  		android:textColor="@color/title_background"
   		/>
   	<header
 		android:fragment="net.ausgstecktis.ui.PreferencesActivity$TakeMeHomePrefs"
   		android:icon="@android:drawable/ic_menu_directions"
   		android:title="@string/pc_take_me_home"
   		android:summary="@string/pc_take_me_home_sum"
+  		android:textColor="@color/title_background"
   		/>
-  	<header android:icon="@android:drawable/ic_menu_info_details"
-            android:title="@string/b_visit_our_website"
-            android:summary="@string/b_visit_our_website_sum">
+    <header
+		android:fragment="net.ausgstecktis.ui.PreferencesActivity$AppInfoFragment"
+  		android:icon="@android:drawable/ic_menu_info_details"
+  		android:title="@string/mi_info"
+  		android:summary="@string/h_info_sum" />
+  	<header 
+  	    android:icon="@android:drawable/ic_menu_edit"
+        android:title="@string/h_submit_heurigen"
+        android:summary="@string/h_submit_heurigen_sum">
         <intent android:action="android.intent.action.VIEW"
-                android:data="http://ausgstecktis.net" />
+                android:data="@string/tv_submit_new_heurigen" />
     </header>
-  	<header android:icon="@android:drawable/sym_action_email"
-            android:title="@string/b_send_us_mail"
-            android:summary="@string/b_send_us_mail_sum">
+  	<header 
+  	    android:icon="@drawable/ic_menu_find"
+        android:title="@string/b_visit_our_website"
+        android:summary="@string/b_visit_our_website_sum">
+        <intent android:action="android.intent.action.VIEW"
+                android:data="@string/tv_visit_us" />
+    </header>
+  	<header 
+  	    android:icon="@android:drawable/sym_action_email"
+        android:title="@string/b_send_us_mail"
+        android:summary="@string/b_send_us_mail_sum">
         <intent android:action="android.intent.action.VIEW"
                 android:data="mailto:android@geekosphere.org" />
     </header>

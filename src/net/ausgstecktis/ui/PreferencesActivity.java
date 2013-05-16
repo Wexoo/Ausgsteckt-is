@@ -35,6 +35,7 @@ import android.preference.ListPreference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
+import android.view.View;
 
 /**
  * @author wexoo
@@ -115,7 +116,7 @@ public class PreferencesActivity extends PreferenceActivity implements OnSharedP
    }
 
    /**
-    * Prefs for TakeMeHome - Feature
+    * Credit and links to partners and used frameworks
     */
    public static class PoweredByFragment extends PreferenceFragment {
       @Override
@@ -125,6 +126,49 @@ public class PreferencesActivity extends PreferenceActivity implements OnSharedP
          // Load the preferences from an XML resource
          addPreferencesFromResource(R.xml.powered_by_links);
       }
+   }
+
+   /**
+    * Some stats of the app
+    */
+   public static class AppInfoFragment extends PreferenceFragment {
+      @Override
+      public void onCreate(Bundle savedInstanceState) {
+         super.onCreate(savedInstanceState);
+
+         // Load the preferences from an XML resource
+         addPreferencesFromResource(R.xml.app_info);
+      }
+
+      @Override
+      public void onViewCreated(View view, Bundle savedInstanceState) {
+         updateAppInfoViews(this);
+      }
+
+      public void updateAppInfoViews(PreferenceFragment fragment) {
+         if (!PreferencesActivity.getStringPreference(R.string.last_database_migration_key, null).equals(""))
+            fragment.findPreference(getString(R.string.info_latest_update))
+                  .setSummary(PreferencesActivity.getStringPreference(R.string.last_database_migration_key, null));
+         //         else
+         //            ((TextView) findViewById(R.id.tv_local_database_version)).setText(R.string.info_no_database);
+
+         if (!PreferencesActivity.getStringPreference(R.string.database_migration_duration_key, null).equals(""))
+            fragment.findPreference(getString(R.string.duration_last_update))
+                  .setSummary(
+                        PreferencesActivity.getStringPreference(R.string.database_migration_duration_key, null) + " "
+                              + getText(R.string.time_entity));
+         //         else
+         //            ((TextView) findViewById(R.id.tv_duration_last_update)).setText(R.string.info_no_database);
+      }
+
+   }
+
+   public static String getStringPreference(final Context appContext, final Integer keyCode) {
+      return getStringPreference(appContext, keyCode, null);
+   }
+
+   public static String getStringPreference(final Integer keyCode) {
+      return getStringPreference(keyCode, null);
    }
 
    public static String getStringPreference(final Integer keyCode, final String key) {

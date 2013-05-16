@@ -27,6 +27,7 @@
     <string name="title_favorite">Favoriten</string>
     <string name="title_info">Info</string>
     <string name="title_donate"></string>
+    <string name="title_take_me_home">Bring mi ham!</string>
 
     <string name="title_result">Suchergebnisse</string>
     <string name="title_preferences">Einstellungen</string>
@@ -88,7 +89,7 @@
 	<string name="include_date_to_search">Zeige nur wenn offen am</string>
 
 	<!-- MenuItems -->
-	<string name="mi_info">Info</string>
+	<string name="mi_info">App Info</string>
 	<string name="mi_preferences">Einstellungen</string>
 	<string name="close">Zurück</string>
 	<string name="mi_show_details">Details anzeigen</string>
@@ -124,6 +125,7 @@
 	<string name="p_export_db_to_sd">Export SQLite DB auf SD Card</string>
 	<string name="pc_partners">Partner</string>
 	<string name="pc_used_frameworks">Verwendete Frameworks</string>
+	<string name="h_submit_heurigen">Neuen Heurigen einreichen</string>
 	
 	<!-- Preferences - Summaries -->
 	<string name="lp_access_mode_sum">Aktuelle Art:</string>
@@ -137,6 +139,8 @@
 	<string name="b_visit_our_website_sum">Infoseite über diese App</string>
 	<string name="b_send_us_mail_sum">Feedback, Fehler, Biereinladungen,&#8230;</string>
 	<string name="h_powered_by_sum">Vielen Dank an &#8230;</string>
+	<string name="h_info_sum">Einige Statistiken zur App</string>
+	<string name="h_submit_heurigen">Trage einen fehlenden Heurigen ein</string>
 	
 	<!-- Preferences - Summaries values -->
 	<string name="p_manual_update_in_progress">Läuft gerade</string>
@@ -162,7 +166,6 @@
 	<!-- Info -->
 	<string name="info_about_us">Über uns</string>
 	<string name="duration_last_update">Dauer der letzten Aktualisierung</string>
-	<string name="info_submit_heurigen">Neuen Heurigen einreichen</string>
 	<string name="info_latest_update">Letzte Aktulisierung</string>
 	<string name="info_no_database">Noch nie aktualisiert</string>
 	<string name="time_entity">Minuten</string>

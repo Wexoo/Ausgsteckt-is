@@ -6,5 +6,6 @@
 	<integer name="title_map">4</integer>
 	<integer name="title_favorite">5</integer>
 	<integer name="title_info">6</integer>
+	<integer name="title_take_me_home">6</integer>
 	<integer name="title_donate">7</integer>
 </resources>

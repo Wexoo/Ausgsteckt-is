@@ -29,12 +29,14 @@ import net.ausgstecktis.ui.slidemenu.SlideMenuView;
 import net.ausgstecktis.util.IntentAlertDialogBuilder;
 import net.ausgstecktis.util.Log;
 import net.ausgstecktis.util.UIUtils;
+import android.annotation.SuppressLint;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceActivity;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.KeyEvent;
@@ -63,11 +65,12 @@ import com.slidingmenu.lib.SlidingMenu;
  * 
  * @author wexoo
  */
+@SuppressLint("InlinedApi")
 public class SuperActivity extends OrmLiteBaseActivity<DBHelper> implements OnCreatePanelMenuListener,
       OnPreparePanelListener, OnMenuItemSelectedListener, OnActionModeStartedListener, OnActionModeFinishedListener {
 
    private static final String TAG = SuperActivity.class.getSimpleName();
-   private SlidingMenu slidingMenu;
+   protected SlidingMenu slidingMenu;
 
    private static boolean newFavorite;
 
@@ -273,7 +276,11 @@ public class SuperActivity extends OrmLiteBaseActivity<DBHelper> implements OnCr
             // used to quickly export database to external memory for testing
             //            ExportDatabaseFileTask exportTask = new ExportDatabaseFileTask();
             //            exportTask.execute();
-            startActivity(new Intent(this, InfoActivity.class));
+
+            //            startActivity(new Intent(this, InfoActivity.class));
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("google.navigation:q="
+                  + PreferencesActivity.getStringPreference(this, R.string.etp_home_street_and_number_key) + " "
+                  + PreferencesActivity.getStringPreference(this, R.string.etp_home_zipcode_and_city_key))));
             break;
       }
       if (slidingMenu.isMenuShowing())
@@ -380,8 +387,12 @@ public class SuperActivity extends OrmLiteBaseActivity<DBHelper> implements OnCr
 
    @Override
    public void onBackPressed() {
-      cancelAllAsyncTasksOfActivity();
-      super.onBackPressed();
+      if (slidingMenu.isMenuShowing())
+         slidingMenu.toggle();
+      else {
+         cancelAllAsyncTasksOfActivity();
+         super.onBackPressed();
+      }
    }
 
    protected void cancelAllAsynTasks(AsyncTask<?, ?, ?>... asyncTasks) {
@@ -605,7 +616,10 @@ public class SuperActivity extends OrmLiteBaseActivity<DBHelper> implements OnCr
             slidingMenu.toggle();
             break;
          case R.id.mi_info:
-            startActivity(new Intent(this, InfoActivity.class));
+            Intent intent = new Intent(this, PreferencesActivity.class);
+            intent.putExtra(PreferenceActivity.EXTRA_SHOW_FRAGMENT, PreferencesActivity.AppInfoFragment.class.getName());
+            intent.putExtra(PreferenceActivity.EXTRA_NO_HEADERS, true);
+            startActivity(intent);
             break;
          case R.id.mi_preferences:
             startActivity(new Intent(this, PreferencesActivity.class));

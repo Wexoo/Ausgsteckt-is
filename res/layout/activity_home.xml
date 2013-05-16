@@ -89,11 +89,11 @@
                 android:tag="@integer/title_favorite"
                 android:onClick="onIconClick" />
             <Button 
-            	android:id="@+id/home_btn_info"
+            	android:id="@+id/home_btn_take_me_home"
                 style="@style/HomeButton"
-                android:drawableTop="@drawable/home_btn_info"
-                android:text="@string/title_info"
-                android:tag="@integer/title_info"
+                android:drawableTop="@drawable/ic_menu_home"
+                android:text="@string/title_take_me_home"
+                android:tag="@integer/title_take_me_home"
                 android:onClick="onIconClick" />
         </LinearLayout>
     </LinearLayout>
