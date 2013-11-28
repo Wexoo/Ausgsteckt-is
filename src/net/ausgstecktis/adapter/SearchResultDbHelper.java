@@ -29,12 +29,9 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.provider.BaseColumns;
 
 /**
- * A database helper to create the db table with heurigen
  * SearchResultDbHelper.java
  * 
  * @author naikon
- * @since 1.0.0 Aug 5, 2011
- * @version 1.0.0 Aug 5, 2011
  */
 public class SearchResultDbHelper extends SQLiteOpenHelper {
 
@@ -52,19 +49,14 @@ public class SearchResultDbHelper extends SQLiteOpenHelper {
 
    /**
     * Instantiates a new search result db helper.
-    * 
-    * @param context the context
     */
    public SearchResultDbHelper(final Context context) {
       super(context, SearchResultDbHelper.DATABASE_NAME, null, SearchResultDbHelper.DATABASE_VERSION);
    }
 
    /**
-    * {@inheritDoc}
-    * 
     * @see android.database.sqlite.SQLiteOpenHelper#onCreate(android.database.sqlite.SQLiteDatabase)
     */
-
    @Override
    public void onCreate(final SQLiteDatabase db) {
       db.execSQL("create table " + SearchResultDbHelper.TABLE_NAME_HEURIGER + " (" +
@@ -80,11 +72,8 @@ public class SearchResultDbHelper extends SQLiteOpenHelper {
    }
 
    /**
-    * {@inheritDoc}
-    * 
     * @see android.database.sqlite.SQLiteOpenHelper#onUpgrade(android.database.sqlite.SQLiteDatabase, int, int)
     */
-
    @Override
    public void onUpgrade(final SQLiteDatabase db, final int oldVersion, final int newVersion) {
       Log.d("", "---------> drop table");

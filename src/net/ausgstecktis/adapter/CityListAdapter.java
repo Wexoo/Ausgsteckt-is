@@ -18,57 +18,33 @@
 
 package net.ausgstecktis.adapter;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import net.ausgstecktis.R;
 import net.ausgstecktis.DAL.ProxyFactory;
 import net.ausgstecktis.entities.City;
+import net.wexoo.organicdroid.adapter.AbstractBaseAdapter;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 /**
  * CityListAdapter.java
- * Used to displays the cities in a list view
  * 
- * @author naikon
- * @version Aug 26, 2011
+ * @author wexoo
  */
-public class CityListAdapter extends BaseAdapter {
-
-   private final Context context;
-
-   private ArrayList<City> cityList;
+public class CityListAdapter extends AbstractBaseAdapter<City> {
 
    public CityListAdapter(final Context context) {
-      this.context = context;
-      cityList = ProxyFactory.getProxy().getCityList();
+      super(context);
    }
 
    @Override
-   public void notifyDataSetChanged() {
-      cityList = ProxyFactory.getProxy().getCityList();
-      super.notifyDataSetChanged();
-   }
-
-   public int getCount() {
-      return cityList.size();
-   }
-
-   public City getItem(final int position) {
-      return cityList.get(position);
-   }
-
-   public long getItemId(final int position) {
-      return position;
-   }
-
    public View getView(final int position, View convertView, final ViewGroup viewGroup) {
-      if (!cityList.isEmpty()) {
-         final City entry = cityList.get(position);
+      if (!entityList.isEmpty()) {
+         final City entry = entityList.get(position);
          if (convertView == null) {
             final LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(R.layout.list_row_city, null);
@@ -84,5 +60,10 @@ public class CityListAdapter extends BaseAdapter {
          tvCount.setText(context.getString(R.string.tv_amount) + " " + entry.getAmount().toString());
       }
       return convertView;
+   }
+
+   @Override
+   protected List<City> fetchList() {
+      return ProxyFactory.getProxy().getCityList();
    }
 }

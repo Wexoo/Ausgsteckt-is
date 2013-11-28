@@ -16,13 +16,13 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package net.ausgstecktis.adapter;
+package net.ausgstecktis.ui;
 
 import net.ausgstecktis.R;
 import net.ausgstecktis.DAL.ProxyFactory;
+import net.ausgstecktis.adapter.SearchResultAlphabetizedAdapter;
+import net.ausgstecktis.adapter.SearchResultDbHelper;
 import net.ausgstecktis.entities.Heuriger;
-import net.ausgstecktis.ui.DetailActivity;
-import net.ausgstecktis.ui.SuperActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;

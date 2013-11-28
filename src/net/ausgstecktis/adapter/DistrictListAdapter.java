@@ -14,57 +14,33 @@
 
 package net.ausgstecktis.adapter;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import net.ausgstecktis.R;
 import net.ausgstecktis.DAL.ProxyFactory;
 import net.ausgstecktis.entities.District;
+import net.wexoo.organicdroid.adapter.AbstractBaseAdapter;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 /**
  * DistrictListAdapter.java
- * Used to displays the districts in a list view
  * 
- * @author naikon
- * @version Aug 26, 2011
+ * @author naikon, wexoo
  */
-public class DistrictListAdapter extends BaseAdapter {
+public class DistrictListAdapter extends AbstractBaseAdapter<District> {
 
-   private final Context context;
-
-   private ArrayList<District> districtList;
-
-   public DistrictListAdapter(final Context context, final ArrayList<District> districtList) {
-      this.context = context;
-      this.districtList = districtList;
+   public DistrictListAdapter(final Context context, final List<District> districtList) {
+      super(context, districtList);
    }
 
    @Override
-   public void notifyDataSetChanged() {
-      districtList = ProxyFactory.getProxy().getDistrictsWhereHeurigeExist();
-      super.notifyDataSetChanged();
-   }
-
-   public int getCount() {
-      return districtList.size();
-   }
-
-   public District getItem(final int position) {
-      return districtList.get(position);
-   }
-
-   public long getItemId(final int position) {
-      return position;
-   }
-
    public View getView(final int position, View convertView, final ViewGroup viewGroup) {
-      if (!districtList.isEmpty()) {
-         final District entry = districtList.get(position);
+      if (!entityList.isEmpty()) {
+         final District entry = entityList.get(position);
          if (convertView == null) {
             final LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(R.layout.list_row_district, null);
@@ -74,5 +50,10 @@ public class DistrictListAdapter extends BaseAdapter {
          tvCity.setText(entry.getName());
       }
       return convertView;
+   }
+
+   @Override
+   protected List<District> fetchList() {
+      return ProxyFactory.getProxy().getDistrictsWhereHeurigeExist();
    }
 }

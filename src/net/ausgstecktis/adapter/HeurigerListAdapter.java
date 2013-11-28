@@ -18,58 +18,33 @@
 
 package net.ausgstecktis.adapter;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import net.ausgstecktis.R;
 import net.ausgstecktis.DAL.ProxyFactory;
 import net.ausgstecktis.entities.Heuriger;
+import net.wexoo.organicdroid.adapter.AbstractBaseAdapter;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 /**
  * Displays the heurigen in a list view.
  * 
- * @author naikon
- * @since 1.0.0 Aug 5, 2011
- * @version 1.0.0 Aug 5, 2011
+ * @author naikon, wexoo
  */
-
-public class HeurigerListAdapter extends BaseAdapter {
-
-   private final Context context;
-
-   private ArrayList<Heuriger> heurigenList;
+public class HeurigerListAdapter extends AbstractBaseAdapter<Heuriger> {
 
    public HeurigerListAdapter(final Context context) {
-      this.context = context;
-      heurigenList = ProxyFactory.getProxy().getHeurigenList();
+      super(context);
    }
 
    @Override
-   public void notifyDataSetChanged() {
-      heurigenList = ProxyFactory.getProxy().getHeurigenList();
-      super.notifyDataSetChanged();
-   }
-
-   public int getCount() {
-      return heurigenList.size();
-   }
-
-   public Heuriger getItem(final int position) {
-      return heurigenList.get(position);
-   }
-
-   public long getItemId(final int position) {
-      return position;
-   }
-
    public View getView(final int position, View convertView, final ViewGroup viewGroup) {
-      if (!heurigenList.isEmpty()) {
-         final Heuriger entry = heurigenList.get(position);
+      if (!entityList.isEmpty()) {
+         final Heuriger entry = entityList.get(position);
          if (convertView == null) {
             final LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(R.layout.list_row, null);
@@ -92,5 +67,10 @@ public class HeurigerListAdapter extends BaseAdapter {
          }
       }
       return convertView;
+   }
+
+   @Override
+   protected List<Heuriger> fetchList() {
+      return ProxyFactory.getProxy().getHeurigenList();
    }
 }
