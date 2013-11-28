@@ -22,10 +22,9 @@ import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
 /**
- * The Class District.
+ * District.java
  * 
- * @author naikon
- * @version Aug 26, 2011
+ * @author wexoo
  */
 @DatabaseTable(tableName = District.TABLE_NAME)
 public class District {
@@ -44,76 +43,35 @@ public class District {
    @DatabaseField(columnName = District.NAME_COLUMN)
    private String name;
 
-   /**
-    * Table names online and offline.
-    */
-
    public District() {
    }
 
-   /**
-    * Instantiates a new district.
-    * 
-    * @param id the id
-    * @param kbz the kbz
-    * @param name the name
-    */
    public District(final Integer id, final String kbz, final String name) {
       this.id = id;
       this.kbz = kbz;
       this.name = name;
    }
 
-   /**
-    * Gets the id.
-    * 
-    * @return the id
-    */
    public Integer getId() {
-      return this.id;
+      return id;
    }
 
-   /**
-    * Gets the kbz.
-    * 
-    * @return the kbz
-    */
    public String getKbz() {
-      return this.kbz;
+      return kbz;
    }
 
-   /**
-    * Gets the name.
-    * 
-    * @return the name
-    */
    public String getName() {
-      return this.name;
+      return name;
    }
 
-   /**
-    * Sets the id.
-    * 
-    * @param id the new id
-    */
    public void setId(final Integer id) {
       this.id = id;
    }
 
-   /**
-    * Sets the kbz.
-    * 
-    * @param kbz the new kbz
-    */
    public void setKbz(final String kbz) {
       this.kbz = kbz;
    }
 
-   /**
-    * Sets the name.
-    * 
-    * @param name the new name
-    */
    public void setName(final String name) {
       this.name = name;
    }

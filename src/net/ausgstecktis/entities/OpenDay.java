@@ -22,10 +22,9 @@ import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
 /**
- * The Class OpenDay.
+ * OpenDay.java
  * 
- * @author naikon
- * @version Aug 26, 2011
+ * @author wexoo
  */
 @DatabaseTable(tableName = OpenDay.TABLE_NAME)
 public class OpenDay {
@@ -49,20 +48,9 @@ public class OpenDay {
    @DatabaseField(columnName = OpenDay.DAY_COLUMN)
    private Integer dayOfTheWeek;
 
-   /**
-    * Instantiates a new open day.
-    */
    public OpenDay() {
    }
 
-   /**
-    * Instantiates a new open day.
-    * 
-    * @param id the id
-    * @param calendar the calendar
-    * @param openTime the open time
-    * @param dayOfTheWeek the day of the week
-    */
    public OpenDay(final Integer id, final OpeningCalendar calendar, final OpenTime openTime, final Integer dayOfTheWeek) {
       this.id = id;
       this.calendar = calendar;
@@ -70,74 +58,34 @@ public class OpenDay {
       this.dayOfTheWeek = dayOfTheWeek;
    }
 
-   /**
-    * Gets the id.
-    * 
-    * @return the id
-    */
    public Integer getId() {
-      return this.id;
+      return id;
    }
 
-   /**
-    * Gets the calendar.
-    * 
-    * @return the calendar
-    */
    public OpeningCalendar getCalendar() {
-      return this.calendar;
+      return calendar;
    }
 
-   /**
-    * Gets the open time.
-    * 
-    * @return the open time
-    */
    public OpenTime getOpenTime() {
-      return this.openTime;
+      return openTime;
    }
 
-   /**
-    * Gets the day of the week.
-    * 
-    * @return the day of the week
-    */
    public Integer getDayOfTheWeek() {
-      return this.dayOfTheWeek;
+      return dayOfTheWeek;
    }
 
-   /**
-    * Sets the id.
-    * 
-    * @param id the new id
-    */
    public void setId(final Integer id) {
       this.id = id;
    }
 
-   /**
-    * Sets the calendar.
-    * 
-    * @param calendar the new calendar
-    */
    public void setCalendar(final OpeningCalendar calendar) {
       this.calendar = calendar;
    }
 
-   /**
-    * Sets the open time.
-    * 
-    * @param openTime the new open time
-    */
    public void setOpenTime(final OpenTime openTime) {
       this.openTime = openTime;
    }
 
-   /**
-    * Sets the day of the week.
-    * 
-    * @param dayOfTheWeek the new day of the week
-    */
    public void setDayOfTheWeek(final Integer dayOfTheWeek) {
       this.dayOfTheWeek = dayOfTheWeek;
    }

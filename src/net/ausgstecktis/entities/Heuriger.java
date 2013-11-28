@@ -25,7 +25,6 @@ import com.j256.ormlite.table.DatabaseTable;
  * Heuriger.java
  * 
  * @author wexoo
- * @version Aug 26, 2011
  */
 @DatabaseTable(tableName = Heuriger.TABLE_NAME)
 public class Heuriger {

@@ -25,7 +25,6 @@ import com.j256.ormlite.table.DatabaseTable;
  * State.java
  * 
  * @author wexoo
- * @version Nov 28, 2011
  */
 @DatabaseTable(tableName = State.TABLE_NAME)
 public class State {
@@ -47,13 +46,6 @@ public class State {
    public State() {
    }
 
-   /**
-    * Instantiates a new state
-    * 
-    * @param id the id
-    * @param kbz the kbz
-    * @param name the name
-    */
    public State(final Integer id, final String kbz, final String name) {
       this.id = id;
       this.kbz = kbz;

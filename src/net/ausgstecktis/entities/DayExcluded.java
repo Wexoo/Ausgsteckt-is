@@ -26,10 +26,9 @@ import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
 /**
- * The Class DayExcluded.
+ * DayExcluded.java
  * 
- * @author naikon
- * @version Aug 26, 2011
+ * @author wexoo
  */
 @DatabaseTable(tableName = DayExcluded.TABLE_NAME)
 public class DayExcluded {
@@ -48,75 +47,35 @@ public class DayExcluded {
    @DatabaseField(columnName = DayExcluded.DAY_COLUMN, format = DALUtils.DEFAULT_DATE_FORMAT)
    private Date day;
 
-   /**
-    * Instantiates a new day excluded.
-    */
    public DayExcluded() {
    }
 
-   /**
-    * Instantiates a new day excluded.
-    * 
-    * @param id the id
-    * @param heuriger the heuriger
-    * @param day the day
-    */
    public DayExcluded(final Integer id, final Heuriger heuriger, final Date day) {
       this.id = id;
       this.heuriger = heuriger;
       this.day = day;
    }
 
-   /**
-    * Gets the id.
-    * 
-    * @return the id
-    */
    public Integer getId() {
       return id;
    }
 
-   /**
-    * Gets the heuriger.
-    * 
-    * @return the heuriger
-    */
    public Heuriger getHeuriger() {
       return heuriger;
    }
 
-   /**
-    * Gets the day.
-    * 
-    * @return the day
-    */
    public Date getDay() {
       return day;
    }
 
-   /**
-    * Sets the id.
-    * 
-    * @param id the new id
-    */
    public void setId(final Integer id) {
       this.id = id;
    }
 
-   /**
-    * Sets the heuriger.
-    * 
-    * @param heuriger the new heuriger
-    */
    public void setHeuriger(final Heuriger heuriger) {
       this.heuriger = heuriger;
    }
 
-   /**
-    * Sets the day.
-    * 
-    * @param day the new day
-    */
    public void setDay(final Date day) {
       this.day = day;
    }

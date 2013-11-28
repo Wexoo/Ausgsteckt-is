@@ -27,10 +27,9 @@ import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
 /**
- * The Class OpenTime.
+ * OpenTime.java
  * 
- * @author wexoo, naikon
- * @version Aug 26, 2011
+ * @author wexoo
  */
 @DatabaseTable(tableName = OpenTime.TABLE_NAME)
 public class OpenTime {
@@ -52,69 +51,32 @@ public class OpenTime {
    public OpenTime() {
    }
 
-   /**
-    * Instantiates a new open time.
-    * 
-    * @param id the id
-    * @param start the start
-    * @param end the end
-    */
    public OpenTime(final Integer id, final Date start, final Date end) {
       this.id = id;
       this.start = start;
       this.end = end;
    }
 
-   /**
-    * Gets the id.
-    * 
-    * @return the id
-    */
    public Integer getId() {
       return id;
    }
 
-   /**
-    * Gets the start.
-    * 
-    * @return the start
-    */
    public Date getStart() {
       return start;
    }
 
-   /**
-    * Gets the end.
-    * 
-    * @return the end
-    */
    public Date getEnd() {
       return end;
    }
 
-   /**
-    * Sets the id.
-    * 
-    * @param id the new id
-    */
    public void setId(final Integer id) {
       this.id = id;
    }
 
-   /**
-    * Sets the start.
-    * 
-    * @param start the new start
-    */
    public void setStart(final Date start) {
       this.start = start;
    }
 
-   /**
-    * Sets the end.
-    * 
-    * @param end the new end
-    */
    public void setEnd(final Date end) {
       this.end = end;
    }

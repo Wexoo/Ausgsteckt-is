@@ -87,92 +87,42 @@ public class City {
       return name;
    }
 
-   /**
-    * Gets the zip code.
-    * 
-    * @return the zip code
-    */
    public Integer getZipCode() {
       return zipCode;
    }
 
-   /**
-    * Gets the district.
-    * 
-    * @return the district
-    */
    public District getDistrict() {
       return district;
    }
 
-   /**
-    * Gets the region.
-    * 
-    * @return the region
-    */
    public Region getRegion() {
       return region;
    }
 
-   /**
-    * Gets the amount.
-    * 
-    * @return the amount
-    */
    public Integer getAmount() {
       return amount;
    }
 
-   /**
-    * Sets the id.
-    * 
-    * @param id the new id
-    */
    public void setId(final Integer id) {
       this.id = id;
    }
 
-   /**
-    * Sets the name.
-    * 
-    * @param name the new name
-    */
    public void setName(final String name) {
       this.name = name;
    }
 
-   /**
-    * Sets the zip code.
-    * 
-    * @param zipCode the new zip code
-    */
    public void setZipCode(final Integer zipCode) {
       this.zipCode = zipCode;
    }
 
-   /**
-    * Sets the district.
-    * 
-    * @param district the new district
-    */
    public void setDistrict(final District district) {
       this.district = district;
    }
 
-   /**
-    * Sets the region.
-    * 
-    * @param region the new region
-    */
    public void setRegion(final Region region) {
       this.region = region;
    }
 
-   /**
-    * Sets the amount.
-    * 
-    * @param count the new amount
-    */
    public void setAmount(final Integer count) {
       amount = count;
    }

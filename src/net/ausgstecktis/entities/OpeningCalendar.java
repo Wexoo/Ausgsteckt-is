@@ -26,10 +26,9 @@ import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
 /**
- * The Class OpeningCalendar.
+ * OpeningCalendar.java
  * 
- * @author naikon
- * @version Aug 26, 2011
+ * @author wexoo
  */
 @DatabaseTable(tableName = OpeningCalendar.TABLE_NAME)
 public class OpeningCalendar {
@@ -52,20 +51,9 @@ public class OpeningCalendar {
    @DatabaseField(columnName = OpeningCalendar.END_COLUMN, format = DALUtils.DEFAULT_DATE_FORMAT)
    private Date end;
 
-   /**
-    * Instantiates a new opening calendar.
-    */
    public OpeningCalendar() {
    }
 
-   /**
-    * Instantiates a new opening calendar.
-    * 
-    * @param id the id
-    * @param heuriger the heuriger
-    * @param start the start
-    * @param end the end
-    */
    public OpeningCalendar(final Integer id, final Heuriger heuriger, final Date start, final Date end) {
       this.id = id;
       this.heuriger = heuriger;
@@ -73,74 +61,34 @@ public class OpeningCalendar {
       this.end = end;
    }
 
-   /**
-    * Gets the id.
-    * 
-    * @return the id
-    */
    public Integer getId() {
       return id;
    }
 
-   /**
-    * Gets the heuriger.
-    * 
-    * @return the heuriger
-    */
    public Heuriger getHeuriger() {
       return heuriger;
    }
 
-   /**
-    * Gets the start.
-    * 
-    * @return the start
-    */
    public Date getStart() {
       return start;
    }
 
-   /**
-    * Gets the end.
-    * 
-    * @return the end
-    */
    public Date getEnd() {
       return end;
    }
 
-   /**
-    * Sets the id.
-    * 
-    * @param id the new id
-    */
    public void setId(final Integer id) {
       this.id = id;
    }
 
-   /**
-    * Sets the heuriger.
-    * 
-    * @param heuriger the new heuriger
-    */
    public void setHeuriger(final Heuriger heuriger) {
       this.heuriger = heuriger;
    }
 
-   /**
-    * Sets the start.
-    * 
-    * @param start the new start
-    */
    public void setStart(final Date start) {
       this.start = start;
    }
 
-   /**
-    * Sets the end.
-    * 
-    * @param end the new end
-    */
    public void setEnd(final Date end) {
       this.end = end;
    }
