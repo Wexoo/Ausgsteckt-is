@@ -32,9 +32,6 @@
     <string name="title_result">Search results</string>
     
     <!-- Tabs -->
-     
-    <!-- Description -->
-    <string name="description_home">Home</string>
 
 	<!-- Toasts / Alerts / Error messages -->
 	<string name="alert_new_updates_available">New data available!\nHeurige:\n%1$d added\n%2$d updated\nHours:\n%3$d added\n%4$d updated\nWould you like to update?</string>
