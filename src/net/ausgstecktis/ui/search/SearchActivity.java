@@ -26,7 +26,8 @@ import net.ausgstecktis.entities.Heuriger;
 import net.ausgstecktis.ui.DetailActivity;
 import net.ausgstecktis.ui.ResultActivity;
 import net.ausgstecktis.ui.SuperActivity;
-import net.ausgstecktis.util.UIUtils;
+import net.wexoo.organicdroid.adapter.AutoCompleteCursorAdapter;
+import net.wexoo.organicdroid.util.UIUtil;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.LightingColorFilter;
@@ -43,7 +44,6 @@ import android.widget.DatePicker;
  * SearchActivity.java
  * 
  * @author naikon, wexoo
- * @version Aug 27, 2011
  */
 public class SearchActivity extends SuperActivity {
 
@@ -77,7 +77,7 @@ public class SearchActivity extends SuperActivity {
       buildAutoCompleteAreasTextView();
 
       if (!SearchActivity.noResult)
-         UIUtils.showLongToast(SearchActivity.this, getResources().getString(R.string.tv_no_result));
+         UIUtil.showLongToast(SearchActivity.this, getResources().getString(R.string.tv_no_result));
 
       noResult = true;
    }

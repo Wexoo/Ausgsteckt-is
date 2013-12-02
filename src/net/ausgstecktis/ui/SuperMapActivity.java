@@ -22,9 +22,9 @@ import net.ausgstecktis.R;
 import net.ausgstecktis.DAL.ProxyFactory;
 import net.ausgstecktis.entities.Heuriger;
 import net.ausgstecktis.ui.slidemenu.SlideMenuView;
-import net.ausgstecktis.util.AbstractAsyncTask;
-import net.ausgstecktis.util.Log;
 import net.ausgstecktis.util.UIUtils;
+import net.wexoo.organicdroid.Log;
+import net.wexoo.organicdroid.concurrency.AbstractAsyncTask;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.net.Uri;
@@ -180,10 +180,10 @@ public class SuperMapActivity extends MapActivity implements OnCreatePanelMenuLi
             ProxyFactory.getProxy().updateFavorite(ProxyFactory.getProxy().getSelectedHeuriger());
 
             if (SuperMapActivity.newFavorite)
-               UIUtils.showShortToast(HeurigenApp.mainContext,
+               UIUtils.showShortToast(
                      HeurigenApp.mainContext.getResources().getString(R.string.toast_favorite_added));
             else
-               UIUtils.showShortToast(HeurigenApp.mainContext,
+               UIUtils.showShortToast(
                      HeurigenApp.mainContext.getResources().getString(R.string.toast_favorite_removed));
             break;
       }

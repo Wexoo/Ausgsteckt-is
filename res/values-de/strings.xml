@@ -30,7 +30,6 @@
     <string name="title_take_me_home">Bring mi ham!</string>
 
     <string name="title_result">Suchergebnisse</string>
-    <string name="title_preferences">Einstellungen</string>
 	
 	<!-- Description -->
     <string name="description_logo">Ausgsteckt is</string>
@@ -39,32 +38,8 @@
     <string name="description_map">Karte</string>
     
 	<!-- Toasts / Alerts / Error messages -->
-	<string name="toast_unknown_host">Verbindungsfehler, bitte Internetverbindung überprüfen.</string>
-	<string name="toast_favorite_added">Als Favorit hinzugefügt.</string>
-	<string name="toast_favorite_removed">Favorit wurde entfernt.</string>
-	<string name="toast_migration_started">Daten-Aktualisierung gestartet…</string>
-	<string name="toast_migration_finished">Daten-Aktualisierung in %1$s Minuten abgeschlossen!</string>
-	<string name="toast_no_internet_connection">Keine Internetverbindung. \nLokaler Zugriff aktiviert.</string>
-	<string name="toast_no_data_reveived">Keine Daten empfangen. Keine Verbindung zu Server.</string>
-	<string name="toast_offline_not_supported">Funktion offline nicht verfügbar, bitte Internetverbindung herstellen!</string>
-	<string name="alert_no_local_data">Für diese Funktion wird eine Internetverbindung benötigt. Gehe zu…</string>
-	<string name="toast_server_problems_update">Diese Funktion ist wegen Server-Problemen vorübergehend nicht verfügbar, wir arbeiten daran diese zu beseitigen! Bitte etwas später nochmal versuchen.</string>
-	<string name="toast_new_update_declined">Daten-Aktualisierung abgelehnt. Aufforderung für 24h deaktiviert!</string>
-	    
-	<string name="alert_yes">Ja</string>
-	<string name="alert_no">Nein</string>
-	<string name="alert_neutral">Nie</string>
-	<string name="alert_mobile_network_prefs">Netzwerk Einstellungen</string>
-	<string name="alert_wifi_prefs">WLAN Einstellungen</string>
-	<string name="alert_return">Zurück</string>
-	<string name="alert_exit">App schließen</string>
 	<string name="alert_new_updates_available">Neue Daten sind verfügbar!\nHeurige:\n%1$d hinzugefügt\n%2$d aktualisiert\nTermine:\n%3$d hinzugefügt\n%4$d aktualisiert\nNeue Daten herunterladen?</string>
 	    
-	<!-- ProgressDialog -->
-	<string name="progress_dialog_initial_setup_in_progress">Initialisierung der App läuft gerade… (nur beim ersten Start notwendig)</string>
-	<string name="progress_dialog_check_for_update">Überprüfung auf neue Daten läuft gerade…</string>
-	<string name="progress_dialog_update_in_progress">Daten-Aktualisierung läuft gerade…</string>
-	
 	<!-- TextViews -->
 	<string name="tv_no_data">Keine Heurigen gefunden, bitte erneut suchen.</string>
 	<string name="tv_no_favorites">Noch keine Favoriten angelegt. Sie können Heurigen aus der Ergebnisliste hinzufügen.</string>
@@ -88,58 +63,19 @@
 	<!-- CheckBoxes -->
 	<string name="include_date_to_search">Zeige nur wenn offen am</string>
 
-	<!-- MenuItems -->
-	<string name="mi_info">App Info</string>
-	<string name="mi_preferences">Einstellungen</string>
-	<string name="close">Zurück</string>
-	<string name="mi_show_details">Details anzeigen</string>
-	<string name="mi_show_on_map">Auf Karte zeigen</string>
-	<string name="mi_start_navigation">Navigation starten</string>
-	<string name="mi_show_surroundings">Umgebung anzeigen</string>
-	<string name="mi_add_to_favorites">Zu Favoriten hinzufügen</string>
-	<string name="mi_remove_from_favorites">Von Favoriten entfernen</string>
-	
-    <!-- Buttons -->
-    <string name="b_call">Anrufen</string>
-	<string name="b_dial_phone_number">Anrufen</string>
-	<string name="b_visit_website">Zur Webseite</string>
-	<string name="b_visit_our_website">Besuche unsere Webseite</string>
-	<string name="b_send_mail">Mail senden</string>
-	<string name="b_send_us_mail">Schreib uns</string>
-	<string name="b_switch_to_intents">Zu <i>Intents</i> wechseln</string>
-	<string name="b_switch_to_search">Zur <i>Suche</i> wechseln</string>
-	<string name="b_choose_date">Nach Datum</string>
-	<string name="b_settings">Einstellungen</string>
-	
 	<!-- Preferences - Titles -->
 	<string name="pc_take_me_home">Bring mi ham! - Adresse</string>
 	<string name="etp_home_street_and_number" formatted="false">Straße \u0026 Hausnummer</string>
 	<string name="etp_home_zipcode_and_city" formatted="false">PLZ \u0026 Ort</string>
-	<string name="pc_general">Allgemein</string>
-	<string name="lp_access_mode">Zugriffsart</string>
 	<string name="lp_language">Sprache</string>
 	<string name="pc_local_data_storage">Lokale Datenspeicherung</string>
 	<string name="lp_storage_mode">Lokale Speicherung</string>
 	<string name="lp_update_mode">Verhalten bei neuen Daten</string>
 	<string name="p_manual_update">Jetzt aktualisieren</string>
 	<string name="p_export_db_to_sd">Export SQLite DB auf SD Card</string>
-	<string name="pc_partners">Partner</string>
-	<string name="pc_used_frameworks">Verwendete Frameworks</string>
 	<string name="h_submit_heurigen">Neuen Heurigen einreichen</string>
 	
 	<!-- Preferences - Summaries -->
-	<string name="lp_access_mode_sum">Aktuelle Art:</string>
-	<string name="lp_language_sum">Aktuelle Sprache:</string>
-	<string name="lp_storage_mode_sum">Aktuell:</string>
-	<string name="lp_update_mode_sum">Aktuelles Verhalten:</string>
-	<string name="p_manual_update_sum">Letzte Aktualisierung:</string>
-	
-	<string name="pc_general_sum">Basiseinstellungen</string>
-	<string name="pc_take_me_home_sum">Deine Adresse - wird nur lokal gespeichert!</string>
-	<string name="b_visit_our_website_sum">Infoseite über diese App</string>
-	<string name="b_send_us_mail_sum">Feedback, Fehler, Biereinladungen,&#8230;</string>
-	<string name="h_powered_by_sum">Vielen Dank an &#8230;</string>
-	<string name="h_info_sum">Einige Statistiken zur App</string>
 	<string name="h_submit_heurigen">Trage einen fehlenden Heurigen ein</string>
 	
 	<!-- Preferences - Summaries values -->
@@ -157,18 +93,6 @@
 	<string name="detail_opening_time_loading">Lade Öffnungszeiten</string>
 	<string name="l_detail">Detailansicht</string>
 	<string name="detail_no_calendar">Aktuell sind keine Kalenderdaten für diesen Heurigen eingetragen!</string>
-	
-	<!-- GPS Dialog -->
-	<string name="gps_dialog_message">GPS ist deaktiviert! Aktivieren?</string>
-	<string name="gps_dialog_enable">Aktiviere GPS</string>
-	<string name="gps_dialog_disable">Abbrechen</string>
-	
-	<!-- Info -->
-	<string name="info_about_us">Über uns</string>
-	<string name="duration_last_update">Dauer der letzten Aktualisierung</string>
-	<string name="info_latest_update">Letzte Aktulisierung</string>
-	<string name="info_no_database">Noch nie aktualisiert</string>
-	<string name="time_entity">Minuten</string>
 	
 	<!-- ACRA -->
     <string name="crash_toast_text">Ein Fehler is aufgetreten, die App startet neu!</string>

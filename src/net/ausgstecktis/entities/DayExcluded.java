@@ -20,7 +20,7 @@ package net.ausgstecktis.entities;
 
 import java.util.Date;
 
-import net.ausgstecktis.DAL.util.DALUtils;
+import net.wexoo.organicdroid.convert.DateAndTimeConverter;
 
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
@@ -44,7 +44,7 @@ public class DayExcluded {
    @DatabaseField(canBeNull = false, foreign = true, columnName = DayExcluded.HEURIGER_COLUMN)
    private Heuriger heuriger;
 
-   @DatabaseField(columnName = DayExcluded.DAY_COLUMN, format = DALUtils.DEFAULT_DATE_FORMAT)
+   @DatabaseField(columnName = DayExcluded.DAY_COLUMN, format = DateAndTimeConverter.FILE_DATE_FORMAT)
    private Date day;
 
    public DayExcluded() {

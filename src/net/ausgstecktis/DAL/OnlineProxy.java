@@ -26,14 +26,16 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-import net.ausgstecktis.DAL.util.DALUtils;
 import net.ausgstecktis.entities.City;
 import net.ausgstecktis.entities.District;
 import net.ausgstecktis.entities.Heuriger;
 import net.ausgstecktis.entities.OpenTime;
 import net.ausgstecktis.entities.OpeningCalendar;
 import net.ausgstecktis.ui.SuperActivity;
-import net.ausgstecktis.util.Log;
+import net.wexoo.organicdroid.Log;
+import net.wexoo.organicdroid.convert.DateAndTimeConverter;
+import net.wexoo.organicdroid.convert.NumberConverter;
+import net.wexoo.organicdroid.util.DALUtil;
 
 import org.apache.http.client.ClientProtocolException;
 import org.json.JSONArray;
@@ -96,7 +98,7 @@ public class OnlineProxy extends AbstractProxy {
 
    @Override
    public ArrayList<Heuriger> getHeurigeByDate(final Date date) {
-      return getHeurige(RestClient.GET_HEURIGE_BY_DATE + DALUtils.getStringValueOfDefaultDate(date));
+      return getHeurige(RestClient.GET_HEURIGE_BY_DATE + DateAndTimeConverter.getFileStringValueOfDate(date));
    }
 
    /**
@@ -115,7 +117,8 @@ public class OnlineProxy extends AbstractProxy {
       }
       searchString = searchString.replaceAll("\\+", "%20");
       return getHeurige(RestClient.GET_HEURIGE_BY_LOCATION_1
-            + DALUtils.getStringValueOfDefaultDate(date) + RestClient.GET_HEURIGE_BY_LOCATION_2 + searchString);
+            + DateAndTimeConverter.getFileStringValueOfDate(date) + RestClient.GET_HEURIGE_BY_LOCATION_2
+            + searchString);
    }
 
    /**
@@ -221,10 +224,10 @@ public class OnlineProxy extends AbstractProxy {
                final JSONObject jsonData = jArray.getJSONObject(i);
 
                final City city = new City(
-                     DALUtils.getIntegerValueOfString(jsonData.getString(City.ID_COLUMN)),
+                     NumberConverter.getIntegerValueOfString(jsonData.getString(City.ID_COLUMN)),
                      jsonData.getString(City.NAME_COLUMN),
-                     DALUtils.getIntegerValueOfString(jsonData.getString(City.ZIPCODE_COLUMN)),
-                     DALUtils.getIntegerValueOfString(jsonData.getString("amount")));
+                     NumberConverter.getIntegerValueOfString(jsonData.getString(City.ZIPCODE_COLUMN)),
+                     NumberConverter.getIntegerValueOfString(jsonData.getString("amount")));
 
                cityList.add(city);
             }
@@ -303,7 +306,7 @@ public class OnlineProxy extends AbstractProxy {
                   e.printStackTrace();
                }
 
-               calendarList.add(new OpeningCalendar(DALUtils.getIntegerValueOfString(jsonData
+               calendarList.add(new OpeningCalendar(NumberConverter.getIntegerValueOfString(jsonData
                      .getString(OpeningCalendar.ID_COLUMN)), null, start, end));
             }
          }
@@ -338,7 +341,7 @@ public class OnlineProxy extends AbstractProxy {
                final JSONObject jsonData = jArray.getJSONObject(i);
 
                final District district = new District(
-                     DALUtils.getIntegerValueOfString(jsonData.getString(District.ID_COLUMN)),
+                     NumberConverter.getIntegerValueOfString(jsonData.getString(District.ID_COLUMN)),
                      jsonData.getString(District.KBZ_COLUMN),
                      jsonData.getString(District.NAME_COLUMN));
 
@@ -381,36 +384,36 @@ public class OnlineProxy extends AbstractProxy {
    }
 
    public static Heuriger parseHeurigerObjectFromJSONData(final JSONObject jsonData) throws JSONException {
-      City city = new City(DALUtils.getIntegerValueOfString(jsonData.getString(Heuriger.CITY_COLUMN)),
+      City city = new City(NumberConverter.getIntegerValueOfString(jsonData.getString(Heuriger.CITY_COLUMN)),
             jsonData.getString("city"),
-            DALUtils.getIntegerValueOfString(jsonData.getString(City.ZIPCODE_COLUMN)));
+            NumberConverter.getIntegerValueOfString(jsonData.getString(City.ZIPCODE_COLUMN)));
       return parseHeurigerObjectFromJSONData(jsonData, city);
    }
 
    public static Heuriger parseHeurigerObjectFromJSONData(final JSONObject jsonData, City cityOfHeurigen)
       throws JSONException {
       return new Heuriger(
-            DALUtils.getIntegerValueOfString(jsonData.getString(Heuriger.ID_COLUMN)),
+            NumberConverter.getIntegerValueOfString(jsonData.getString(Heuriger.ID_COLUMN)),
             jsonData.getString(Heuriger.NAME_COLUMN) != null ? jsonData.getString(Heuriger.NAME_COLUMN) : "",
             jsonData.getString(Heuriger.SORT_NAME_COLUMN) != null ? jsonData.getString(Heuriger.SORT_NAME_COLUMN) : "",
             jsonData.getString(Heuriger.STREET_COLUMN) != null ? jsonData.getString(Heuriger.STREET_COLUMN) : "",
-            DALUtils.getIntegerValueOfString(jsonData.getString(Heuriger.STREETNUMBER_COLUMN)),
+            NumberConverter.getIntegerValueOfString(jsonData.getString(Heuriger.STREETNUMBER_COLUMN)),
             cityOfHeurigen,
-            DALUtils.getLongValueOfString(jsonData.getString(Heuriger.PHONE_COLUMN)),
-            DALUtils.getLongValueOfString(getNotNullStringFromJSONObject(jsonData, Heuriger.PHONE2_COLUMN)),
-            DALUtils.getLongValueOfString(jsonData.getString(Heuriger.FAX_COLUMN)),
+            NumberConverter.getLongValueOfString(jsonData.getString(Heuriger.PHONE_COLUMN)),
+            NumberConverter.getLongValueOfString(getNotNullStringFromJSONObject(jsonData, Heuriger.PHONE2_COLUMN)),
+            NumberConverter.getLongValueOfString(jsonData.getString(Heuriger.FAX_COLUMN)),
             jsonData.getString(Heuriger.EMAIL_COLUMN) != null ? jsonData.getString(Heuriger.EMAIL_COLUMN) : "",
             jsonData.getString(Heuriger.WEBSITE_COLUMN) != null ? jsonData.getString(Heuriger.WEBSITE_COLUMN) : "",
-            DALUtils.getIntegerValueOfString(jsonData.getString(Heuriger.INDOOR_COLUMN)),
-            DALUtils.getIntegerValueOfString(jsonData.getString(Heuriger.OUTDOOR_COLUMN)),
+            NumberConverter.getIntegerValueOfString(jsonData.getString(Heuriger.INDOOR_COLUMN)),
+            NumberConverter.getIntegerValueOfString(jsonData.getString(Heuriger.OUTDOOR_COLUMN)),
             jsonData.getString(Heuriger.DESCRIPTION_COLUMN) != null ? jsonData.getString(Heuriger.DESCRIPTION_COLUMN)
                   : "",
             jsonData.getString(Heuriger.OPENING_COLUMN) != null ? jsonData.getString(Heuriger.OPENING_COLUMN) : "",
-            DALUtils.getDoubleValueOfString(jsonData.getString(Heuriger.LONGITUDE_COLUMN)),
-            DALUtils.getDoubleValueOfString(jsonData.getString(Heuriger.LATITUDE_COLUMN)),
-            DALUtils.getBooleanValueOfString(getNotNullStringFromJSONObject(jsonData, Heuriger.TOP_COLUMN)),
-            DALUtils.getBooleanValueOfString(getNotNullStringFromJSONObject(jsonData, Heuriger.FAVORITE_COLUMN)),
-            DALUtils.getDoubleValueOfString(getNotNullStringFromJSONObject(jsonData, "distance")));
+            NumberConverter.getDoubleValueOfString(jsonData.getString(Heuriger.LONGITUDE_COLUMN)),
+            NumberConverter.getDoubleValueOfString(jsonData.getString(Heuriger.LATITUDE_COLUMN)),
+            DALUtil.getBooleanValueOfString(getNotNullStringFromJSONObject(jsonData, Heuriger.TOP_COLUMN)),
+            DALUtil.getBooleanValueOfString(getNotNullStringFromJSONObject(jsonData, Heuriger.FAVORITE_COLUMN)),
+            NumberConverter.getDoubleValueOfString(getNotNullStringFromJSONObject(jsonData, "distance")));
    }
 
    public static String getNotNullStringFromJSONObject(JSONObject jsonObject, String columnKey) throws JSONException {

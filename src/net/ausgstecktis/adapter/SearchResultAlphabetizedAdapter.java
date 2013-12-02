@@ -23,7 +23,7 @@ import java.util.Map;
 import java.util.TreeMap;
 
 import net.ausgstecktis.R;
-import net.ausgstecktis.util.Log;
+import net.wexoo.organicdroid.Log;
 import android.content.Context;
 import android.database.Cursor;
 import android.view.LayoutInflater;
@@ -43,6 +43,7 @@ import android.widget.TextView;
  */
 public class SearchResultAlphabetizedAdapter extends SimpleCursorAdapter implements SectionIndexer {
 
+   public static final String SORT_NAME_COLUMN = "sort_name";
    private static final int TYPE_HEADER = 1;
    private static final int TYPE_NORMAL = 0;
    private static final int TYPE_COUNT = 2;
@@ -57,8 +58,7 @@ public class SearchResultAlphabetizedAdapter extends SimpleCursorAdapter impleme
          final String[] from, final int[] to) {
       super(context, layout, c, from, to);
       this.context = context;
-      indexer = new AlphabetIndexer(c, c.getColumnIndexOrThrow(SearchResultDbHelper.SORT_NAME_COLUMN),
-            "ABCDEFGHIJKLMNOPQRSTUVWXYZ");
+      indexer = new AlphabetIndexer(c, c.getColumnIndexOrThrow(SORT_NAME_COLUMN), "ABCDEFGHIJKLMNOPQRSTUVWXYZ");
       sectionToPosition = new TreeMap<Integer, Integer>(); //use a TreeMap because we are going to iterate over its keys in sorted order
       sectionToOffset = new HashMap<Integer, Integer>();
 

@@ -24,7 +24,7 @@ import net.ausgstecktis.R;
 import net.ausgstecktis.DAL.ProxyFactory;
 import net.ausgstecktis.adapter.HeurigerListAdapter;
 import net.ausgstecktis.entities.Heuriger;
-import net.ausgstecktis.util.AbstractAsyncTask;
+import net.wexoo.organicdroid.concurrency.AbstractAsyncTask;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;

@@ -28,8 +28,8 @@ import java.io.UnsupportedEncodingException;
 import java.io.Writer;
 
 import net.ausgstecktis.ui.HeurigenApp;
-import net.ausgstecktis.util.AppEnvironment;
-import net.ausgstecktis.util.Log;
+import net.wexoo.organicdroid.Log;
+import net.wexoo.organicdroid.settings.AppEnvironment;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -107,13 +107,13 @@ public class RestClient {
     * @param service the service for the API method
     */
    public RestClient(final String service) {
-      url = HeurigenApp.getConfig().apiUri();
+      url = HeurigenApp.getSettings().apiUri();
       this.service = service;
 
       final HttpParams httpParams = new BasicHttpParams();
-      HttpConnectionParams.setConnectionTimeout(httpParams, HeurigenApp.getConfig().socketTimeout());
-      HttpConnectionParams.setSoTimeout(httpParams, HeurigenApp.getConfig().socketTimeout());
-      HttpConnectionParams.setSocketBufferSize(httpParams, HeurigenApp.getConfig().socketBufferSize());
+      HttpConnectionParams.setConnectionTimeout(httpParams, HeurigenApp.getSettings().socketTimeout());
+      HttpConnectionParams.setSoTimeout(httpParams, HeurigenApp.getSettings().socketTimeout());
+      HttpConnectionParams.setSocketBufferSize(httpParams, HeurigenApp.getSettings().socketBufferSize());
 
       final SchemeRegistry registry = new SchemeRegistry();
       registry.register(new Scheme("http", new PlainSocketFactory(), RestClient.HTTP_PORT));
@@ -179,7 +179,7 @@ public class RestClient {
       httpGet.setHeader("Accept",
             "text/html,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5");
       httpGet.setHeader("Content-Type", "application/x-www-form-urlencoded");
-      httpGet.setHeader(HeurigenApp.getConfig().apiValue(), HeurigenApp.getConfig().apiKey());
+      httpGet.setHeader(HeurigenApp.getSettings().apiValue(), HeurigenApp.getSettings().apiKey());
 
       Log.d(RestClient.TAG, "Sending request to " + restUrl);
 
@@ -220,7 +220,7 @@ public class RestClient {
       httpGet.setHeader("Accept",
             "text/html,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5");
       httpGet.setHeader("Content-Type", "application/x-www-form-urlencoded");
-      httpGet.setHeader(HeurigenApp.getConfig().apiValue(), HeurigenApp.getConfig().apiKey());
+      httpGet.setHeader(HeurigenApp.getSettings().apiValue(), HeurigenApp.getSettings().apiKey());
 
       Log.d(RestClient.TAG, "Sending request to " + restUrl);
 

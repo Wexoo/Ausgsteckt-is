@@ -25,18 +25,18 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.Callable;
 
-import net.ausgstecktis.DAL.util.DALUtils;
 import net.ausgstecktis.entities.City;
 import net.ausgstecktis.entities.District;
 import net.ausgstecktis.entities.Heuriger;
 import net.ausgstecktis.entities.OpenDay;
 import net.ausgstecktis.entities.OpenTime;
 import net.ausgstecktis.entities.OpeningCalendar;
-import net.ausgstecktis.ui.HeurigenApp;
-import net.ausgstecktis.util.Log;
-import net.ausgstecktis.util.LogicalOperator;
-import net.ausgstecktis.util.ParenthesisBehaviour;
-import net.ausgstecktis.util.SQLiteCondition;
+import net.wexoo.organicdroid.Log;
+import net.wexoo.organicdroid.base.BaseApplication;
+import net.wexoo.organicdroid.convert.DateAndTimeConverter;
+import net.wexoo.organicdroidormlite.condition.LogicalOperator;
+import net.wexoo.organicdroidormlite.condition.Parenthesis;
+import net.wexoo.organicdroidormlite.condition.SQLiteCondition;
 import android.database.Cursor;
 
 import com.j256.ormlite.android.apptools.OpenHelperManager;
@@ -48,7 +48,6 @@ import com.j256.ormlite.stmt.Where;
  * OfflineProxy.java
  * 
  * @author wexoo
- * @version Aug 27, 2011
  */
 public class OfflineProxy extends AbstractProxy {
 
@@ -63,7 +62,7 @@ public class OfflineProxy extends AbstractProxy {
     * Instantiates a new offline proxy.
     */
    public OfflineProxy() {
-      helper = OpenHelperManager.getHelper(HeurigenApp.mainContext);
+      helper = OpenHelperManager.getHelper(BaseApplication.mainContext);
       Log.d(TAG, "Helper fetched using HeurigenApp.mainContext!");
 
       getHeurigeByKeyword("testkeyword");
@@ -181,8 +180,8 @@ public class OfflineProxy extends AbstractProxy {
             final String[] nextValue = ids.next();
 
             resultList.add(new OpeningCalendar(Integer.valueOf(nextValue[0]),
-                  null, DALUtils.getDefaultDateValueOfString(nextValue[1]),
-                  DALUtils.getDefaultDateValueOfString(nextValue[2])));
+                  null, DateAndTimeConverter.getFileDateValueOfString(nextValue[1]),
+                  DateAndTimeConverter.getFileDateValueOfString(nextValue[2])));
          }
          return resultList;
 
@@ -502,8 +501,6 @@ public class OfflineProxy extends AbstractProxy {
    }
 
    /**
-    * {@inheritDoc}
-    * 
     * @see net.ausgstecktis.DAL.AbstractProxy#updateFavorite(net.ausgstecktis.entities.Heuriger)
     */
    @Override
@@ -574,10 +571,10 @@ public class OfflineProxy extends AbstractProxy {
 
       for (final SQLiteCondition cond : conditions) {
          conditionString += " " + cond.getOperator().name() + " ";
-         if (cond.getParenthesis().equals(ParenthesisBehaviour.OPEN))
+         if (cond.getParenthesis().equals(Parenthesis.OPEN))
             conditionString += cond.getParenthesis().toString();
          conditionString += cond.getCondition();
-         if (cond.getParenthesis().equals(ParenthesisBehaviour.CLOSE))
+         if (cond.getParenthesis().equals(Parenthesis.CLOSE))
             conditionString += cond.getParenthesis().toString();
       }
       return conditionString;

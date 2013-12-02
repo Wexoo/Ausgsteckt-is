@@ -20,7 +20,7 @@ package net.ausgstecktis.DAL;
 
 import net.ausgstecktis.R;
 import net.ausgstecktis.ui.PreferencesActivity;
-import net.ausgstecktis.util.Log;
+import net.wexoo.organicdroid.Log;
 
 /**
  * A factory for creating Proxy objects.

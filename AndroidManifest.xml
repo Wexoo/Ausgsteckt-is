@@ -78,16 +78,16 @@
            android:configChanges="orientation"
            android:label="@string/title_map" />
         
-        <activity
-           android:name=".ui.PreferencesActivity"
-           android:configChanges="orientation"
-           android:label="@string/title_preferences"/>
-         
 		<activity
            android:name=".ui.InfoActivity"
            android:configChanges="orientation"
            android:label="@string/title_info" />
-            
+        
+		<activity
+           android:name="net.wexoo.organicdroid.PreferencesActivity"
+           android:configChanges="orientation"
+           android:label="@string/title_preferences"/>
+		
 		<activity
 		   android:name=".ui.search.SearchActivity"
 		   android:label="@string/title_search" />

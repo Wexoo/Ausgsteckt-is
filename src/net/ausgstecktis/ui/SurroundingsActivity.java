@@ -22,7 +22,7 @@ import net.ausgstecktis.R;
 import net.ausgstecktis.DAL.ProxyFactory;
 import net.ausgstecktis.adapter.SurrondingListAdapter;
 import net.ausgstecktis.entities.Heuriger;
-import net.ausgstecktis.util.AbstractAsyncTask;
+import net.wexoo.organicdroid.concurrency.AbstractAsyncTask;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -73,8 +73,8 @@ public class SurroundingsActivity extends SuperActivity {
 
       locationListener = new MyLocationListener();
       locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-      locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, HeurigenApp.getConfig()
-            .defaultGpsUpdateInterval(), HeurigenApp.getConfig().defaultGpsUpdatedistance(), locationListener);
+      locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, HeurigenApp.getSettings()
+            .defaultGpsUpdateInterval(), HeurigenApp.getSettings().defaultGpsUpdatedistance(), locationListener);
 
       lastLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
 
@@ -104,8 +104,8 @@ public class SurroundingsActivity extends SuperActivity {
 
    @Override
    public void onResume() {
-      locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, HeurigenApp.getConfig()
-            .defaultGpsUpdateInterval(), HeurigenApp.getConfig().defaultGpsUpdatedistance(),
+      locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, HeurigenApp.getSettings()
+            .defaultGpsUpdateInterval(), HeurigenApp.getSettings().defaultGpsUpdatedistance(),
             locationListener);
       super.onResume();
    }
@@ -230,7 +230,7 @@ public class SurroundingsActivity extends SuperActivity {
          switch (event){
             case GpsStatus.GPS_EVENT_SATELLITE_STATUS:
                if (lastLocation != null)
-                  isGPSFix = (SystemClock.elapsedRealtime() - locationMillis) < HeurigenApp.getConfig()
+                  isGPSFix = (SystemClock.elapsedRealtime() - locationMillis) < HeurigenApp.getSettings()
                         .defaultGpsUpdateInterval();
 
                if (isGPSFix) { // A fix has been acquired.

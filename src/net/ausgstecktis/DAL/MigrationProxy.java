@@ -29,7 +29,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import net.ausgstecktis.R;
-import net.ausgstecktis.DAL.util.DALUtils;
 import net.ausgstecktis.entities.City;
 import net.ausgstecktis.entities.District;
 import net.ausgstecktis.entities.Heuriger;
@@ -39,8 +38,9 @@ import net.ausgstecktis.entities.OpeningCalendar;
 import net.ausgstecktis.entities.Region;
 import net.ausgstecktis.ui.HeurigenApp;
 import net.ausgstecktis.ui.PreferencesActivity;
-import net.ausgstecktis.util.Log;
-import net.ausgstecktis.util.UIUtils;
+import net.wexoo.organicdroid.Log;
+import net.wexoo.organicdroid.convert.DateAndTimeConverter;
+import net.wexoo.organicdroid.convert.NumberConverter;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.client.ClientProtocolException;
@@ -167,10 +167,10 @@ public class MigrationProxy {
 
       // Open your local db as the input stream
       final InputStream myInput = HeurigenApp.mainContext.getAssets().open(
-            HeurigenApp.getConfig().databaseName());
+            HeurigenApp.getSettings().databaseName());
 
       // Path to the just created empty db
-      final String outFileName = DB_PATH + HeurigenApp.getConfig().databaseName();
+      final String outFileName = DB_PATH + HeurigenApp.getSettings().databaseName();
 
       // Open the empty db as the output stream
       final OutputStream myOutput = new FileOutputStream(outFileName);
@@ -203,7 +203,7 @@ public class MigrationProxy {
       final HttpEntity entity = currentRestClient.getHttpEntity();
 
       // Path to the just created empty db
-      final String outFileName = DB_PATH + HeurigenApp.getConfig().databaseName();
+      final String outFileName = DB_PATH + HeurigenApp.getSettings().databaseName();
 
       // Open the empty db as the output stream
       final OutputStream output = new FileOutputStream(outFileName);
@@ -254,13 +254,13 @@ public class MigrationProxy {
                final JSONObject jsonData = jArray.getJSONObject(i);
 
                updateQuantities.put(CREATED_HEURIGE_KEY,
-                     DALUtils.getIntegerValueOfString(jsonData.getString(CREATED_HEURIGE_KEY)));
+                     NumberConverter.getIntegerValueOfString(jsonData.getString(CREATED_HEURIGE_KEY)));
                updateQuantities.put(UPDATE_HEURIGE_KEY,
-                     DALUtils.getIntegerValueOfString(jsonData.getString(UPDATE_HEURIGE_KEY)));
+                     NumberConverter.getIntegerValueOfString(jsonData.getString(UPDATE_HEURIGE_KEY)));
                updateQuantities.put(CREATED_CALENDAR_KEY,
-                     DALUtils.getIntegerValueOfString(jsonData.getString(CREATED_CALENDAR_KEY)));
+                     NumberConverter.getIntegerValueOfString(jsonData.getString(CREATED_CALENDAR_KEY)));
                updateQuantities.put(UPDATED_CALENDAR_KEY,
-                     DALUtils.getIntegerValueOfString(jsonData.getString(UPDATED_CALENDAR_KEY)));
+                     NumberConverter.getIntegerValueOfString(jsonData.getString(UPDATED_CALENDAR_KEY)));
 
             }
             Log.d(TAG, CREATED_HEURIGE_KEY + ": " + updateQuantities.get(CREATED_HEURIGE_KEY));
@@ -296,14 +296,14 @@ public class MigrationProxy {
                final JSONObject jsonData = jArray.getJSONObject(i);
 
                Region region = new Region(
-                     DALUtils.getIntegerValueOfString(jsonData.getString("r_id")),
+                     NumberConverter.getIntegerValueOfString(jsonData.getString("r_id")),
                      jsonData.getString("r_name"));
 
                final Dao<Region, Integer> regionDao = helper.getDao(Region.class);
                regionDao.createOrUpdate(region);
 
                District district = new District(
-                     DALUtils.getIntegerValueOfString(jsonData.getString("d_id")),
+                     NumberConverter.getIntegerValueOfString(jsonData.getString("d_id")),
                      jsonData.getString("d_kbz"),
                      jsonData.getString("d_name"));
 
@@ -311,9 +311,9 @@ public class MigrationProxy {
                districtDao.createOrUpdate(district);
 
                City city = new City(
-                     DALUtils.getIntegerValueOfString(jsonData.getString("c_id")),
+                     NumberConverter.getIntegerValueOfString(jsonData.getString("c_id")),
                      jsonData.getString("c_name"),
-                     DALUtils.getIntegerValueOfString(jsonData.getString("c_zipcode")),
+                     NumberConverter.getIntegerValueOfString(jsonData.getString("c_zipcode")),
                      district,
                      region);
 
@@ -345,7 +345,7 @@ public class MigrationProxy {
 
                final Dao<City, Integer> cityDao = helper.getDao(City.class);
                Integer idOfCity =
-                     DALUtils.getIntegerValueOfString(OnlineProxy.getNotNullStringFromJSONObject(jsonData,
+                     NumberConverter.getIntegerValueOfString(OnlineProxy.getNotNullStringFromJSONObject(jsonData,
                            Heuriger.CITY_COLUMN));
                City cityOfHeurigen =
                      cityDao.queryForId(idOfCity != 189 ? idOfCity : 188);
@@ -388,34 +388,35 @@ public class MigrationProxy {
             for (int i = 0; i < jArray.length(); i++) {
                final JSONObject jsonData = jArray.getJSONObject(i);
 
-               OpenTime openTime = openTimeDao.queryForId(DALUtils.getIntegerValueOfString(jsonData.getString("id")));
+               OpenTime openTime =
+                     openTimeDao.queryForId(NumberConverter.getIntegerValueOfString(jsonData.getString("id")));
 
                if (openTime == null) {
                   openTime = new OpenTime(
-                        DALUtils.getIntegerValueOfString(jsonData.getString("id")),
-                        DALUtils.getTimeValueOfString(jsonData.getString("ot_start")),
-                        DALUtils.getTimeValueOfString(jsonData.getString("ot_end")));
+                        NumberConverter.getIntegerValueOfString(jsonData.getString("id")),
+                        DateAndTimeConverter.getTimeValueOfString(jsonData.getString("ot_start")),
+                        DateAndTimeConverter.getTimeValueOfString(jsonData.getString("ot_end")));
 
                   openTimeDao.createOrUpdate(openTime);
                }
 
                OpeningCalendar calendar =
-                     calendarDao.queryForId(DALUtils.getIntegerValueOfString(jsonData.getString("c_id")));
+                     calendarDao.queryForId(NumberConverter.getIntegerValueOfString(jsonData.getString("c_id")));
 
                if (calendar == null) {
                   calendar = new OpeningCalendar(
-                        DALUtils.getIntegerValueOfString(jsonData.getString("c_id")),
-                        new Heuriger(DALUtils.getIntegerValueOfString(jsonData.getString("id_heuriger"))),
-                        DALUtils.getDefaultDateValueOfString(jsonData.getString("c_start")),
-                        DALUtils.getDefaultDateValueOfString(jsonData.getString("c_end")));
+                        NumberConverter.getIntegerValueOfString(jsonData.getString("c_id")),
+                        new Heuriger(NumberConverter.getIntegerValueOfString(jsonData.getString("id_heuriger"))),
+                        DateAndTimeConverter.getFileDateValueOfString(jsonData.getString("c_start")),
+                        DateAndTimeConverter.getFileDateValueOfString(jsonData.getString("c_end")));
 
                   calendarDao.createOrUpdate(calendar);
                }
 
                OpenDay openDay = new OpenDay(
-                     DALUtils.getIntegerValueOfString(jsonData.getString("od_id")),
+                     NumberConverter.getIntegerValueOfString(jsonData.getString("od_id")),
                      calendar, openTime,
-                     DALUtils.getIntegerValueOfString(jsonData.getString("day")));
+                     NumberConverter.getIntegerValueOfString(jsonData.getString("day")));
 
                openDayDao.createOrUpdate(openDay);
             }
@@ -476,11 +477,11 @@ public class MigrationProxy {
       final long elapsedSeconds = diff / secondInMillis;
 
       if (elapsedHours != 0)
-         return UIUtils.addLeadingZeroToLong(elapsedHours) + ":"
-               + UIUtils.addLeadingZeroToLong(elapsedMinutes) + ":"
-               + UIUtils.addLeadingZeroToLong(elapsedSeconds);
-      return UIUtils.addLeadingZeroToLong(elapsedMinutes) + ":"
-            + UIUtils.addLeadingZeroToLong(elapsedSeconds);
+         return NumberConverter.addLeadingZeroToLong(elapsedHours) + ":"
+               + NumberConverter.addLeadingZeroToLong(elapsedMinutes) + ":"
+               + NumberConverter.addLeadingZeroToLong(elapsedSeconds);
+      return NumberConverter.addLeadingZeroToLong(elapsedMinutes) + ":"
+            + NumberConverter.addLeadingZeroToLong(elapsedSeconds);
    }
 
    public OfflineProxy getOfflineProxy() {

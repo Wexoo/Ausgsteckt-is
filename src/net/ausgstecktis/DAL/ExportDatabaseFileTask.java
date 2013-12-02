@@ -25,8 +25,8 @@ import java.io.IOException;
 import java.nio.channels.FileChannel;
 
 import net.ausgstecktis.ui.HeurigenApp;
-import net.ausgstecktis.util.Log;
 import net.ausgstecktis.util.UIUtils;
+import net.wexoo.organicdroid.Log;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Environment;
@@ -61,7 +61,7 @@ public class ExportDatabaseFileTask extends AsyncTask<String, Void, Boolean> {
    @Override
    protected Boolean doInBackground(final String... args) {
 
-      final File dbFile = new File(DB_PATH + HeurigenApp.getConfig().databaseName());
+      final File dbFile = new File(DB_PATH + HeurigenApp.getSettings().databaseName());
 
       // path on sd by convention
       File exportDir =
@@ -72,7 +72,7 @@ public class ExportDatabaseFileTask extends AsyncTask<String, Void, Boolean> {
          Log.i(TAG, "create directory " + (result ? "succesful" : "failed"));
       }
 
-      final File file = new File(exportDir, HeurigenApp.getConfig().databaseName());
+      final File file = new File(exportDir, HeurigenApp.getSettings().databaseName());
 
       try {
          file.createNewFile();

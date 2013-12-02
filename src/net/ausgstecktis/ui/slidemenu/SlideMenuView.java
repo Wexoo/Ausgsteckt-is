@@ -18,49 +18,26 @@
 
 package net.ausgstecktis.ui.slidemenu;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import net.ausgstecktis.R;
+import net.wexoo.organicdroid.slidemenu.BaseSlideMenuView;
+import net.wexoo.organicdroid.slidemenu.MenuItemBean;
 import android.app.Activity;
-import android.widget.ListView;
-import android.widget.RelativeLayout;
 
 /**
  * Sets the list view for the SlideMenu
  * 
  * @author wexoo
  */
-public class SlideMenuView extends RelativeLayout {
+public class SlideMenuView extends BaseSlideMenuView {
 
-   private List<MenuItemBean> menuItems = new ArrayList<MenuItemBean>();;
-
-   public SlideMenuView(final Activity context) {
+   public SlideMenuView(Activity context) {
       super(context);
-
-      RelativeLayout.LayoutParams rlp = new RelativeLayout.LayoutParams(
-            android.view.ViewGroup.LayoutParams.MATCH_PARENT,
-            android.view.ViewGroup.LayoutParams.MATCH_PARENT);
-
-      setLayoutParams(rlp);
-
-      ListView listView = new ListView(context);
-
-      // Defining the layout parameters of the ListView
-      RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(
-            android.view.ViewGroup.LayoutParams.WRAP_CONTENT,
-            android.view.ViewGroup.LayoutParams.WRAP_CONTENT);
-
-      // Setting the parameters on the TextView
-      listView.setLayoutParams(lp);
-
-      // Adding the TextView to the RelativeLayout as a child
-      addView(listView);
-
-      listView.setAdapter(new SlideListAdapter(context, buildMenuItemList()));
    }
 
-   private List<MenuItemBean> buildMenuItemList() {
+   @Override
+   protected List<MenuItemBean> buildMenuItemList() {
       addMenuItemToList(R.drawable.home_btn_today, R.string.title_today, R.integer.title_today);
       addMenuItemToList(R.drawable.home_btn_surronding, R.string.title_surrounding, R.integer.title_surrounding);
       addMenuItemToList(R.drawable.home_btn_search, R.string.title_search, R.integer.title_search);
@@ -72,7 +49,8 @@ public class SlideMenuView extends RelativeLayout {
       return menuItems;
    }
 
-   private void addMenuItemToList(int imageDrawable, int title, int tagId) {
-      menuItems.add(new MenuItemBean(imageDrawable, title, getResources().getInteger(tagId)));
+   @Override
+   protected Integer getFirstDrawableKey() {
+      return R.drawable.home_btn_today;
    }
 }

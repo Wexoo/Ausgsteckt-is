@@ -22,8 +22,8 @@ import net.ausgstecktis.R;
 import net.ausgstecktis.DAL.ProxyFactory;
 import net.ausgstecktis.entities.Heuriger;
 import net.ausgstecktis.entities.OpeningCalendar;
-import net.ausgstecktis.util.AbstractAsyncTask;
-import net.ausgstecktis.util.UIUtils;
+import net.wexoo.organicdroid.concurrency.AbstractAsyncTask;
+import net.wexoo.organicdroid.convert.DateAndTimeConverter;
 import android.os.Bundle;
 import android.text.SpannableString;
 import android.text.style.UnderlineSpan;
@@ -212,8 +212,8 @@ public class DetailActivity extends SuperActivity {
          /** open times */
          if (!ProxyFactory.getProxy().getCalendarList().isEmpty()) {
             for (final OpeningCalendar openCalendar : ProxyFactory.getProxy().getCalendarList())
-               openTimeText = openTimeText + UIUtils.getDateWithoutTimeAsString(openCalendar.getStart()) + " - " +
-                     UIUtils.getDateWithoutTimeAsString(openCalendar.getEnd()) + "\n";
+               openTimeText = openTimeText + DateAndTimeConverter.getGermanDateAsString(openCalendar.getStart())
+                     + " - " + DateAndTimeConverter.getGermanDateAsString(openCalendar.getEnd()) + "\n";
             ((TextView) findViewById(R.id.tv_detail_opening_time)).setText(openTimeText);
          } else {
             final TextView tvOpeningTime = (TextView) findViewById(R.id.tv_detail_opening_time);

@@ -21,7 +21,7 @@ package net.ausgstecktis.adapter;
 import java.util.List;
 
 import net.ausgstecktis.entities.Heuriger;
-import net.ausgstecktis.util.Log;
+import net.wexoo.organicdroid.Log;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
@@ -39,17 +39,16 @@ public class SearchResultDbHelper extends SQLiteOpenHelper {
    public static final String ID_COLUMN = "id";
    public static final String ID = "_id";
    public static final String NAME_COLUMN = "name";
-   public static final String SORT_NAME_COLUMN = "sort_name";
    public static final String STREET_COLUMN = "street";
    public static final String STREETNUMBER_COLUMN = "streetnumber";
    public static final String CITY_COLUMN = "id_city";
    public static final String ZIPCODE_COLUMN = "zipcode";
+
+   public static final String SORT_NAME_COLUMN = "sort_name";
+
    private static final String DATABASE_NAME = "heurigen_tmp.db";
    private static final int DATABASE_VERSION = 1;
 
-   /**
-    * Instantiates a new search result db helper.
-    */
    public SearchResultDbHelper(final Context context) {
       super(context, SearchResultDbHelper.DATABASE_NAME, null, SearchResultDbHelper.DATABASE_VERSION);
    }
@@ -72,7 +71,7 @@ public class SearchResultDbHelper extends SQLiteOpenHelper {
    }
 
    /**
-    * @see android.database.sqlite.SQLiteOpenHelper#onUpgrade(android.database.sqlite.SQLiteDatabase, int, int)
+    * @see android.database.sqlite.SQLiteOpenHelper#onUpgrade(android.database.//sqlite.SQLiteDat//abase, int, int)
     */
    @Override
    public void onUpgrade(final SQLiteDatabase db, final int oldVersion, final int newVersion) {

@@ -29,7 +29,7 @@ import net.ausgstecktis.R;
 import net.ausgstecktis.DAL.ProxyFactory;
 import net.ausgstecktis.entities.Heuriger;
 import net.ausgstecktis.ui.HeurigenApp;
-import net.ausgstecktis.util.Log;
+import net.wexoo.organicdroid.Log;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -90,16 +90,19 @@ public class HeurigerAlphabetizedListAdapter extends ArrayAdapter<Heuriger> impl
       sections = keyList.toArray(new String[keyList.size()]);
    }
 
+   @Override
    public int getPositionForSection(int section) {
       String letter = sections[section];
       return azIndexer.get(letter);
    }
 
+   @Override
    public int getSectionForPosition(int position) {
       Log.v(TAG, "section for position");
       return 0;
    }
 
+   @Override
    public Object[] getSections() {
       return sections;
    }

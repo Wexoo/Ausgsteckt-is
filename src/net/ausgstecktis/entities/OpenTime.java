@@ -20,7 +20,7 @@ package net.ausgstecktis.entities;
 
 import java.util.Date;
 
-import net.ausgstecktis.DAL.util.DALUtils;
+import net.wexoo.organicdroid.convert.DateAndTimeConverter;
 
 import com.j256.ormlite.field.DataType;
 import com.j256.ormlite.field.DatabaseField;
@@ -42,10 +42,10 @@ public class OpenTime {
    @DatabaseField(id = true, columnName = OpenTime.ID_COLUMN)
    private Integer id;
 
-   @DatabaseField(columnName = OpenTime.START_COLUMN, format = DALUtils.DEFAULT_TIME_FORMAT, dataType = DataType.DATE_STRING)
+   @DatabaseField(columnName = OpenTime.START_COLUMN, format = DateAndTimeConverter.DEFAULT_TIME_FORMAT, dataType = DataType.DATE_STRING)
    private Date start;
 
-   @DatabaseField(columnName = OpenTime.END_COLUMN, format = DALUtils.DEFAULT_TIME_FORMAT, dataType = DataType.DATE_STRING)
+   @DatabaseField(columnName = OpenTime.END_COLUMN, format = DateAndTimeConverter.DEFAULT_TIME_FORMAT, dataType = DataType.DATE_STRING)
    private Date end;
 
    public OpenTime() {

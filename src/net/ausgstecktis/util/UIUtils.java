@@ -18,109 +18,44 @@
 
 package net.ausgstecktis.util;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 import net.ausgstecktis.ui.HeurigenApp;
 import net.ausgstecktis.ui.HomeActivity;
 import net.ausgstecktis.ui.search.SearchActivity;
+import net.wexoo.organicdroid.util.UIUtil;
 import android.content.Context;
-import android.content.Intent;
-import android.widget.Toast;
 
 /**
+ * Convenience collection for OrganicDroid methods
+ * 
  * @author wexoo
- * @version Aug 27, 2011
  */
 public class UIUtils {
-
-   public static final String TAG = UIUtils.class.getSimpleName();
-
-   public static final SimpleDateFormat DEFAULT_DATE_FORMATTER = new SimpleDateFormat("dd.MMM yyyy HH:mm");
-   public static final SimpleDateFormat DATE_WITHOUT_TIME_FORMATTER = new SimpleDateFormat("dd. MM. yyyy");
-   public static final SimpleDateFormat DATE_WRITTEN_OUT_MONTH_FORMATTER = new SimpleDateFormat("dd. MMMM yyyy");
 
    /**
     * Invoke "home" action, returning to {@link HomeActivity}.
     */
    public static void goHome(final Context context) {
-      final Intent intent = new Intent(context, HomeActivity.class);
-      intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-      context.startActivity(intent);
+      UIUtil.goToActivityAndClearTop(context, HomeActivity.class);
    }
 
    /**
     * Invoke "search" action, triggering a default search.
     */
    public static void onQuickSearchClick(final Context context) {
-      final Intent intent = new Intent(context, SearchActivity.class);
-      intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-      context.startActivity(intent);
+      UIUtil.goToActivityAndClearTop(context, SearchActivity.class);
    }
 
    /**
     * Shows short toast using the HeurigenApp.mainContext variable
     */
    public static void showShortToast(final String text) {
-      showShortToast(HeurigenApp.mainContext, text);
-   }
-
-   /**
-    * Shows short toast using custom context
-    */
-   public static void showShortToast(final Context context, final String text) {
-      Toast.makeText(context, text, Toast.LENGTH_SHORT).show();
+      UIUtil.showShortToast(HeurigenApp.mainContext, text);
    }
 
    /**
     * Shows long toast using the HeurigenApp.mainContext variable
     */
    public static void showLongToast(final String text) {
-      showLongToast(HeurigenApp.mainContext, text);
+      UIUtil.showLongToast(HeurigenApp.mainContext, text);
    }
-
-   /**
-    * Shows long toast using custom context
-    */
-   public static void showLongToast(final Context context, final String text) {
-      Toast.makeText(context, text, Toast.LENGTH_LONG).show();
-   }
-
-   public static String getDateAsString(final Date date) {
-      return DEFAULT_DATE_FORMATTER.format(date);
-   }
-
-   public static String getDateWithoutTimeAsString(final Date date) {
-      return DATE_WITHOUT_TIME_FORMATTER.format(date);
-   }
-
-   public static String getDateWrittenOutMonthAsString(final Date date) {
-      return DATE_WRITTEN_OUT_MONTH_FORMATTER.format(date);
-   }
-
-   /**
-    * Gets the string as date.
-    * 
-    * @param dateString the date string
-    * @return the string as date
-    */
-   public static Date getStringAsDate(final String dateString) {
-      return getStringAsDate(dateString, new SimpleDateFormat("dd. MMMM yyyy HH:mm"));
-   }
-
-   public static Date getStringAsDate(final String dateString, final SimpleDateFormat format) {
-      try {
-         return format.parse(dateString);
-      } catch (final ParseException e) {
-         Log.e(UIUtils.TAG, e.getMessage());
-         e.printStackTrace();
-      }
-      return null;
-   }
-
-   public static String addLeadingZeroToLong(final Long value) {
-      return value < 10 ? "0" + value : value.toString();
-   }
-
 }

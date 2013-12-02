@@ -24,11 +24,12 @@ import java.util.Map;
 import net.ausgstecktis.R;
 import net.ausgstecktis.DAL.MigrationProxy;
 import net.ausgstecktis.DAL.ProxyFactory;
-import net.ausgstecktis.DAL.util.DALUtils;
-import net.ausgstecktis.util.AbstractAlertDialogBuilder;
-import net.ausgstecktis.util.AbstractAsyncTask;
-import net.ausgstecktis.util.Log;
 import net.ausgstecktis.util.UIUtils;
+import net.wexoo.organicdroid.Log;
+import net.wexoo.organicdroid.base.BaseApplication;
+import net.wexoo.organicdroid.concurrency.AbstractAsyncTask;
+import net.wexoo.organicdroid.convert.DateAndTimeConverter;
+import net.wexoo.organicdroid.feedback.AbstractAlertDialogBuilder;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -62,14 +63,14 @@ public class SplashScreenActivity extends SuperActivity {
 
    @Override
    public void onCreate(Bundle savedInstanceState) {
-      HeurigenApp.mainContext = this;
+      BaseApplication.mainContext = this;
       super.onCreate(savedInstanceState);
 
       setContentView(R.layout.activity_splashscreen, false);
 
       buildSplashHandler();
 
-      getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+      //      getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
       if (PreferencesActivity.getStringPreference(R.string.last_database_migration_key, null).equals("")) {
          ProxyFactory.getProxy();
@@ -104,7 +105,7 @@ public class SplashScreenActivity extends SuperActivity {
                      @Override
                      protected void negativeButtonAction(Context context) {
                         setLastDataUpdateReminderPreference();
-                        UIUtils.showLongToast(getString(R.string.toast_new_update_declined));
+                        UIUtils.showLongToast(getString(R.string.toast_new_update_declined_24h));
                         switchToHomeActivity();
                      }
                   }.create();
@@ -138,8 +139,8 @@ public class SplashScreenActivity extends SuperActivity {
    private void setLastDataUpdateReminderPreference(Date lastReminderDate) {
 
       PreferencesActivity.setStringPreference(R.string.key_last_data_update_reminder,
-            null, UIUtils.getDateAsString(lastReminderDate));
-      Log.d(TAG, "last data update reminder set to: " + UIUtils.getDateAsString(lastReminderDate));
+            null, DateAndTimeConverter.getDateAsString(lastReminderDate));
+      Log.d(TAG, "last data update reminder set to: " + DateAndTimeConverter.getDateAsString(lastReminderDate));
    }
 
    private void showProgressDialog(int stringResId) {
@@ -281,7 +282,7 @@ public class SplashScreenActivity extends SuperActivity {
                   + PreferencesActivity.getStringPreference(R.string.database_migration_duration_key, null));
 
             PreferencesActivity.setStringPreference(R.string.last_database_migration_key, null,
-                  UIUtils.getDateAsString(new Date()));
+                  DateAndTimeConverter.getDateAsString(new Date()));
 
             //if initial migration finished -> set last reminder update to yesterday to check once for online updates
             if (migrateLocalDatabase) {
@@ -291,7 +292,7 @@ public class SplashScreenActivity extends SuperActivity {
                PreferencesActivity.setStringPreference(R.string.last_database_update_key, null, INITIAL_DATABASE_DATE);
             } else
                PreferencesActivity.setStringPreference(R.string.last_database_update_key, null,
-                     DALUtils.DEFAULT_DATE_FORMATTER.format(new Date()));
+                     DateAndTimeConverter.FILE_DATE_FORMATTER.format(new Date()));
 
             checkOnlineStatusAndSwitchModeIfNecessary();
          }

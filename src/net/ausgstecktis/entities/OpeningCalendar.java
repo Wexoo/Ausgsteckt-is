@@ -20,7 +20,7 @@ package net.ausgstecktis.entities;
 
 import java.util.Date;
 
-import net.ausgstecktis.DAL.util.DALUtils;
+import net.wexoo.organicdroid.convert.DateAndTimeConverter;
 
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
@@ -45,10 +45,10 @@ public class OpeningCalendar {
    @DatabaseField(canBeNull = false, foreign = true, columnName = OpeningCalendar.HEURIGER_COLUMN)
    private Heuriger heuriger;
 
-   @DatabaseField(columnName = OpeningCalendar.START_COLUMN, format = DALUtils.DEFAULT_DATE_FORMAT)
+   @DatabaseField(columnName = OpeningCalendar.START_COLUMN, format = DateAndTimeConverter.FILE_DATE_FORMAT)
    private Date start;
 
-   @DatabaseField(columnName = OpeningCalendar.END_COLUMN, format = DALUtils.DEFAULT_DATE_FORMAT)
+   @DatabaseField(columnName = OpeningCalendar.END_COLUMN, format = DateAndTimeConverter.FILE_DATE_FORMAT)
    private Date end;
 
    public OpeningCalendar() {

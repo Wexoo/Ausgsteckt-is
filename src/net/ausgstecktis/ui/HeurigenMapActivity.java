@@ -23,7 +23,7 @@ import java.util.List;
 import net.ausgstecktis.R;
 import net.ausgstecktis.DAL.ProxyFactory;
 import net.ausgstecktis.entities.Heuriger;
-import net.ausgstecktis.util.MyItemizedOverlay;
+import net.wexoo.organicdroid.ui.map.MyItemizedOverlay;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 

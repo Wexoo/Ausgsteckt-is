@@ -26,9 +26,9 @@ import net.ausgstecktis.DAL.ProxyFactory;
 import net.ausgstecktis.adapter.HeurigerAlphabetizedListAdapter;
 import net.ausgstecktis.entities.Heuriger;
 import net.ausgstecktis.ui.search.SearchActivity;
-import net.ausgstecktis.util.AbstractAsyncTask;
-import net.ausgstecktis.util.Log;
-import net.ausgstecktis.util.UIUtils;
+import net.wexoo.organicdroid.Log;
+import net.wexoo.organicdroid.concurrency.AbstractAsyncTask;
+import net.wexoo.organicdroid.convert.DateAndTimeConverter;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -66,7 +66,7 @@ public class ResultActivity extends SuperActivity {
       if (!searchString.equals(""))
          titleString = searchString;
       else if (searchDate != null)
-         titleString = UIUtils.getDateWrittenOutMonthAsString(searchDate);
+         titleString = DateAndTimeConverter.getWholeMonthDateAsString(searchDate);
       else
          titleString = this.getString(R.string.search_all_heurigen);
 
