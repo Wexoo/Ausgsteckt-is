@@ -20,7 +20,7 @@
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	android:versionCode="11"
 	android:versionName="1.0.5" 
-	package="net.ausgstecktis" >
+	package="net.ausgstecktis" xmlns:tools="http://schemas.android.com/tools">
 	
 	<uses-sdk
 	    android:minSdkVersion="8"
@@ -86,7 +86,8 @@
 		<activity
            android:name="net.wexoo.organicdroid.PreferencesActivity"
            android:configChanges="orientation"
-           android:label="@string/title_preferences"/>
+           android:label="@string/title_preferences" 
+           tools:ignore="MissingRegistered"/>
 		
 		<activity
 		   android:name=".ui.search.SearchActivity"
